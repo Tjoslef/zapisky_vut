@@ -1,0 +1,124 @@
+\documentclass{article}
+\usepackage{mathtools, amssymb, amsthm} % imports amsmath
+\raggedright
+\begin{document}
+
+\section{Úvod}
+Literatura: stránky paní Hlínové - \texttt{umat.fekt.vut.cz/\textasciitilde hlinena/vyuka-IDM.html}.
+Najít vhodnou učebnici pro výuku IDM (Informatické a Didaktické Metody).
+
+\section{Matematický jazyk}
+V rámci IDM je cílem naučit se číst matematické texty, správně je psát a zvykat si na specifický matematický jazyk, což je klíčové pro komunikaci a logické uvažování v matematice.
+
+\textbf{Paradox Beretaxa Maxnera}:
+Jedná se o myšlenkový experiment, který zpochybňuje běžné intuice o množinách a logice v matematice.
+
+\section{Množiny}
+Množina je základním objektem matematiky a je definována jako soubor prvků, které mají společnou vlastnost. Prvky množiny se neopakují.
+
+\textbf{Prázdná množina}: Množina, která neobsahuje žádné prvky, se značí \(\emptyset\) (čteme jako "prázdná množina").
+\textbf{Množina s prázdnou množinou}: Množina, která obsahuje prázdnou množinu jako prvek, má jeden prvek: \(\{\emptyset\}\).
+
+Množiny mohou být definovány různými způsoby, například pomocí výroků.
+
+\section{Číselné množiny}
+\begin{itemize}
+    \item \(\mathbb{N}\) - množina přirozených čísel: \(\{1, 2, 3, \dots\}\)
+    \item \(\mathbb{Z}\) - množina celých čísel: \(\{\dots, -2, -1, 0, 1, 2, \dots\}\)
+    \item \(\mathbb{Q}\) - množina racionálních čísel: \(\left\{\frac{a}{b} : a \in \mathbb{Z}, b \in \mathbb{N}\right\}\)
+    \item \(\mathbb{R}\) - množina reálných čísel: zahrnuje racionální i iracionální čísla
+\end{itemize}
+
+\section{Počet prvků (kardinalita)}
+Kardinalita množiny vyjadřuje počet prvků v množině:
+\[
+|\emptyset| = 0, \quad |\{a, b, c\}| = 3, \quad |\{a, \{b, c\}\}| = 2.
+\]
+
+Množiny mohou být:
+\begin{itemize}
+    \item \textbf{Konečné}: mají konečný počet prvků.
+    \item \textbf{Nekonečné}:
+    \begin{itemize}
+        \item \textbf{Počitatelné}: jejich prvky lze seřadit do posloupnosti (např. \(\mathbb{N}\)).
+        \item \textbf{Nespočitatelné}: jejich prvků je více než lze seřadit (např. \(\mathbb{R}\)).
+    \end{itemize}
+\end{itemize}
+
+Množiny \(A\) a \(B\) jsou si rovné (\(A = B\)), pokud každý prvek \(A\) je v \(B\) a každý prvek \(B\) je v \(A\).
+Podmnožina \(B\) množiny \(A\) je, pokud platí \(B \subseteq A\).
+Příklad:
+\(A = \{1, 2, 3\}\), \(B = \{1, 2, 3, 4\}\)
+\[
+A \subseteq B, \quad A \notin B.
+\]
+
+\section{Výrokový počet}
+Výrok je tvrzení, o kterém má smysl uvažovat, zda je pravdivé či nepravdivé.
+\begin{itemize}
+    \item \textbf{Negace}: \(\neg\).
+    Příklad: "Dnes je úterý" \(\rightarrow\) "Dnes není úterý".
+    \item \textbf{Konjunkce}: \(A \land B\).
+    Příklad: "Dnes je úterý a neprší" \(\rightarrow\) obojí musí být pravdivé.
+    \item \textbf{Disjunkce}: \(A \lor B\).
+    Příklad: "Dnes je úterý nebo neprší" \(\rightarrow\) buď obojí pravdivé, nebo jedno z toho.
+    \item \textbf{Implikace}: \(A \Rightarrow B\).
+    Příklad: "Pokud poslechnete mé rady ke studiu IDM, uděláte zkoušku."
+    \item \textbf{Ekvivalence}: \(A \Leftrightarrow B\).
+    Příklad: "Když student dodrží všechny rady, udělá zkoušku."
+\end{itemize}
+
+\section{Výroková formule}
+Každá výroková proměnná je výroková formule.
+Pro výrokové formule je důležité používání závorek: \((A \Rightarrow B) \Leftrightarrow ((A \land B) \Rightarrow (B \land C))\).
+
+\textbf{Tabulka pravdivostních hodnot}:
+\begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    A & B & C & \(A \Rightarrow B\) & \(A \land B\) & \(B \land C\) \\
+    \hline
+    1 & 1 & & 1 & 1 & \\
+    1 & 0 & & 0 & 0 & \\
+    0 & 1 & & 1 & 0 & \\
+    0 & 0 & & 1 & 0 & \\
+    \hline
+\end{tabular}
+
+\textbf{Kontradikce}: Výrok, který je vždy nepravdivý.
+\textbf{Tautologie}: Výrok, který je vždy pravdivý.
+\textbf{Zákon dvojité negace}: \(\neg (\neg A) \equiv A\).
+
+\section{Predikátový počet}
+\begin{itemize}
+    \item \textbf{Kartézský součin}: Pro dvě množiny \(A\) a \(B\) je kartézský součin množin \(A \times B = \{(a, b) : a \in A, b \in B\}\).
+    \item \textbf{Binární relace}: Např. \(2 = 2\), určuje vztah mezi dvěma prvky.
+    \item \textbf{Operace}: Např. \(A + B\), \(\sqrt{x}\) (unární operace).
+\end{itemize}
+
+Nechť \(A\) je množina. Výraz \(x + (-y)\) je term, protože operace jsou správně definované, zatímco \(x > y\) není term, protože \(>\) je relace, nikoli operace.
+
+\section{Formule predikátového počtu (FPP)}
+Formule predikátového počtu (FPP) se skládají z termů a relací. Například:
+\(x > y\), \((x > 7) \Rightarrow (a = 3)\), \(\exists (x^2 - 1 = 0)\), \(\forall (x^2 - 1 = 0)\).
+
+\section{Zadávání množin}
+\begin{itemize}
+    \item \(M = \{ x \in \mathbb{R} : 1 \leq x < 2 \} = \langle 1, 2 \rangle\)
+    \item \(B = \{ n \in \mathbb{N} : 2 \mid n \} = \{0, 2, 4, 6, 8, \dots\}\)
+\end{itemize}
+
+\section{Čítání (kvantifikace)}
+\(\forall x \in \mathbb{R} : |x| \geq 0\).
+\(\forall x, y \in \mathbb{R} : x \cdot y = y \cdot x\) (komutativní vlastnost).
+\(\forall x \in \mathbb{R}, \exists y \in \mathbb{R}\), tj. pro každé reálné číslo \(x\) existuje odpovídající číslo \(y\).
+
+\textbf{Příklad}:
+Každý student má svoji kamarádku.
+Pro každého studenta existuje kamarádka.
+Existuje kamarádka pro všechny studentky.
+
+\textbf{Úkol}:
+Naučit se predikátový počet.
+Do strany 8 přečíst \texttt{mnoziny.pdf}.
+
+\end{document}
