@@ -1,0 +1,77 @@
+\documentclass{article}
+\usepackage{mathtools, amssymb, amsthm} % imports amsmath
+\begin{document}
+\sloppy
+\section{Analýza a specifikace požadavků}
+\textbf{Plánování testů:}
+\begin{itemize}
+    \item Sběr informací
+    \item Komunikace se zákazníkem, koncovým uživatelem a dalšími zainteresovanými stranami (stakeholdery)
+\end{itemize}
+Snaha zahrnout všechny strany do procesu, pochopení motivací stakeholderů, hlavně požadavků od zákazníka a důsledků pro zákazníka. Cílem je co nejpřesnější specifikace požadavků zákazníka.
+
+\textbf{Typy požadavků:}
+\begin{itemize}
+    \item Obchodní požadavky – úspory, čas, atd.
+    \item Uživatelé požadavky – co má uživatel se systémem dělat a co má systém dělat
+    \item Funkční požadavky – co má být realizováno, aby něco proběhlo (např. diagramy, chování systému za různých podmínek)
+    \item Nefunkční požadavky – např. kolik uživatelů může systém obsloužit (kapacita), jaká bude platforma (Android/Linux/Windows), požadavky na bezpečnost, výkon, flexibilitu, spolehlivost (např. zálohování), přátelské rozhraní, měřitelnost požadavků
+\end{itemize}
+
+\section{Metody získávání informací}
+Snižují riziko, že systém nebude odpovídat požadavkům.
+
+\begin{itemize}
+    \item Interview (orientační, strukturované) – běžná a základní forma zjišťování potřeb zákazníka; nejdříve orientační, následně strukturované otázky
+    \item Dotazník – velký dosah, problematická užitečnost
+    \item Pracovní setkání – skupina stakeholderů vyjednává o požadavcích (menší skupina je lepší)
+    \item Sledování procesu na vlastní oči a pochopení – časově náročné
+    \item Studium dokumentace
+    \item Studium již existujícího systému
+\end{itemize}
+
+\section{Problémy při specifikaci požadavků}
+\begin{itemize}
+    \item Nejasná a neúplná specifikace požadavků
+    \item Zákazník nemá jasnou představu, jak by měl celý systém vypadat
+    \item Zákazník nedokáže rozhodnout, co je důležité (kvůli nedostatečné znalosti)
+    \item Vývojář neorientuje v problematice odvětví (např. finanční sektor)
+    \item Prototypování systému – další diskuse se zákazníkem
+\end{itemize}
+Požadavky je iterativní proces, měly by být co nejvíce specifické a písemně formulované. Je důležité zkoumat, zda jsou požadavky reálné a smysluplné.
+
+\textbf{Validace požadavků:}
+Prototypování – částečná implementace, zákazník získává lepší představu. Pokud je prototyp plnohodnotný, lze ho využít v implementaci. Často je však vytvořen narychlo a neměl by se dále používat kvůli nedostatečné kvalitě.
+
+Identifikace požadavků snižuje cenu softwaru.
+
+\section{Dokumentace požadavků}
+Kombinace formálních a neformálních technik. Používání vizuálních modelů, tabulek a grafů. Měla by být rozumná v rozsahu.
+
+\textbf{Modelování dat:}
+\begin{itemize}
+    \item ERD diagramy – strukturovaný model dat
+    \item Class diagramy – objektově orientovaný model dat
+\end{itemize}
+
+\textbf{Modelování požadavků:}
+\begin{itemize}
+    \item DFD – specifikace chování systému
+    \item UCD – diagram případů užití, doplněný dalšími modely UML
+\end{itemize}
+
+\section{Diagram případů užití}
+\textbf{Use-case-driven přístup:}
+Na co se bude systém používat a kdo ho bude využívat. Diagram musí být dále konkretizován, často za pomoci tabulek. Pokročilé techniky by měly být používány co nejméně, protože mohou být málo srozumitelné.
+
+\section{Diagram aktivit – Prvky}
+\begin{itemize}
+    \item Uzly
+    \begin{itemize}
+        \item Akční uzly – modelují aktivitu
+        \item Řídicí uzly – modelují rozhodování
+    \end{itemize}
+\end{itemize}
+
+\end{document}
+
