@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/TeX Live for SUSE Linux) (preloaded format=pdflatex 2024.9.5)  30 SEP 2024 11:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/TeX Live for SUSE Linux) (preloaded format=pdflatex 2024.9.5)  30 SEP 2024 11:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -217,7 +217,7 @@ e
 <inserted text> 
                 $
 l.18 k = 1/(4\pi
-                * \e)
+                 * \e)
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
@@ -233,8 +233,8 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 18.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 ! Undefined control sequence.
-l.18 k = 1/(4\pi* \e
-                    )
+l.18 k = 1/(4\pi * \e
+                     )
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -258,7 +258,64 @@ cmr/m/n/10 0\OML/cmm/m/it/10 jepermitivitavakuae \OT1/cmr/m/n/10 =
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./treti_prednaska.aux)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.77     F m = \sum
+                   
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.83 \section
+             {relativni permeabilita}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+
+Underfull \hbox (badness 2894) in paragraph at lines 67--83
+\OT1/cmr/m/n/10 hou byt vodice v nich pro-teka proud -> per-ma-nentni mag-nety 
+el a
+ []
+
+
+Underfull \hbox (badness 1609) in paragraph at lines 67--83
+\OT1/cmr/m/n/10 mag-net-icke pole sou-visi mag-net-icke pole civky vodic ktery 
+je ob-v-in-uty
+ []
+
+
+Underfull \hbox (badness 2221) in paragraph at lines 67--83
+\OT1/cmr/m/n/10 na necem -> kus dratu ktery je na necem nav-in-uty kazdy proud 
+je
+ []
+
+
+Underfull \hbox (badness 1803) in paragraph at lines 67--83
+\OT1/cmr/m/n/10 secten a mag-net-icke pole se secte (a vznikne do-cela vyz-namn
+e) Mag-
+ []
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.85 v = 1/\sqrt(
+                 eu) rychlost sireni elmag. vln v materialu
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.87 \section
+             {ELektormagneticka indukce}
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+[2] (./treti_prednaska.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -273,13 +330,13 @@ Here is how much of TeX's memory you used:
  475 hyphenation exceptions out of 8191
  70i,5n,79p,316b,115s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf
-/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf/fonts/type1/public
-/amsfonts/cm/cmr10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmsy10.
-pfb>
-Output written on treti_prednaska.pdf (1 page, 55949 bytes).
+/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf/fonts/type1/public
+/amsfonts/cm/cmmi10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr10.
+pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on treti_prednaska.pdf (2 pages, 71073 bytes).
 PDF statistics:
- 28 PDF objects out of 1000 (max. 8388607)
- 16 compressed objects within 1 object stream
+ 36 PDF objects out of 1000 (max. 8388607)
+ 21 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
