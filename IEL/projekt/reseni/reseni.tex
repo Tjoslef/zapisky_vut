@@ -1,6 +1,6 @@
 
 \documentclass{article}
-\usepackage{mathtools, amssymb, amsthm, graphicx} % imports amsmath
+\usepackage{mathtools, amssymb, amsthm, graphicx,ulem} % imports amsmath
 \begin{document}
 \sloppy
 prvni priklad zadani C
@@ -13,7 +13,7 @@ prvni priklad zadani C
 \end{figure}
 
 \[
-    R56 = \frac{1}{R5} + \frac{1}{R6}
+    R56 = \frac{R_6 \times R_5}{R_6+ R_5}
 \]
 
 \begin{figure}[h!]
@@ -31,12 +31,12 @@ R_{A1} = \frac{810 \times 220}{810 + 220 + 190} + 450
 \]
 
 \[
-R_{B56} = \frac{R_2 \times R_4}{R_2 + R_3 + R_4} + \frac{1}{R_5} + \frac{1}{R_6}
+R_{B56} = \frac{R_2 \times R_4}{R_2 + R_3 + R_4} +\frac{R_6 \times R_5}{R_6+ R_5}
 \]
 \[
-R_{B56} = \frac{810 \times 220}{810 + 190 + 720} + \frac{1}{220} + \frac{1}{720} = 146.072
+R_{B56} = \frac{810 \times 220}{810 + 190 + 720} + \frac{220 \times 720}{220+ 720}
+= 284.320
 \]
-
 \[
 R_{C7} = \frac{R_3 \times R_4}{R_2 + R_3 + R_4} + R_7
 \]
@@ -45,24 +45,31 @@ R_{C7} = \frac{190 \times 220}{810 + 190 + 720} + 260 = 284.302
 \]
 
 \[
-R = \frac{1}{576.148} + \frac{1}{284.302} + 576.148 + 180 \quad \Rightarrow \quad R = 756.153
+R = \frac{270.340 \times 284.320}{270.340+284.320}  + 576.148 + 180 \quad \Rightarrow \quad R = 894.770
 \]
 
 \[
-I = \frac{U}{R} = \frac{180}{756.153} \quad \Rightarrow \quad I = 0.238
+I = \frac{U}{R} = \frac{180}{894.770} \quad \Rightarrow \quad I = 0.201
+\]
+
+\[
+U_{R3} = U - U_{R2}
 \]
 \[
-R_{B567C} = \frac{1}{146.072} + \frac{1}{284.302} = 0.010
+U_{R2} = R_2 \times I
 \]
 \[
-U_{B567C} = 0.010 \times 0.238 = 0.00238
+U_{R2} = 810 \times 0.201 = 162.81 \, \text{V}
 \]
 \[
-I_{RC7} = \frac{U_{B567C}}{R_{C7}}
+U_{R3} = 180 - 810 \times 0.201 = 180 - 162.81 = 17.19 \, \text{V}
+\]
+
+\[
+I_{R3} = \frac{U_{R3}}{R_3}
 \]
 \[
-    I_{RC7} = \frac{0.00238}{284.302}
-    \quad \Rightarrow \quad I_{RC7} = 8.371 \times 10^{-3}
+I_{R3} = \frac{17.19}{190} = 0.0905 \, \text{A}
 \]
 \end{document}
 

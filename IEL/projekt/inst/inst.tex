@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage{mathtools, amssymb, amsthm} % imports amsmath
+\begin{document}
+\sloppy
+\[
+    U_{Rb} = I_{Rb4} \times R_b
+\]
+\[
+    U_{R4} = I_{Rb4} \times R_4
+\]
+\[
+    U_{Rc} = I_{Rc5} \times R_c
+\]
+\[
+    U_{R5} = I_{Rc5} \times R_5
+\]
+
+% Zpětný dopočet napětí a proudu z hvězda -> trojúhelník:
+% II. Kirchhoffův zákon:
+\[
+    U_{R2} = U - U_{R5}
+\]
+\[
+    U_{R1} = U - U_{R4}
+\]
+\[
+    U_{R3} = U_{R2} - U_{R1}
+\]
+
+% Ohmův zákon:
+\[
+    I_{R1} = \frac{U_{R1}}{R_1}
+\]
+\[
+    I_{R2} = \frac{U_{R2}}{R_2}
+\]
+\[
+    I_{R3} = \frac{U_{R3}}{R_3}
+\]
+
+\[
+    I_{R4} = I_{Rb4}
+\]
+\[
+    I_{R5} = I_{Rc5}
+\]
+
+% Kontrola I. Kirchhoffův zákon:
+\[
+    I_{R1} = I_{R3} + I_{R4}
+\]
+% Nebo také:
+\[
+    \lvert I_{R1} - (I_{R3} + I_{R4}) \rvert < \epsilon
+\]
+\[
+    I_{R2} + I_{R3} = I_{R5}
+\]
+% Nebo také:
+\[
+    \lvert (I_{R2} + I_{R3}) - I_{R5} \rvert < \epsilon
+\]
+\end{document}
+

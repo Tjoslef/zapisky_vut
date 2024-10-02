@@ -1,9 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1727903433.7645 "/home/tjoslef/skola/zapisky/vut/IEL/projekt/reseni/reseni.tex" "reseni.pdf" "reseni" 1727903434.12518 0
+["pdflatex"] 1727856405.27045 "/home/tjoslef/skola/zapisky/vut/IEL/projekt/inst/inst.tex" "inst.pdf" "inst" 1727856405.56796 0
   "/etc/texmf/web2c/texmf.cnf" 1719994164 42612 09b3c6dec2a078bd30d80981dc2f43a3 ""
-  "/home/tjoslef/skola/zapisky/vut/IEL/projekt/dalsi uprava.png" 1727811833.65366 16975 ce286fc9f441a1ec719cb87d83b976a1 ""
-  "/home/tjoslef/skola/zapisky/vut/IEL/projekt/reseni/reseni.tex" 1727903433.59373 1596 317ad630b990b78cc74134dcbc016ea3 ""
-  "/home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_hvezda.drawio.png" 1727816757.7872 19293 7f089b2806f8024a47ac5368bcafd99b ""
+  "/home/tjoslef/skola/zapisky/vut/IEL/projekt/inst/inst.tex" 1727856405.08393 909 169afec58809e21166f7239d0369e6a0 ""
   "/usr/share/texmf/fonts/map/fontname/texfonts.map" 1719994164 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1719994164 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texmf/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1719994164 916 f87d7c45f9c908e672703b83b72241a3 ""
@@ -12,14 +10,12 @@
   "/usr/share/texmf/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1719994164 908 2921f8a10601f252058503cc6570e581 ""
   "/usr/share/texmf/fonts/tfm/public/amsfonts/symbols/msbm5.tfm" 1719994164 940 75ac932a52f80982a9f8ea75d03a34cf ""
   "/usr/share/texmf/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1719994164 940 228d6584342e91276bf566bcf9716b83 ""
-  "/usr/share/texmf/fonts/tfm/public/latex-fonts/lasy6.tfm" 1719994164 520 4889cce2180234b97cad636b6039c722 ""
   "/usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1719994164 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
   "/usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi7.pfb" 1719994164 36281 c355509802a035cadc5f15869451dcee ""
   "/usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1719994164 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr7.pfb" 1719994164 32762 224316ccc9ad3ca0423a14971cfa7fc1 ""
   "/usr/share/texmf/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1719994164 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/share/texmf/tex/context/base/mkii/supp-pdf.mkii" 1719994164 71627 94eb9990bed73c364d7f53f960cc8c5b ""
-  "/usr/share/texmf/tex/generic/ulem/ulem.sty" 1719994164 15682 94f55b803e160cf7fb6e4d77d07cfe1d ""
   "/usr/share/texmf/tex/latex/amscls/amsthm.sty" 1719994164 12594 0d51ac3a545aaaa555021326ff22a6cc ""
   "/usr/share/texmf/tex/latex/amsfonts/amsfonts.sty" 1719994164 5949 3f3fd50a8cc94c3d4cbf4fc66cd3df1c ""
   "/usr/share/texmf/tex/latex/amsfonts/amssymb.sty" 1719994164 13829 94730e64147574077f8ecfea9bb69af4 ""
@@ -47,10 +43,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1719994164 42612 09b3c6dec2a078bd30d80981dc2f43a3 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1726254557.28651 535245 9b107176e732363f1a0002fe772e7314 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1725553932 8048310 aa6b4bef8b2bfcea1f82da29948cf99f ""
-  "reseni.aux" 1727903434.08373 351 a8601c46020b9bc1fede1b3043da69c3 "pdflatex"
-  "reseni.tex" 1727903433.59373 1596 317ad630b990b78cc74134dcbc016ea3 ""
+  "inst.aux" 1727856405.5306 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "inst.tex" 1727856405.08393 909 169afec58809e21166f7239d0369e6a0 ""
   (generated)
-  "reseni.aux"
-  "reseni.log"
-  "reseni.pdf"
+  "inst.aux"
+  "inst.log"
+  "inst.pdf"
   (rewritten before read)
