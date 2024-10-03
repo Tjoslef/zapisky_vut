@@ -1,0 +1,80 @@
+\documentclass{article}
+\usepackage{mathtools, amssymb, amsthm} % imports amsmath
+\begin{document}
+\sloppy
+prikazy skoku:
+    break - vyskoci z jednoho cyklu
+    continue - vrati se na podminku
+    goto -
+    return - vyhoda oproti break ze pouzit vice zanorenych cyklech a vyskocim
+    ze vsech
+datovy typ ukazatel, alokace pameti
+alokace pameti:
+        virtuarni pametovy prostor a ktera je 2 na 64
+        do UPP se zapise code a stat ktery mame pouze na cteni a potom nasleduje
+        heap a stack(zasobnik) do kterych se uklada do stacku(ktery je omezen velikosti
+        nebo do heapu
+        int example = 51;
+            zapisuje se do stacku
+
+        novy datovy typ int * ptr; -ukazatel muze ukazovat kamkoliv a musime si
+        dat pozor aby neukazoval na jinou hodnotu a nebo nekam kde nemuzeme zapisovat
+        ci cist -> ukazatel int * ptr nesmi byt nulovy -> segmentatovy fault
+        int *ptr = &example -> do ukazatele ptr nam uloz adresu hodnoty example
+        int - nam urcuje co ukazatele bere jako pamet co patri te hodnoty
+        *ptr -> 51
+        ptr -> adresa v pameti
+        bazovy_typ *jmeno promene
+        bazovy_typ - urcuje velikost odkazovane pameti
+                   & refencni vraci adresu promene int *ptr = &example
+                   * derefenci vrati hodnotu na pameti -> int y = *px
+*ptr = 123 ziskej hodnotu pameti na ktere se ukazuje ukazatel a prepist hodnoty
+a zapis to na misto na ktere ukazoval ukazatel
+ukazatetele muzou ukazovat na stejnou adresu
+p = q
+NULL ukazatel pouze to pro testovati nepouzivat a testovat jestli ukazatel NUll
+ukazatel byt mel byt jasnou a bezpecnou adresu a uz pri inicilizaci musi byt jasnou adresu
+neprirazovat ukazatele ruznych typu abychom se vyhli nedefinovanemu chovani
+konstantini ukazatel
+- nelze menit samotnou adresu ale ta pamet na kterou je odkazovano jo
+        int *const CP = &i
+ukazatel na konstantu
+-lze zmenit adresu ale pamet ktera je na adrese nejde menit
+const int *pci
+
+Obecny ukazatel
+    Typovy ukazatel umoznuje typovou kontrolu ale obecny ne
+    daji nam kus pameti a hrej si
+
+Ukazatel na ukazatel
+- na tvorba slozitejsich dynamickych datovych struktur
+- ulozime si adrseu na ktere lezi ukazatel ktery ukazuje na jinou hodnotu
+        pokud chceme hodnotu int ** ppi = &pi
+Dynamicka alokace pameti
+    zasobnik + hromada
+    na hromade je nutno pouzit ukazatl jelikoz nejde primo vytvorit pojmenovanou promennou
+    a programator je zodpovedny za spravnou alokaci i dealokaci pamet
+    funkce malloc z stdlib.h
+                    void *malloc(size_t size) casto se k tomu pouziva sizeoff
+                    alkuje pamet na hromade a vrati ukazatel
+                    size pocat alokovanych bajtu
+                    vraci obecny ukazatel nebo NULL kdyz doslo k chybe treba neni dostatek pameti
+napr if ((int *pi = malloc(sizeoff(int))) == NULL)
+{
+ return ERR_MALLOC;
+}
+vole udelej si na to cviceni
+sizeoff je operator resise behem compli time prubehu prekladu
+nesmime ztratit ukazatel -> jeho ztrata -> memory leak -> ztracenou pamet nelze ziskat zpet
+uvolneni pamet
+musime pamet uvolnit - free()
+int *pi = malloc(sizeof(int))
+free (pi)
+jedno malloc() jedno free()
+Datovy typ pole
+pole je stejneho typu
+potom existuji jeste union struc
+v array se nekontroluje meze poli -> zodpovedny je programator
+buffer-overrflow jako bezpecnosti chyba kdyz je mimo pole a muzeme si prepsat data
+
+\end{document}
