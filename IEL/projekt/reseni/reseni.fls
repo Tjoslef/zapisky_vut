@@ -2,7 +2,7 @@ PWD /home/tjoslef/skola/zapisky/vut/IEL/projekt/reseni
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/reseni/reseni.tex
+INPUT reseni.tex
 OUTPUT reseni.log
 INPUT /usr/share/texmf/tex/latex/base/article.cls
 INPUT /usr/share/texmf/tex/latex/base/article.cls
@@ -49,6 +49,12 @@ INPUT /usr/share/texmf/tex/generic/ulem/ulem.sty
 INPUT /usr/share/texmf/tex/generic/ulem/ulem.sty
 INPUT /usr/share/texmf/fonts/map/fontname/texfonts.map
 INPUT /usr/share/texmf/fonts/tfm/public/latex-fonts/lasy6.tfm
+INPUT /usr/share/texmf/tex/latex/geometry/geometry.sty
+INPUT /usr/share/texmf/tex/latex/geometry/geometry.sty
+INPUT /usr/share/texmf/tex/generic/iftex/ifvtex.sty
+INPUT /usr/share/texmf/tex/generic/iftex/ifvtex.sty
+INPUT /usr/share/texmf/tex/generic/iftex/iftex.sty
+INPUT /usr/share/texmf/tex/generic/iftex/iftex.sty
 INPUT /usr/share/texmf/tex/latex/l3backend/l3backend-pdftex.def
 INPUT /usr/share/texmf/tex/latex/l3backend/l3backend-pdftex.def
 INPUT ./reseni.aux
@@ -63,12 +69,14 @@ INPUT /usr/share/texmf/tex/latex/epstopdf-pkg/epstopdf-base.sty
 INPUT /usr/share/texmf/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/share/texmf/tex/latex/latexconfig/epstopdf-sys.cfg
 INPUT /usr/share/texmf/tex/latex/latexconfig/epstopdf-sys.cfg
-INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_hvezda.drawio.png
-INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_hvezda.drawio.png
-INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_hvezda.drawio.png
-INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_hvezda.drawio.png
+INPUT /usr/share/texmf/fonts/tfm/public/cm/cmr12.tfm
+INPUT /usr/share/texmf/fonts/tfm/public/cm/cmbx12.tfm
+INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_hvezdu_1.png
+INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_hvezdu_1.png
+INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_hvezdu_1.png
+INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_hvezdu_1.png
 OUTPUT reseni.pdf
-INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_hvezda.drawio.png
+INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_hvezdu_1.png
 INPUT /usr/share/texmf/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
 INPUT /usr/share/texmf/tex/latex/amsfonts/umsa.fd
@@ -89,7 +97,13 @@ INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/dalsi uprava.png
 INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/dalsi uprava.png
 INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/dalsi uprava.png
 INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
+INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_priklad3.png
+INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_priklad3.png
+INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_priklad3.png
+INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_priklad3.png
+INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_priklad3.png
 INPUT reseni.aux
+INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi7.pfb
 INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr10.pfb
