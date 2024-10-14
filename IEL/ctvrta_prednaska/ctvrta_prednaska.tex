@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{mathtools, amssymb, amsthm} % imports amsmath
+\begin{document}
+\sloppy
+\section{Prechodove jevy RC,RL,RLC}
+prechodovy jev = prechod z jednoho ustaleneho stavu do jinehe
+je zpusobena skokovou zmenou napeti na vstupu
+RC clanek - integracni a derivacni
+v roli parazatini kapacit
+reseni nezatizeneho RC clanku - domaci ukol zatizeny
+\section{integracni}
+i(t) = C(du_2(t)/dt) u_2 = 0 pocatecni hodnota!!!
+uR(t) = R*i(t)
+u1(t) = ur (t) + u_2(t)
+u_2(t) = u_1(1-e -t/RC) = 1 -e -t/RC
+po 5 * tau obvod se dostane na plne napeti
+1 tau = 63(/'%'/)
+na zkousku lol
+pro vybijeni je prubeh stejny jako pro nabijeni po 1 tau 37%
+\section{derivacni RC clanek}
+u_2 je napeti na rezistoru
+napeti skoci okamzite na 1 na rezistoru a potom se zacne se kondenzator nabije
+a napeti zacne na rezistoru klesat a kondenzator se nabije a napeti na rezistoru = 0
+po jednou tau je na rezistoru 37 procent a kondenzator je nabiti na 63 procent
+vybijeni napeti na rezistoru -1 postupne stoupa do 0 postupne
+
+tau = RC
+domaci ukol RC clanek zatizeny odporem R_c
+zhorsuji vykon cipu
+\section{RL clanek}
+casova hodnota R*L ale L/R nejvetsi rozdil mezi RC a RL
+\section{RLC}
+seriovy RLC obvod
+system druhe radu - existuje vice moznych tvaru reseni
+netlumeni R = 0
+male tlumeni - ustalene male kmitani
+kriticka mez tlumeni - neprekmitne, nejrychleji dosahne rovnovazneho stavu
+RLC obvod muze pozit jako nahradni zapojeni kondenzatoru
+realne soucastky vypadaji jako RLC -> parazatini indukcnost a parazatini odpory
+/section{shrnuti}
+RC se pouzivaji blokovani ,vazebni,casovaci obvody
+preslechy(crosstalk) -> stineni a diferencialni signaly
+\end{document}

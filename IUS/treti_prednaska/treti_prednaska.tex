@@ -1,0 +1,130 @@
+\documentclass{article}
+\usepackage{mathtools, amssymb, amsthm} % imports amsmath
+
+\begin{document}
+\sloppy
+
+\section{Strukturovaná analýza a návrh}
+
+Strukturovaný přístup se liší od objektově orientovaného přístupu.
+Strukturovaný přístup - systém je považován za kolekci funkcí.
+Objektově orientovaný přístup - systém je chápán jako objekty, které mezi sebou komunikují.
+
+\section{Konceptuální model}
+
+Podstata systému, co má systém dělat, co budeme sledovat, nikoli jak to budeme realizovat.
+
+\section{Logický model}
+
+Definuje, jaké jsou požadavky a specifikace systému.
+
+\section{Funkční modelování}
+
+Diagram datových toků (Data Flow Diagram).
+
+\section{Datové modelování}
+
+Cíle:
+\begin{itemize}
+    \item Chceme mít všechna potřebná data.
+    \item A nemít žádná nepotřebná data.
+    \item Musíme definovat vztah mezi daty.
+    \item Definovat procesy s daty.
+\end{itemize}
+Sloučit k modelování dat aplikační doménu a jejich vztah "v klidu".
+
+\section{Základní pojmy}
+
+\begin{itemize}
+    \item \textbf{Entita} - věc reálného světa neboli objekt (např. banka s ID K666).
+    \item \textbf{Entitní množina} - množina entit, které mají stejné vlastnosti.
+    Např. entitní množina bank: banka s ID K666.
+    \item \textbf{Atribut} - vlastnosti entity (např. banka s ID K666 má atribut jméno poBanka atd. v kontextu našeho problému).
+    \item \textbf{Vztah} - asociace mezi několika entitami.
+    Např. banka s ID K666 má účet s ID 333 - vztah mezi entitou banky a entitou účet.
+    \item \textbf{Vztahová množina} - vztahy stejného typu.
+\end{itemize}
+
+\section{Tvorba ER diagramu}
+
+Jednohodnotové a víc hodnotové atributy:
+Např. telefon může mít více telefonních čísel.
+Prázdné (NULL) atributy mohou představovat chybějící nebo neznámou hodnotu.
+
+\textbf{Odvozené atributy} - hodnotu lze odvodit od jiných atributů nebo entit (např. věk).
+
+Parametry vztahů:
+\begin{itemize}
+    \item Perzistentní vztahy - např. klient má účet.
+    \item Vztahy s průběhem - např. klient zadává objednávku.
+\end{itemize}
+
+Jméno vztahové množiny neboli role vlastní nebo vlastník.
+
+Stupeň vztahu:
+\begin{itemize}
+    \item Uniarni - zaměstnanec -- nadřízený (vzájemně).
+    \item Binarni - na konci dvě jiné entity (klient --- účet).
+\end{itemize}
+
+Kardinalita - maximální počet vztahů daného typu (typické hodnoty: 1, M).
+Členství/účast - minimální počet vztahů (např. účet má minimálně jednoho majitele).
+
+Atributy vztahu - používáme je tehdy, když atribut nemůže být přiřazen k žádné entitě a je tím pádem povýšen na entitu.
+
+ERD diagram není součástí UML.
+
+\section{Pravidla návrhu ER}
+
+\begin{itemize}
+    \item Pouze data a jejich vztahy, žádné procesy.
+    \item Atribut pouze jednou.
+    \item Seskupujeme data pro účely databáze.
+    \item Zobrazujeme pouze perzistentní datové objekty.
+    \item Zobrazujeme pouze nezbytné vztahy.
+\end{itemize}
+
+Pozor na entity, které:
+\begin{itemize}
+    \item Nemají atributy.
+    \item Mají pouze identifikátor.
+    \item Mají pouze jeden výskyt.
+    \item Obsahují atributy patřící jiným entitám.
+\end{itemize}
+
+Jména:
+\begin{itemize}
+    \item Musí být srozumitelná a vyjadřovat význam entitních a vztahových množin.
+    \item Entitní množiny - podstatná jména.
+    \item Vztahové množiny - slovesa a předložky.
+\end{itemize}
+
+Mezi entitami může být více vztahových množin.
+
+\section{Identifikátor}
+
+Entity a vztahy musí být identifikovatelné.
+Hodnota identifikátoru musí být unikátní.
+
+Pravidlo: Pokud je hodnota atributu důležitá, ale neexistuje žádná entita s touto hodnotou, měli bychom ji modelovat jako entitu.
+
+\section{Slabá entitní množina}
+
+Silná entitní množina má identifikátor tvořený vlastními atributy.
+Slabá entitní množina nemá identifikátor tvořený vlastními atributy.
+Existence slabé entitní množiny závisí na identifikující entitě.
+
+\section{Zobecnění}
+
+Entity mají stejné základy.
+Identifikátor entitních množin nižší úrovně je stejný jako u vyšší.
+
+\section{Postup při návrhu ERD}
+
+\begin{itemize}
+    \item Zvolte jednu entitu ze specifikace požadavků.
+    \item Určete atributy a označte kandidátní klíče.
+    \item Prozkoumejte atributy.
+\end{itemize}
+
+\end{document}

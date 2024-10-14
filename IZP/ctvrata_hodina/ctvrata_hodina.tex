@@ -1,0 +1,178 @@
+\documentclass{article}
+\usepackage{mathtools, amssymb, amsthm} % imports amsmath
+
+\begin{document}
+\sloppy
+
+\section{Opakování pointerů}
+
+Charakterový ukazatel \texttt{char *p = array} můžeme používat k přístupu na prvky pole pomocí pointerové aritmetiky.
+\texttt{*p} odkazuje na 0. index, zatímco \texttt{*(p+1)} odkazuje na 1. index (jiný zápis pro \texttt{p[1]}).
+Například, \texttt{char str[5] = "abc"} vytvoří řetězec, který je ukončen znakem \texttt{'\textbackslash0'}.
+
+Více rozměrná pole můžeme deklarovat například jako \texttt{float matrix[3][2]}, což vytvoří matici s 3 řádky a 2 sloupci.
+Pro procházení touto maticí lze použít cykly:
+
+\texttt{for (řádky)} a \texttt{for (sloupce)}.
+
+Dynamickou alokaci matic lze provést pomocí ukazatelů. Alokujeme paměť pro matici takto:
+
+\texttt{float *matrix;}
+a \texttt{matrix = malloc(r*s*sizeof(float));}, kde \texttt{sizeof} operátor vrací velikost datového typu.
+
+Další možnost je dvouúrovňová alokace pro dynamickou matici:
+
+\texttt{float **matrix;} a \texttt{matrix = malloc(r * sizeof(float *));},
+kde následně pro každý řádek alokujeme paměť pro sloupce: \texttt{*(matrix + r) = malloc(s * sizeof(float));}.
+
+\section{Funkce}
+
+V kontextu pointerů můžeme předávat adresy proměnných do funkcí, abychom mohli měnit jejich hodnoty. Například:
+
+\texttt{int x = 10;} a \texttt{int y = 11;} můžeme změnit pomocí funkce:
+
+\texttt{void fn(int z, int *p)} tím, že nastavíme \texttt{z = 20;} a \texttt{*p = 30;}.
+Po zavolání \texttt{fn(x, \&y);} zůstane \texttt{x = 10}, ale \texttt{y = 30} díky použití pointeru.
+
+Další příklad s dynamickou alokací paměti:
+
+\texttt{void fn(int **pa)} provede alokaci paměti pomocí \texttt{*pa = malloc(sizeof(int));}
+a následně nastaví hodnotu \texttt{**pa = 10;}.
+
+V \texttt{main()} můžeme použít pointer k tomu, abychom zajistili, že alokovaná paměť nezmizí,
+a pointer v \texttt{main()} bude ukazovat na správně alokovanou paměť.
+
+\section{Soubory}
+
+Standardní vstup a výstup jsou v C rozděleny na tři kanály:
+
+\begin{itemize}
+    \item \texttt{stdin} - standardní vstup
+    \item \texttt{stdout} - standardní výstup
+    \item \texttt{stderr} - výstup pro chyby
+\end{itemize}
+
+Směrování chybového výstupu v Linuxu:
+
+Přesměrování chybového výstupu do souboru se provádí následovně:
+
+\texttt{příkaz 2> soubor}. Například:
+
+\texttt{ls neexistujici\_soubor 2> error.log}.
+
+Pro přesměrování jak výstupu, tak chybového výstupu do stejného souboru použijeme:
+
+\texttt{příkaz > soubor 2>\&1}. Například:
+
+\texttt{ls neexistujici\_soubor > output.log 2>\&1}.
+
+Pokud chceme oddělit výstup a chyby do různých souborů:
+
+\texttt{příkaz > stdout.log 2> stderr.log}. Například:
+
+\texttt{ls > output.log 2> error.log}.
+
+Chceme-li přidat chybový výstup do existujícího souboru, použijeme append:
+
+\texttt{příkaz 2>> soubor}.
+
+Přesměrování výstupu na \texttt{/dev/null} (zahodit výstup) se provádí pomocí:
+
+\texttt{příkaz 2> /dev/null}.
+
+\section{Řetězení příkazů (pipeline) v Linuxu}
+
+Řetězení příkazů se provádí pomocí znaku \texttt{|}.
+
+Například příkaz:
+
+\texttt{cat txt.txt | my\_prog | grep "ahoj"}
+
+znamená:
+
+\begin{itemize}
+    \item \texttt{cat txt.txt} vypíše obsah souboru \texttt{txt.txt} do standardního výstupu.
+    \item \texttt{| my\_prog} přesměruje výstup z \texttt{cat txt.txt} do programu \texttt{my\_prog}, který zpracovává text.
+    \item \texttt{| grep "ahoj"} filtruje výstup z \texttt{my\_prog} a vypisuje pouze řádky obsahující \texttt{"ahoj"}.
+\end{itemize}
+
+Optimalizace: Pokud \texttt{my\_prog} umí číst soubor přímo, můžeme příkaz zjednodušit:
+
+\texttt{my\_prog txt.txt | grep "ahoj"}.
+
+\section{Použití getchar() a putchar()}
+
+Při čtení znaků z vstupu pomocí funkce \texttt{getchar()} můžeme hodnotu vrácenou funkcí přetypovat poté,
+co zkontrolujeme, zda se nejedná o \texttt{EOF} (End Of File). Následně můžeme znak předat funkci \texttt{putchar()},
+která ho vypíše na výstup.
+
+\texttt{getchar()} čte jeden znak ze standardního vstupu a vrací ho jako hodnotu typu \texttt{int}.
+Vrací buď hodnotu znaku, nebo \texttt{EOF}, což je speciální hodnota indikující konec vstupu nebo chybu při čtení.
+Z tohoto důvodu je návratový typ \texttt{int}, aby bylo možné odlišit znaky od \texttt{EOF}.
+
+Příklad použití:
+
+\begin{itemize}
+    \item Po zavolání \texttt{getchar()} je důležité zkontrolovat, zda vrácená hodnota není \texttt{EOF}.
+    \item Pokud je hodnota platná (není \texttt{EOF}), můžeme ji přetypovat na \texttt{char} a následně předat funkci \texttt{putchar()}, která očekává právě \texttt{char}.
+\end{itemize}
+
+\section{Práce s čísly}
+
+Pro práci s čísly ve vstupu používáme funkci \texttt{scanf}, například:
+
+\texttt{scanf("\%d", \&x);}, kde proměnná \texttt{x} bude obsahovat načtenou hodnotu.
+
+\section{Práce se soubory}
+
+\texttt{int printf(const char *format, ...)} je funkce, jejíž správné použití zahrnuje například \texttt{printf("\%s", str)}.
+
+\section{Formátovací značky}
+
+Konverze je povinný parametr (\texttt{d}, \texttt{f}, \texttt{s}, \texttt{c}, ...).
+Modifikátory, jako \texttt{hh} pro \texttt{short short}, umožňují upřesnit typ dat.
+Zarovnání - hodnoty můžeme zarovnat doleva nebo doprava.
+Pro výpis speciálních hodnot se používá \texttt{printf} s formátovacími značkami, jako \texttt{\%f} nebo \texttt{\%F}.
+
+Při použití \texttt{scanf("\%s", buffer)} hrozí nebezpečí čtení za hranici alokované paměti.
+Pro čtení celého řádku můžeme použít \texttt{int puts()}.
+
+\section{Binarni soubory}
+
+Práce s binárními soubory se principiálně neliší od práce se soubory textovými.
+Jazyk C nezná datový typ souboru a nemá syntaktické prostředky pro práci se soubory, proto si pomáháme knihovnami.
+
+\texttt{FILE *} je struktura definovaná ve \texttt{stdio.h}, která popisuje soubor.
+\texttt{FILE *fopen} otevírá soubor zadaného jména a vrací \texttt{NULL}, pokud se to nepovede, což je nutné zkontrolovat.
+Mod je způsob otevření souboru, zadaný jako řetězec.
+
+\texttt{FILE fclose(FILE *file)} uzavírá soubor a pokud se to nepovede, vrací \texttt{EOF}.
+Zápisy se provádějí do bufferu a po nějaké době se zapíší přímo do souboru.
+Předčtení souboru pomocí \texttt{abort()} může vést k poškození souboru!
+
+Při práci se soubory také můžeme použít:
+\begin{itemize}
+    \item \texttt{int getc(FILE *file)} - čte znak ze souboru.
+    \item \texttt{int putc(int c, FILE *file)} - zapisuje znak do souboru.
+\end{itemize}
+
+Standardní vstupy a výstupy:
+\begin{itemize}
+    \item \texttt{stdio} - \texttt{FILE *stdin;}
+    \item \texttt{FILE *stdout;}
+    \item \texttt{FILE *stderr;}
+\end{itemize}
+
+Můžeme je použít i pro standardní výstup pomocí \texttt{int fscanf} a \texttt{int fprintf}.
+
+Pro čtení řádku s určením maximální délky můžeme použít \texttt{char *fgets}, což je lepší z hlediska bezpečnosti.
+Další užitečné funkce:
+\begin{itemize}
+    \item \texttt{int ferror(FILE *file)} - zjistí, zda došlo k chybě při práci se souborem.
+    \item \texttt{int errno} z knihovny \texttt{<errno.h>} obsahuje poslední chybu I/O operace.
+    \item Funkce z \texttt{<string.h>} - \texttt{char *strerror(int errnum)} vrací popis chyby.
+\end{itemize}
+ftall(f) hodnota kurzoru
+fsec(f,
+podivat se na video o praci se souborem C
+\end{document}
