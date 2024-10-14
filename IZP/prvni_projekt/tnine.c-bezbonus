@@ -27,24 +27,16 @@ int main(int argc, char *argv[]) {
     return 0;
     }
     char *ifItNumber = argv[1];
-    char *bonus = NULL;
-    for(int i = 0;ifItNumber[i] != '0';i++){
-        if(ifItNumber[i] == '-' && ifItNumber[i+1] == 's'){
-            bonus = argv[2];
-
-
-    }
-    }
+    if (argc > 2) {
+    fprintf(stderr, "Your argument contains\n");
+    return 1;
+}
     if (strlen(ifItNumber) > 9) {
         fprintf(stderr,"Too many numbers\n");
         return 0;
     }
     if(ifItNumber[0] == '-' && ifItNumber[1] == 's'){
         specialSearch = true;
-    }
-     if (argc > 2 && !specialSearch) {
-    fprintf(stderr, "Your argument contains\n");
-    return 1;
     }
     for (int i = 0; ifItNumber[i] != '\0'; i++) {
         if (!isdigit(ifItNumber[i])) {
@@ -90,56 +82,53 @@ int main(int argc, char *argv[]) {
             bool matchCislo = false;
             bool matchJmeno = false;
            int telefon_len = strlen(list.telefon);
-           int jmeno_len = strlen(list.jmeno);
-            if(!specialSearch){
-                for(int start = 0; start <= telefon_len - delkacisla;start++){
-                int i;
-                    for(i = 0; i < delkacisla; i++){
-                        if(ZadaneCislo[i] == 0){
-                        continue;
-                        }
-                        if(ZadaneCislo[i] != (list.telefon[start + i] - '0')){
+            for(int start = 0; start <= telefon_len - delkacisla;start++){
+            int i;
+                for(i = 0; i < delkacisla; i++){
+                    if(ZadaneCislo[i] == 0){
+                    continue;
+                    }
+                if(ZadaneCislo[i] != (list.telefon[start + i] - '0')){
                         break;
 
-                        }
-
-
                     }
-                if(i == delkacisla){
+
+
+                }
+            if(i == delkacisla){
                     matchCislo = true;
                     break;
                     }
 
 
             }
-                for (int start = 0; start <= jmeno_len - delkacisla; start++) {
-                    int i;
-                    for (i = 0; i < delkacisla; i++) {
-                        if (i == 0) {
+            int jmeno_len = strlen(list.jmeno);
+            for (int start = 0; start <= jmeno_len - delkacisla; start++) {
+            int i;
+                for (i = 0; i < delkacisla; i++) {
+                    if (i == 0) {
                         continue;
                         }
-                        char *tlacitko = keys[ZadaneCislo[i]];
-                        if (!strchr(tlacitko, tolower(list.jmeno[start + i]))) {
-                            break;
-                        }
+                    char *tlacitko = keys[ZadaneCislo[i]];
+                    if (!strchr(tlacitko, tolower(list.jmeno[start + i]))) {
+                        break;
                     }
+                }
 
-                    if (i == delkacisla) {
-                    matchJmeno = true;
-                    break;
-                    }
+                if (i == delkacisla) {
+                matchJmeno = true;
+                break;
                 }
             }
             if(specialSearch){
                 int matchSpecial = 0;
-                int leftSort = 0;
+                int leftSort = jmeno_len - delkacisla;
                 for(int number = 2; number < delkacisla; number ++){
                     for(int i = 0; i < jmeno_len - delkacisla + i; i++){
                         char *button = keys[ZadaneCislo[number]];
                         if(strchr(button, tolower(list.jmeno[i])) && i > leftSort){
                             leftSort = i;
                             matchSpecial++;
-                            break;
 
                         }
                     }
