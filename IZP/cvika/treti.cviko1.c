@@ -2,6 +2,7 @@
 #include <string.h>
 #include <ctype.h>
 int main(int argc,char* argv[10]){
+
     if (argc < 3) {
         printf("Chyba: Nedostatek argumentů. Zadejte příkaz a argument.\n");
         return 1;

@@ -1,80 +1,81 @@
 \documentclass{article}
+\usepackage[utf8]{inputenc} % Specify UTF-8 encoding
 \usepackage{mathtools, amssymb, amsthm} % imports amsmath
-\begin{document}
-\sloppy
-prikazy skoku:
-    break - vyskoci z jednoho cyklu
-    continue - vrati se na podminku
-    goto -
-    return - vyhoda oproti break ze pouzit vice zanorenych cyklech a vyskocim
-    ze vsech
-datovy typ ukazatel, alokace pameti
-alokace pameti:
-        virtuarni pametovy prostor a ktera je 2 na 64
-        do UPP se zapise code a stat ktery mame pouze na cteni a potom nasleduje
-        heap a stack(zasobnik) do kterych se uklada do stacku(ktery je omezen velikosti
-        nebo do heapu
-        int example = 51;
-            zapisuje se do stacku
+\usepackage{listings} % for code snippets
+\usepackage{enumitem} % for better list control
+\usepackage[a4paper, margin=1in]{geometry} % adjust page margins
+\usepackage{xcolor} % for \textcolor
 
-        novy datovy typ int * ptr; -ukazatel muze ukazovat kamkoliv a musime si
-        dat pozor aby neukazoval na jinou hodnotu a nebo nekam kde nemuzeme zapisovat
-        ci cist -> ukazatel int * ptr nesmi byt nulovy -> segmentatovy fault
-        int *ptr = &example -> do ukazatele ptr nam uloz adresu hodnoty example
-        int - nam urcuje co ukazatele bere jako pamet co patri te hodnoty
-        *ptr -> 51
-        ptr -> adresa v pameti
-        bazovy_typ *jmeno promene
-        bazovy_typ - urcuje velikost odkazovane pameti
-                   & refencni vraci adresu promene int *ptr = &example
-                   * derefenci vrati hodnotu na pameti -> int y = *px
-*ptr = 123 ziskej hodnotu pameti na ktere se ukazuje ukazatel a prepist hodnoty
-a zapis to na misto na ktere ukazoval ukazatel
-ukazatetele muzou ukazovat na stejnou adresu
-p = q
-NULL ukazatel pouze to pro testovati nepouzivat a testovat jestli ukazatel NUll
-ukazatel byt mel byt jasnou a bezpecnou adresu a uz pri inicilizaci musi byt jasnou adresu
-neprirazovat ukazatele ruznych typu abychom se vyhli nedefinovanemu chovani
-konstantini ukazatel
-- nelze menit samotnou adresu ale ta pamet na kterou je odkazovano jo
-        int *const CP = &i
-ukazatel na konstantu
--lze zmenit adresu ale pamet ktera je na adrese nejde menit
-const int *pci
+\sloppy % allow LaTeX to relax overfull box constraints
 
-Obecny ukazatel
-    Typovy ukazatel umoznuje typovou kontrolu ale obecny ne
-    daji nam kus pameti a hrej si
-
-Ukazatel na ukazatel
-- na tvorba slozitejsich dynamickych datovych struktur
-- ulozime si adrseu na ktere lezi ukazatel ktery ukazuje na jinou hodnotu
-        pokud chceme hodnotu int ** ppi = &pi
-Dynamicka alokace pameti
-    zasobnik + hromada
-    na hromade je nutno pouzit ukazatl jelikoz nejde primo vytvorit pojmenovanou promennou
-    a programator je zodpovedny za spravnou alokaci i dealokaci pamet
-    funkce malloc z stdlib.h
-                    void *malloc(size_t size) casto se k tomu pouziva sizeoff
-                    alkuje pamet na hromade a vrati ukazatel
-                    size pocat alokovanych bajtu
-                    vraci obecny ukazatel nebo NULL kdyz doslo k chybe treba neni dostatek pameti
-napr if ((int *pi = malloc(sizeoff(int))) == NULL)
-{
- return ERR_MALLOC;
+\lstset{
+    basicstyle=\ttfamily, % Use a monospaced font
+    breaklines=true,      % Enable line breaking
+    frame=single,         % Frame the code
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, % Nice line-break marker
 }
-vole udelej si na to cviceni
-sizeoff je operator resise behem compli time prubehu prekladu
-nesmime ztratit ukazatel -> jeho ztrata -> memory leak -> ztracenou pamet nelze ziskat zpet
-uvolneni pamet
-musime pamet uvolnit - free()
-int *pi = malloc(sizeof(int))
-free (pi)
-jedno malloc() jedno free()
-Datovy typ pole
-pole je stejneho typu
-potom existuji jeste union struc
-v array se nekontroluje meze poli -> zodpovedny je programator
-buffer-overrflow jako bezpecnosti chyba kdyz je mimo pole a muzeme si prepsat data
+
+\begin{document}
+
+\section*{Příkazy skoku:}
+\begin{itemize}[noitemsep] % Reduce space between list items
+    \item \textbf{break} - Vyskočí z jednoho cyklu.
+    \item \textbf{continue} - Vrátí se na podmínku.
+    \item \textbf{goto} -
+    \item \textbf{return} - Výhoda oproti break je, že se dá použít ve vícei
+        zanořených cyklech a vyskočí ze všech.
+\end{itemize}
+
+\section*{Datový typ ukazatel, alokace paměti:}
+
+\subsection*{Alokace paměti:}
+Virtuální paměťový prostor je $2^{64}$. Do UPP se zapíše kód a statické proměnné,
+které jsou pouze ke čtení, a dále heap a stack (zásobník).
+
+\begin{itemize}[noitemsep]
+    \item \textbf{Heap} - Dynamická alokace paměti.
+    \item \textbf{Stack} - Paměť omezena velikostí, ukládá lokální proměnné.
+\end{itemize}
+
+Příklad alokace paměti:
+\begin{lstlisting}
+int example = 51;  // Zapisuje se do stacku
+\end{lstlisting}
+
+\subsection*{Ukazatel:}
+Ukazatel může ukazovat kamkoliv, ale musíme si dát pozor, aby neukazoval na neplatnou paměť.
+
+Příklad práce s ukazatelem:
+\begin{lstlisting}
+\int *ptr = &example;  // Uloží adresu hodnoty example
+\*ptr = 51;            // Dereference, získá hodnotu na adrese
+ptr = 0;              // Ukazuje na adresu 0, NULL
+\end{lstlisting}
+
+Bazový typ ukazatele určuje velikost paměti, kterou ukazuje:
+\begin{itemize}[noitemsep]
+    \item \textbf{\&} - Vrací adresu proměnné.
+    \item \textbf{*} - Dereference, vrací hodnotu na adrese.
+\end{itemize}
+
+\subsection*{Dynamická alokace paměti:}
+Na heapu je nutné použít ukazatele, protože nelze přímo vytvářet pojmenované
+proměnné. Programátor je zodpovědný za správnou alokaci i dealokaci paměti.
+
+Příklad dynamické alokace:
+\begin{lstlisting}
+int \*pi = malloc(sizeof(int));  // Alokuje paměť na heapu
+if (pi == NULL) {
+    return ERR_MALLOC;  // Ověří, zda malloc uspěl
+}
+free(pi);  // Uvolní paměť
+\end{lstlisting}
+
+Musíme dávat pozor na ztrátu ukazatele, jinak vzniká \textbf{memory leak}.
+
+\subsection*{Pole:}
+Pole je datový typ, který ukládá prvky stejného typu. V C není kontrola mezí
+polí, což může vést k \textbf{buffer-overflow} chybám.
 
 \end{document}
+
