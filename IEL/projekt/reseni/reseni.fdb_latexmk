@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1728241644.41328 "reseni.tex" "reseni.pdf" "reseni" 1728241644.84311 0
+["pdflatex"] 1729098892.41591 "reseni.tex" "reseni.pdf" "reseni" 1729098893.02176 0
   "/etc/texmf/web2c/texmf.cnf" 1719994164 42612 09b3c6dec2a078bd30d80981dc2f43a3 ""
   "/home/tjoslef/skola/zapisky/vut/IEL/projekt/dalsi uprava.png" 1727811833.65366 16975 ce286fc9f441a1ec719cb87d83b976a1 ""
   "/home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_hvezdu_1.png" 1728077313.39757 13376 aac8f989363bdd23f0e77998f2807af1 ""
@@ -53,8 +53,8 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1719994164 42612 09b3c6dec2a078bd30d80981dc2f43a3 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1726254557.28651 535245 9b107176e732363f1a0002fe772e7314 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1725553932 8048310 aa6b4bef8b2bfcea1f82da29948cf99f ""
-  "reseni.aux" 1728241644.79584 860 b3a1a056f74f65bdddc30a58c91e4c38 "pdflatex"
-  "reseni.tex" 1728241643.73583 3516 c3269fabdcb6ff90f02286dcbc4a5bdb ""
+  "reseni.aux" 1729098892.95406 860 b3a1a056f74f65bdddc30a58c91e4c38 "pdflatex"
+  "reseni.tex" 1729098569.92741 3533 4ed51581738723dc30f99710b7a110fd ""
   (generated)
   "reseni.aux"
   "reseni.log"

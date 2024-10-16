@@ -11,6 +11,7 @@ int main(int argc, char *argv[]) {
     bool specialSearch = false;
     bool findMatch = false;
     if(argc < 2){
+    //checking if there isnt any argument and printing it all
     findMatch = true;
      char namePrint[100];
      char numberPrint[100];
@@ -28,17 +29,18 @@ int main(int argc, char *argv[]) {
     int input_lenght_B = 0;
     char *ifItNumber = argv[1];
     char *bonus = NULL;
+    //checking for -s for bonus
     if (argc >= 2 && ifItNumber[0] == '-' && ifItNumber[1] == 's') {
         bonus = argv[2];
         input_lenght_B = strlen(bonus);
         specialSearch = true;
     }
-
+    //checking if there is correct amount of numbers
     if (strlen(ifItNumber) > 9 || input_lenght_B > 9) {
         fprintf(stderr,"Too many numbers\n");
         return 0;
     }
-
+    //error handling for too many argument
      if (argc > 2 && !specialSearch) {
     fprintf(stderr, "Your argument contains spaces\n");
     return 1;
@@ -46,6 +48,7 @@ int main(int argc, char *argv[]) {
     int lenght_number = strlen(ifItNumber);
     int inputNumber[lenght_number];
     int input_bonus[input_lenght_B];
+    //bonus error handling and converting to integer(maybe not nessecery needed)
    if (specialSearch) {
     if (bonus == NULL) {
         fprintf(stderr, "No number provided after '-s'\n");
@@ -63,6 +66,7 @@ int main(int argc, char *argv[]) {
     }
 
 }else{
+        //normal cases
         for (int i = 0; i < lenght_number; i++) {
         if (!isdigit(ifItNumber[i])) {
             fprintf(stderr,"Your argument is not a number\n");
@@ -74,6 +78,7 @@ int main(int argc, char *argv[]) {
     }
 
        }
+    //"keybinding"
     char *keys[] = {
         "+",        // 0
         "",         // 1
@@ -88,8 +93,11 @@ int main(int argc, char *argv[]) {
     };
 
     char seznam[256];
-    int radiciCIslo = 0;
+    int radiciCIslo = 0; //because first is always coming the name so
+    //even numbers are for name and even are for number
+    //start of reading from input
     while (fgets(seznam, sizeof(seznam), stdin) != NULL) {
+        //my struct
         seznamSave list;
         seznam[strcspn(seznam, "\n")] = '\0';
 
@@ -107,18 +115,29 @@ int main(int argc, char *argv[]) {
            int telefon_len = strlen(list.telefon);
            int jmeno_len = strlen(list.jmeno);
             if(!specialSearch){
+                //we dont have to loop thought whole list.telefon becasue we know the
+                //the lenght of sequence that we are looking for
                 for(int start = 0; start <= telefon_len - lenght_number;start++){
                 int i;
                     for(i = 0; i < lenght_number; i++){
+                        //looping thougth argument number
                         if(inputNumber[i] == 0){
+                        //because 0 is "+" so we can skip it
                         continue;
                         }
+                        //the "moving window" if is not THE character it will break
+                        //and i value reset and the out side loop moved forward
+                        //and the start + 1
+
                         if(inputNumber[i] != (list.telefon[start + i] - '0')){
                         break;
 
                         }
                     }
+                //and if we find that i = lenght_number which mean that we found
+                    //sequence of numbers that matched
                 if(i == lenght_number){
+
                     matchNumber = true;
                     break;
                     }
@@ -130,6 +149,8 @@ int main(int argc, char *argv[]) {
                         continue;
                         }
                         char *button = keys[inputNumber[i]];
+                        //moving window with strchr command which return true
+                        //for first match in string(keybinding)
                         if (!strchr(button, tolower(list.jmeno[start + i]))) {
                             break;
                         }
@@ -144,6 +165,8 @@ int main(int argc, char *argv[]) {
             if(specialSearch){
                 int matchSpecialL = 0;
                 int leftSortL = 0;
+                //moving window with watching position so every another
+                //number in sequence is bigger
                 for(int number = 0; number < input_lenght_B; number ++){
                     for(int i = 0; i < jmeno_len;i++){
                         char *button = keys[input_bonus[number]];
@@ -161,6 +184,8 @@ int main(int argc, char *argv[]) {
                 }
             int matchSpecialN = 0;
             int sequence_number = 0;
+            //moving window so every another window from the match is smaller
+                //window from left side
             for(int number = 0; number < input_lenght_B;number ++){
                     bool found_M_N = false;
                 for(int i = sequence_number; i < telefon_len; i++){
