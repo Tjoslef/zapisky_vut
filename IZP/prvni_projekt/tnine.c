@@ -4,22 +4,20 @@
 #include <stdbool.h>
 
 typedef struct {
-    char jmeno[50];
-    char telefon[15];
+    char jmeno[100];
+    char telefon[100];
 } seznamSave;
 int main(int argc, char *argv[]) {
     bool specialSearch = false;
     bool findMatch = false;
     if(argc < 2){
+        seznamSave list;
     //checking if there isnt any argument and printing it all
-    findMatch = true;
-     char namePrint[100];
-     char numberPrint[100];
-        while(fgets(namePrint,sizeof(namePrint),stdin) != NULL){
-            namePrint[strcspn(namePrint,"\n")] = '\0';
-            if(fgets(numberPrint,sizeof(numberPrint),stdin) != NULL){
-            numberPrint[strcspn(numberPrint,"\n")] = '\0';
-            printf("%s, %s\n",namePrint,numberPrint);
+        while(fgets(list.jmeno,sizeof(list.jmeno),stdin) != NULL){
+            list.jmeno[strcspn(list.jmeno,"\n")] = '\0';
+            if(fgets(list.telefon,sizeof(list.telefon),stdin) != NULL){
+                list.telefon[strcspn(list.telefon,"\n")] = '\0';
+                printf("%s, %s\n",list.jmeno,list.telefon);
             }
 
 
@@ -42,17 +40,17 @@ int main(int argc, char *argv[]) {
     }
     //error handling for too many argument
      if (argc > 2 && !specialSearch) {
-    fprintf(stderr, "Your argument contains spaces\n");
-    return 1;
+        fprintf(stderr, "Your argument contains spaces\n");
+        return 1;
     }
     int lenght_number = strlen(ifItNumber);
     int inputNumber[lenght_number];
     int input_bonus[input_lenght_B];
-    //bonus error handling and converting to integer(maybe not nessecery needed)
+    //bonus error handling and converting to integer
    if (specialSearch) {
-    if (bonus == NULL) {
-        fprintf(stderr, "No number provided after '-s'\n");
-        return 1;
+        if (bonus == NULL) {
+            fprintf(stderr, "No number provided after '-s'\n");
+            return 1;
     }
 
     input_lenght_B = strlen(bonus);
@@ -66,13 +64,13 @@ int main(int argc, char *argv[]) {
     }
 
 }else{
-        //normal cases
+        //error handling for normal cases
         for (int i = 0; i < lenght_number; i++) {
-        if (!isdigit(ifItNumber[i])) {
-            fprintf(stderr,"Your argument is not a number\n");
-            return 1;
-        }else{
-            inputNumber[i] = ifItNumber[i] - '0';
+            if (!isdigit(ifItNumber[i])) {
+                fprintf(stderr,"Your argument is not a number\n");
+                return 1;
+            }else{
+                inputNumber[i] = ifItNumber[i] - '0';
             }
 
     }
@@ -93,7 +91,8 @@ int main(int argc, char *argv[]) {
     };
 
     char seznam[256];
-    int radiciCIslo = 0; //because first is always coming the name so
+    int radiciCIslo = 0;
+    //Because first is always coming the name so
     //even numbers are for name and even are for number
     //start of reading from input
     while (fgets(seznam, sizeof(seznam), stdin) != NULL) {
@@ -112,22 +111,20 @@ int main(int argc, char *argv[]) {
             strcpy(list.telefon, seznam);
             bool matchNumber = false;
             bool matchName = false;
-           int telefon_len = strlen(list.telefon);
-           int jmeno_len = strlen(list.jmeno);
+            int telefon_len = strlen(list.telefon);
+            int jmeno_len = strlen(list.jmeno);
             if(!specialSearch){
-                //we dont have to loop thought whole list.telefon becasue we know the
-                //the lenght of sequence that we are looking for
-                for(int start = 0; start <= telefon_len - lenght_number;start++){
+            // We don't need to loop through the entire phone number string (list.telefon),
+            // since we know the length of the sequence we're looking for (inputNumber).
+             for(int start = 0; start <= telefon_len - lenght_number;start++){
                 int i;
                     for(i = 0; i < lenght_number; i++){
-                        //looping thougth argument number
                         if(inputNumber[i] == 0){
                         //because 0 is "+" so we can skip it
-                        continue;
+                            continue;
                         }
-                        //the "moving window" if is not THE character it will break
-                        //and i value reset and the out side loop moved forward
-                        //and the start + 1
+            // "Sliding window" approach: if the current digits don't match,
+            // break and try again with the next starting position.
 
                         if(inputNumber[i] != (list.telefon[start + i] - '0')){
                         break;
@@ -135,7 +132,7 @@ int main(int argc, char *argv[]) {
                         }
                     }
                 //and if we find that i = lenght_number which mean that we found
-                    //sequence of numbers that matched
+                //sequence of numbers that matched
                 if(i == lenght_number){
 
                     matchNumber = true;
@@ -149,12 +146,12 @@ int main(int argc, char *argv[]) {
                         continue;
                         }
                         char *button = keys[inputNumber[i]];
-                        //moving window with strchr command which return true
-                        //for first match in string(keybinding)
+                        // Use strchr to check if the character matches any key for the current digit.
                         if (!strchr(button, tolower(list.jmeno[start + i]))) {
                             break;
                         }
                     }
+                    // If we found a matching name sequence, set matchName to true.
                     if (i == lenght_number) {
                     matchName = true;
                     break;
@@ -165,8 +162,7 @@ int main(int argc, char *argv[]) {
             if(specialSearch){
                 int matchSpecialL = 0;
                 int leftSortL = 0;
-                //moving window with watching position so every another
-                //number in sequence is bigger
+                //Moving window with watching position so every another number in sequence is bigger
                 for(int number = 0; number < input_lenght_B; number ++){
                     for(int i = 0; i < jmeno_len;i++){
                         char *button = keys[input_bonus[number]];
@@ -184,8 +180,7 @@ int main(int argc, char *argv[]) {
                 }
             int matchSpecialN = 0;
             int sequence_number = 0;
-            //moving window so every another window from the match is smaller
-                //window from left side
+            //Moving window so every another window from the match is smaller window from left side
             for(int number = 0; number < input_lenght_B;number ++){
                     bool found_M_N = false;
                 for(int i = sequence_number; i < telefon_len; i++){

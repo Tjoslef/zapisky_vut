@@ -24,7 +24,7 @@ float obvod(trojuhelnik T){
 float obsah(trojuhelnik T){
     float obsah = 0.5 * fabs(T.A.x *(T.B.y - T.C.y) + T.B.x * (T.C.y - T.A.y) + T.C.x * (T.A.y - T.B.y));
     if (obsah == 0){
-        printf("body jsou kolinearni ");
+        printf("nejde vypocitat obsah body jsou koliearni");
 
     }
     return obsah;
