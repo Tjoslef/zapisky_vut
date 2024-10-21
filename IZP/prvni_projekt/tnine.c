@@ -116,21 +116,21 @@ int main(int argc, char *argv[]) {
             if(!specialSearch){
             // We don't need to loop through the entire phone number string (list.telefon),
             // since we know the length of the sequence we're looking for (inputNumber).
-             for(int start = 0; start <= telefon_len - lenght_number;start++){
-                int i;
-                    for(i = 0; i < lenght_number; i++){
-                        if(inputNumber[i] == 0){
+                for(int start = 0; start <= telefon_len - lenght_number;start++){
+                    int i;
+                        for(i = 0; i < lenght_number; i++){
+                            if(inputNumber[i] == 0){
                         //because 0 is "+" so we can skip it
                             continue;
                         }
             // "Sliding window" approach: if the current digits don't match,
             // break and try again with the next starting position.
 
-                        if(inputNumber[i] != (list.telefon[start + i] - '0')){
-                        break;
+                            if(inputNumber[i] != (list.telefon[start + i] - '0')){
+                                break;
 
+                            }
                         }
-                    }
                 //and if we find that i = lenght_number which mean that we found
                 //sequence of numbers that matched
                 if(i == lenght_number){
@@ -143,7 +143,7 @@ int main(int argc, char *argv[]) {
                     int i;
                     for (i = 0; i < lenght_number; i++) {
                         if (i == 0) {
-                        continue;
+                            continue;
                         }
                         char *button = keys[inputNumber[i]];
                         // Use strchr to check if the character matches any key for the current digit.
@@ -153,8 +153,8 @@ int main(int argc, char *argv[]) {
                     }
                     // If we found a matching name sequence, set matchName to true.
                     if (i == lenght_number) {
-                    matchName = true;
-                    break;
+                        matchName = true;
+                        break;
                     }
                 }
             }
@@ -182,19 +182,19 @@ int main(int argc, char *argv[]) {
             int sequence_number = 0;
             //Moving window so every another window from the match is smaller window from left side
             for(int number = 0; number < input_lenght_B;number ++){
-                    bool found_M_N = false;
+                bool found_M_N = false;
                 for(int i = sequence_number; i < telefon_len; i++){
                     printf("%i compare %i \n",input_bonus[number],list.telefon[i] - '0');
-                   if(input_bonus[number] == list.telefon[i] - '0'){
-                            found_M_N = true;
-                            sequence_number = i + 1;
-                            matchSpecialN ++;
-                            break;
-                        }
+                    if(input_bonus[number] == list.telefon[i] - '0'){
+                        found_M_N = true;
+                        sequence_number = i + 1;
+                        matchSpecialN ++;
+                        break;
                     }
-                     if(!found_M_N){
-                            break;
-                        }
+                }
+                if(!found_M_N){
+                    break;
+                }
 
                 }
             if(matchSpecialN == input_lenght_B){

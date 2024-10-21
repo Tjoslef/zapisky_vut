@@ -2,7 +2,7 @@ PWD /home/tjoslef/skola/zapisky/vut/IEL/projekt/reseni
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT reseni.tex
+INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/reseni/reseni.tex
 OUTPUT reseni.log
 INPUT /usr/share/texmf/tex/latex/base/article.cls
 INPUT /usr/share/texmf/tex/latex/base/article.cls
@@ -107,6 +107,8 @@ INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/paty_priklad.drawio.png
 INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/paty_priklad.drawio.png
 INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/paty_priklad.drawio.png
 INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/paty_priklad.drawio.png
+INPUT /usr/share/texmf/fonts/tfm/public/cm/cmr12.tfm
+INPUT /usr/share/texmf/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/cm/cmbx10.tfm
 INPUT reseni.aux
 INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx10.pfb

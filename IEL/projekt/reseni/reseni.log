@@ -1,10 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/TeX Live for SUSE Linux) (preloaded format=pdflatex 2024.9.5)  19 OCT 2024 23:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/TeX Live for SUSE Linux) (preloaded format=pdflatex 2024.9.5)  21 OCT 2024 22:00
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
-**reseni.tex
-(./reseni.tex
+**/home/tjoslef/skola/zapisky/vut/IEL/projekt/reseni/reseni.tex
+(/home/tjoslef/skola/zapisky/vut/IEL/projekt/reseni/reseni.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
 (/usr/share/texmf/tex/latex/base/article.cls
@@ -23,12 +22,15 @@ File: size10.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip48
 \belowcaptionskip=\skip49
 \bibindent=\dimen140
-) (/usr/share/texmf/tex/latex/mathtools/mathtools.sty
+)
+(/usr/share/texmf/tex/latex/mathtools/mathtools.sty
 Package: mathtools 2024/03/11 v1.30 mathematical typesetting tools
- (/usr/share/texmf/tex/latex/graphics/keyval.sty
+
+(/usr/share/texmf/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
-) (/usr/share/texmf/tex/latex/tools/calc.sty
+)
+(/usr/share/texmf/tex/latex/tools/calc.sty
 Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count196
 \calc@Bcount=\count197
@@ -40,23 +42,28 @@ LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Ccount=\count198
 \calc@Cskip=\skip52
-) (/usr/share/texmf/tex/latex/mathtools/mhsetup.sty
+)
+(/usr/share/texmf/tex/latex/mathtools/mhsetup.sty
 Package: mhsetup 2021/03/18 v1.4 programming setup (MH)
-) (/usr/share/texmf/tex/latex/amsmath/amsmath.sty
+)
+(/usr/share/texmf/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2023/05/13 v2.17o AMS math features
 \@mathmargin=\skip53
 
 For additional information on amsmath, use the `?' option.
 (/usr/share/texmf/tex/latex/amsmath/amstext.sty
 Package: amstext 2021/08/26 v2.01 AMS text
- (/usr/share/texmf/tex/latex/amsmath/amsgen.sty
+
+(/usr/share/texmf/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks18
 \ex@=\dimen143
-)) (/usr/share/texmf/tex/latex/amsmath/amsbsy.sty
+))
+(/usr/share/texmf/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen144
-) (/usr/share/texmf/tex/latex/amsmath/amsopn.sty
+)
+(/usr/share/texmf/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
 \inf@bad=\count199
@@ -118,16 +125,19 @@ LaTeX Info: Redefining \] on input line 2954.
 \l_MT_below_shortintertext_sep=\dimen158
 \xmathstrut@box=\box53
 \xmathstrut@dim=\dimen159
-) (/usr/share/texmf/tex/latex/amsfonts/amssymb.sty
+)
+(/usr/share/texmf/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
- (/usr/share/texmf/tex/latex/amsfonts/amsfonts.sty
+
+(/usr/share/texmf/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (/usr/share/texmf/tex/latex/amscls/amsthm.sty
+))
+(/usr/share/texmf/tex/latex/amscls/amsthm.sty
 Package: amsthm 2020/05/29 v2.20.6
 \thm@style=\toks23
 \thm@bodyfont=\toks24
@@ -138,22 +148,28 @@ Package: amsthm 2020/05/29 v2.20.6
 \thm@postskip=\skip58
 \thm@headsep=\skip59
 \dth@everypar=\toks28
-) (/usr/share/texmf/tex/latex/graphics/graphicx.sty
+)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
- (/usr/share/texmf/tex/latex/graphics/graphics.sty
+
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
 Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
- (/usr/share/texmf/tex/latex/graphics/trig.sty
+
+(/usr/share/texmf/tex/latex/graphics/trig.sty
 Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
-) (/usr/share/texmf/tex/latex/graphics-cfg/graphics.cfg
+)
+(/usr/share/texmf/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 107.
- (/usr/share/texmf/tex/latex/graphics-def/pdftex.def
+
+(/usr/share/texmf/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen160
 \Gin@req@width=\dimen161
-) (/usr/share/texmf/tex/generic/ulem/ulem.sty
+)
+(/usr/share/texmf/tex/generic/ulem/ulem.sty
 \UL@box=\box54
 \UL@hyphenbox=\box55
 \UL@skip=\skip60
@@ -164,11 +180,14 @@ File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 \ULC@box=\box56
 Package: ulem 2019/11/18
 \ULdepth=\dimen164
-) (/usr/share/texmf/tex/latex/geometry/geometry.sty
+)
+(/usr/share/texmf/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
- (/usr/share/texmf/tex/generic/iftex/ifvtex.sty
+
+(/usr/share/texmf/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
- (/usr/share/texmf/tex/generic/iftex/iftex.sty
+
+(/usr/share/texmf/tex/generic/iftex/iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ))
 \Gm@cnth=\count279
@@ -183,7 +202,8 @@ Package: iftex 2022/02/03 v1.0f TeX engine tests
 \Gm@layouthoffset=\dimen171
 \Gm@layoutvoffset=\dimen172
 \Gm@dimlist=\toks30
-) (/usr/share/texmf/tex/latex/l3backend/l3backend-pdftex.def
+)
+(/usr/share/texmf/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count282
 \l__pdf_internal_box=\box57
@@ -204,7 +224,8 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
 LaTeX Font Info:    ... okay on input line 5.
- (/usr/share/texmf/tex/context/base/mkii/supp-pdf.mkii
+
+(/usr/share/texmf/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count283
 \scratchdimen=\dimen173
@@ -219,9 +240,12 @@ LaTeX Font Info:    ... okay on input line 5.
 \everyMPtoPDFconversion=\toks32
 ) (/usr/share/texmf/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
- (/usr/share/texmf/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/share/texmf/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
 ))
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -257,47 +281,75 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-</home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_hvezdu_1.png, id=1, 420.06938pt x 219.82124pt>
-File: /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_hvezdu_1.png Graphic file (type png)
+</home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_hvezdu_1.png, id=1, 420.069
+38pt x 219.82124pt>
+File: /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_hvezdu_1.png Graphic f
+ile (type png)
 <use /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_hvezdu_1.png>
-Package pdftex.def Info: /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_hvezdu_1.png  used on input line 12.
+Package pdftex.def Info: /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_hve
+zdu_1.png  used on input line 12.
 (pdftex.def)             Requested size: 407.66833pt x 213.33366pt.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 17.
+
 (/usr/share/texmf/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 17.
- (/usr/share/texmf/tex/latex/amsfonts/umsb.fd
+
+
+(/usr/share/texmf/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-</home/tjoslef/skola/zapisky/vut/IEL/projekt/dalsi uprava.png, id=3, 491.58656pt x 371.13657pt>
-File: /home/tjoslef/skola/zapisky/vut/IEL/projekt/dalsi uprava.png Graphic file (type png)
+</home/tjoslef/skola/zapisky/vut/IEL/projekt/dalsi uprava.png, id=3, 491.58656p
+t x 371.13657pt>
+File: /home/tjoslef/skola/zapisky/vut/IEL/projekt/dalsi uprava.png Graphic file
+ (type png)
 <use /home/tjoslef/skola/zapisky/vut/IEL/projekt/dalsi uprava.png>
-Package pdftex.def Info: /home/tjoslef/skola/zapisky/vut/IEL/projekt/dalsi uprava.png  used on input line 23.
+Package pdftex.def Info: /home/tjoslef/skola/zapisky/vut/IEL/projekt/dalsi upra
+va.png  used on input line 23.
 (pdftex.def)             Requested size: 407.66833pt x 307.79408pt.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} </home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_hvezdu_1.png> </home/tjoslef/skola/zapisky/vut/IEL/projekt/dalsi uprava.png>] [2]
-</home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_priklad3.png, id=20, 657.2053pt x 217.5628pt>
-File: /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_priklad3.png Graphic file (type png)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} </home/tjoslef/skola/zapisk
+y/vut/IEL/projekt/uprava_hvezdu_1.png> </home/tjoslef/skola/zapisky/vut/IEL/pro
+jekt/dalsi uprava.png>]
+[2]
+</home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_priklad3.png, id=20, 657.20
+53pt x 217.5628pt>
+File: /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_priklad3.png Graphic f
+ile (type png)
 <use /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_priklad3.png>
-Package pdftex.def Info: /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_priklad3.png  used on input line 116.
+Package pdftex.def Info: /home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_pri
+klad3.png  used on input line 116.
 (pdftex.def)             Requested size: 407.66833pt x 134.95726pt.
-</home/tjoslef/skola/zapisky/vut/IEL/projekt/paty_priklad.drawio.png, id=21, 385.44pt x 313.17pt>
-File: /home/tjoslef/skola/zapisky/vut/IEL/projekt/paty_priklad.drawio.png Graphic file (type png)
+</home/tjoslef/skola/zapisky/vut/IEL/projekt/paty_priklad.drawio.png, id=21, 38
+5.44pt x 313.17pt>
+File: /home/tjoslef/skola/zapisky/vut/IEL/projekt/paty_priklad.drawio.png Graph
+ic file (type png)
 <use /home/tjoslef/skola/zapisky/vut/IEL/projekt/paty_priklad.drawio.png>
-Package pdftex.def Info: /home/tjoslef/skola/zapisky/vut/IEL/projekt/paty_priklad.drawio.png  used on input line 157.
+Package pdftex.def Info: /home/tjoslef/skola/zapisky/vut/IEL/projekt/paty_prikl
+ad.drawio.png  used on input line 157.
 (pdftex.def)             Requested size: 407.66833pt x 331.22748pt.
  [3
 
- </home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_priklad3.png>] [4 </home/tjoslef/skola/zapisky/vut/IEL/projekt/paty_priklad.drawio.png>]
-./reseni.tex:214: Missing $ inserted.
+ </home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_priklad3.png>]
+[4 </home/tjoslef/skola/zapisky/vut/IEL/projekt/paty_priklad.drawio.png>]
+! Missing $ inserted.
 <inserted text> 
                 $
 l.214 
       
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
+
+! Missing number, treated as zero.
+<to be read again> 
+                   e
+l.237 I_l = \frac{U}{R} + i(0) \time e
+                                      ^{\frac{R}{L} \times t}
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
 
 [5] (./reseni.aux)
  ***********
@@ -306,15 +358,24 @@ L3 programming layer <2024-02-20>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 3911 strings out of 475153
- 59354 string characters out of 5770015
+ 3914 strings out of 475153
+ 59534 string characters out of 5770015
  1937187 words of memory out of 5000000
- 26084 multiletter control sequences out of 15000+600000
- 560787 words of font info for 48 fonts, out of 8000000 for 9000
+ 26086 multiletter control sequences out of 15000+600000
+ 561392 words of font info for 50 fonts, out of 8000000 for 9000
  475 hyphenation exceptions out of 8191
- 70i,8n,79p,313b,233s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on reseni.pdf (5 pages, 180748 bytes).
+ 70i,8n,79p,364b,233s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf
+/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf/fonts/type1/public
+/amsfonts/cm/cmex10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi10
+.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/tex
+mf/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf/fonts/type1/publi
+c/amsfonts/cm/cmr10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr5.p
+fb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf/
+fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/
+amsfonts/cm/cmsy5.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmsy7.pf
+b>
+Output written on reseni.pdf (5 pages, 181303 bytes).
 PDF statistics:
  89 PDF objects out of 1000 (max. 8388607)
  49 compressed objects within 1 object stream

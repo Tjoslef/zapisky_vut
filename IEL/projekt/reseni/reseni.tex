@@ -29,7 +29,7 @@
 R_{A1} = \frac{R_2 \times R_3}{R_2 + R_3 + R_4} + R_1
 \]
 \[
-    R_{A1} = \frac{810 \times 220}{810 + 220 + 190} + 450 \quad \Rightarrow \quad R_{41} = 596.066
+    R_{A1} = \frac{810 \times 220}{810 + 220 + 190} + 450 \quad \Rightarrow \quad R_{41} = 596.0656
 \]
 
 \[
@@ -37,21 +37,21 @@ R_{B56} = \frac{R_2 \times R_4}{R_2 + R_3 + R_4} + \frac{R_6 \times R_5}{R_6 + R
 \]
 \[
 R_{B56} = \frac{810 \times 220}{810 + 190 + 720} + \frac{220 \times 720}{220 + 720}
-= 272.115
+= 272.1153
 \]
 \[
 R_{C7} = \frac{R_3 \times R_4}{R_2 + R_3 + R_4} + R_7
 \]
 \[
-R_{C7} = \frac{190 \times 220}{810 + 190 + 720} + 260 = 284.302
+R_{C7} = \frac{190 \times 220}{810 + 190 + 720} + 260 = 284.3023
 \]
 
 \[
-R  = \frac{272.115 \times 284.320}{272.115 + 284.320} + 596.066 + 180 \quad \Rightarrow \quad R = 915.107
+R  = \frac{272.1153 \times 284.3032}{272.1153 + 284.3023} + 596.0656 + 180 \quad \Rightarrow \quad R = 915.1037
 \]
 
 \[
-I = \frac{U}{R} = \frac{180}{894.770} \quad \Rightarrow \quad I = 0.1967
+I = \frac{U}{R} = \frac{180}{915.1037} \quad \Rightarrow \quad I = 0.1967
 \]
 
 \[
@@ -158,7 +158,7 @@ Pomoci Cramerovy metody vyresime \( U_A \)
   \caption{Paty priklad}
   \label{fig:priklad5}
 \end{figure}
-\section{z ceho budeme vychaze}
+\subsection*{Z ceho budeme vychaze}
 \[
 i = \frac{U_r}{R} \quad \Rightarrow \quad \text{Ohmův zákon}
 \]
@@ -170,7 +170,7 @@ U_r + U_r = U \quad \Rightarrow \quad \text{Kirchhoffův druhý zákon}
 \[
 i' = \frac{U_c}{L}, \quad i(0) = i_{L_0}
 \]
-\section{samotny vypocet}
+\subsection*{Samotny vypocet}
 \textbf{Kroky:}
 1. Nejprve vyjádříme \( U_r \) z první rovnice.
 2. Dosadíme \( U_r \) do druhé rovnice.
@@ -234,18 +234,18 @@ I_L'(t) = \frac{U}{L} e^{\frac{R}{L} t}
 \textbf{Dosadíme zpět:}
 
 \[
-\frac{U}{R} e^{\frac{R}{L} t} + C
+I_l = \frac{U}{R} + i(0) \time e^{\frac{R}{L} \times t}
 \]
 \[
-i_{LP} = \frac{U}{R} + C
+    i(0) = _{LP} \rightarrow 8 - \frac{U}{R} = i(0)
 \]
-
-\textbf{Vyřešíme pro \( C \):}
 
 \[
-C = i_{LP} - \frac{U}{R}
+    I_L = \frac{U}{R} + (8 - \frac{U}{R}) \times e^{\frac{R}{L} t}
 \]
-
+\[
+I_L = \frac{1}{2} + \frac{15}{2} \times e^ {-5 \times t}
+\]
 \end{document}
 
 
