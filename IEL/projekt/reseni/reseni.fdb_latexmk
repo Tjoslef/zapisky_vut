@@ -1,9 +1,9 @@
 # Fdb version 4
-["pdflatex"] 1729540849.67823 "/home/tjoslef/skola/zapisky/vut/IEL/projekt/reseni/reseni.tex" "reseni.pdf" "reseni" 1729540850.10701 2
+["pdflatex"] 1729843708.39003 "/home/tjoslef/skola/zapisky/vut/IEL/projekt/reseni/reseni.tex" "reseni.pdf" "reseni" 1729843708.87359 2
   "/etc/texmf/web2c/texmf.cnf" 1719994164 42612 09b3c6dec2a078bd30d80981dc2f43a3 ""
   "/home/tjoslef/skola/zapisky/vut/IEL/projekt/dalsi uprava.png" 1727811833.65366 16975 ce286fc9f441a1ec719cb87d83b976a1 ""
   "/home/tjoslef/skola/zapisky/vut/IEL/projekt/paty_priklad.drawio.png" 1729113341.81322 18662 b8a0c8ade9980e7a11836cabe5246bf4 ""
-  "/home/tjoslef/skola/zapisky/vut/IEL/projekt/reseni/reseni.tex" 1729540849.46984 5367 02cda033a90596c5be2504d862cc7e53 ""
+  "/home/tjoslef/skola/zapisky/vut/IEL/projekt/reseni/reseni.tex" 1729843708.19279 5374 610441f0ee079ccc629695fb83da00f5 ""
   "/home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_hvezdu_1.png" 1728077313.39757 13376 aac8f989363bdd23f0e77998f2807af1 ""
   "/home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_priklad3.png" 1728225489.1429 23060 4e8120ef194b6ec9574726be8cae67c7 ""
   "/usr/share/texmf/fonts/map/fontname/texfonts.map" 1719994164 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -62,8 +62,8 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1719994164 42612 09b3c6dec2a078bd30d80981dc2f43a3 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1726254557.28651 535245 9b107176e732363f1a0002fe772e7314 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1725553932 8048310 aa6b4bef8b2bfcea1f82da29948cf99f ""
-  "reseni.aux" 1729540850.04317 1123 794abae6c8a86e0406e2f35e3555d604 "pdflatex"
-  "reseni.tex" 1729540849.46984 5367 02cda033a90596c5be2504d862cc7e53 ""
+  "reseni.aux" 1729843708.80612 1123 794abae6c8a86e0406e2f35e3555d604 "pdflatex"
+  "reseni.tex" 1729843708.19279 5374 610441f0ee079ccc629695fb83da00f5 ""
   (generated)
   "reseni.aux"
   "reseni.log"

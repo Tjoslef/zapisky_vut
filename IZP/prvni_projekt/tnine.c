@@ -24,10 +24,12 @@ int main(int argc, char *argv[]) {
         }
     return 0;
     }
+
     int input_lenght_B = 0;
+    //the input that we will match
     char *ifItNumber = argv[1];
     char *bonus = NULL;
-    //checking for -s for bonus
+    //checking for -s for bonus if so we take the second argv
     if (argc >= 2 && ifItNumber[0] == '-' && ifItNumber[1] == 's') {
         bonus = argv[2];
         input_lenght_B = strlen(bonus);
@@ -43,6 +45,7 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Your argument contains spaces\n");
         return 1;
     }
+    //preparing arrays
     int lenght_number = strlen(ifItNumber);
     int inputNumber[lenght_number];
     int input_bonus[input_lenght_B];
@@ -54,6 +57,7 @@ int main(int argc, char *argv[]) {
     }
 
     input_lenght_B = strlen(bonus);
+
     for (int i = 0; i < input_lenght_B; i++) {
         if (!isdigit(bonus[i])) {
             fprintf(stderr, "Your argument is not a number\n");
@@ -64,7 +68,7 @@ int main(int argc, char *argv[]) {
     }
 
 }else{
-        //error handling for normal cases
+        //error handling for normal cases and converting to integer
         for (int i = 0; i < lenght_number; i++) {
             if (!isdigit(ifItNumber[i])) {
                 fprintf(stderr,"Your argument is not a number\n");
@@ -114,16 +118,16 @@ int main(int argc, char *argv[]) {
             int telefon_len = strlen(list.telefon);
             int jmeno_len = strlen(list.jmeno);
             if(!specialSearch){
-            // We don't need to loop through the entire phone number string (list.telefon),
-            // since we know the length of the sequence we're looking for (inputNumber).
+            // We don't need to loop through the entire phone number,
+            // because we know the length of the sequence we're looking for from input.
                 for(int start = 0; start <= telefon_len - lenght_number;start++){
                     int i;
                         for(i = 0; i < lenght_number; i++){
                             if(inputNumber[i] == 0){
-                        //because 0 is "+" so we can skip it
+                        //because 0 is + so we can skip it
                             continue;
                         }
-            // "Sliding window" approach: if the current digits don't match,
+            // Sliding window  if the current digits don't match,
             // break and try again with the next starting position.
 
                             if(inputNumber[i] != (list.telefon[start + i] - '0')){
@@ -163,6 +167,7 @@ int main(int argc, char *argv[]) {
                 int matchSpecialL = 0;
                 int leftSortL = 0;
                 //Moving window with watching position so every another number in sequence is bigger
+                //and counting the matches
                 for(int number = 0; number < input_lenght_B; number ++){
                     for(int i = 0; i < jmeno_len;i++){
                         char *button = keys[input_bonus[number]];
@@ -181,10 +186,10 @@ int main(int argc, char *argv[]) {
             int matchSpecialN = 0;
             int sequence_number = 0;
             //Moving window so every another window from the match is smaller window from left side
+            //and counting the matches
             for(int number = 0; number < input_lenght_B;number ++){
                 bool found_M_N = false;
                 for(int i = sequence_number; i < telefon_len; i++){
-                    printf("%i compare %i \n",input_bonus[number],list.telefon[i] - '0');
                     if(input_bonus[number] == list.telefon[i] - '0'){
                         found_M_N = true;
                         sequence_number = i + 1;
@@ -197,10 +202,13 @@ int main(int argc, char *argv[]) {
                 }
 
                 }
+                //counting every match number if is the same length size like
+                //input we have find the contact
             if(matchSpecialN == input_lenght_B){
                 matchNumber = true;
                 }
             }
+            //printing the contact that we match
             if (matchNumber == true || matchName == true) {
                 findMatch = true;
                 printf("%s, %s\n", list.jmeno, list.telefon);
@@ -208,6 +216,7 @@ int main(int argc, char *argv[]) {
         }
         radiciCIslo++;
     }
+    //printing if we didnt match anything
     if(!(findMatch)){
         printf("Not found\n");
     }

@@ -83,30 +83,30 @@ I_{R3} = \frac{4.965}{190} = 0.0261 \, \text{A}
 \clearpage
 \section{Reseni druheho prikladu}
 \[
-    \text{Uzel A:} \quad \frac{130 - U_A}{47} + \frac{U_A - U_B}{28} - \frac{90 - (U_A - U_B)}{58} - \frac{U_A}{39} = 0
+    \text{Uzel A:} \quad \frac{130 - U_A}{47} + \frac{U_B -U_A}{28} - \frac{90 - (U_B - U_A)}{58} - \frac{U_A}{39} = 0
 \]
 \[
-    \text{Uzel B:} \quad \frac{5}{10} + \frac{90 - (U_A - U_B)}{58} - \frac{U_A - U_B}{28} - \frac{U_C - U_B}{35} = 0
+    \text{Uzel B:} \quad \frac{5}{10} + \frac{90 - (U_B - U_A)}{58} - \frac{U_B - U_A}{28} - \frac{U_B -U_C}{35} = 0
 \]
 \[
-    \text{Uzel C:} \quad \frac{U_C - U_B}{35} - \frac{5}{10} - \frac{U_C}{25} = 0
+    \text{Uzel C:} \quad \frac{U_B - U_C}{35} - \frac{5}{10} - \frac{U_C}{25} = 0
 \]
 \begin{align*}
-    8987U_A - 78819U_B &= -1807260 \\
+    -148651U_A - 78819U_B &= -1807260 \\
     -215U_A + 331U_B - 116U_C &= -8330 \\
-    -10U_B - 4U_C &= 175
+    -10U_B - 24U_C &= 175
 \end{align*}
 
 Pomoci Cramerovy metody vyresime \( U_A \)
 
 \[
-    U_A = 191.716 \, \text{V}
+    U_A = 43.9024 \, \text{V}
 \]
 \[
-    U_{R2} = U_A  \quad \Rightarrow \quad U_{R2} = 191.716 \, \text{V}
+    U_{R2} = U_A  \quad \Rightarrow \quad U_{R2} = 43.9024 \, \text{V}
 \]
 \[
-    I_{R2} = \frac{U_{R2}}{39} \quad \Rightarrow \quad I_{R2} = 4.915 \, \text{A}
+    I_{R2} = \frac{U_{R2}}{39} \quad \Rightarrow \quad I_{R2} = 1.1257 \, \text{A}
 \]
 \section{Řešení třetího příkladu}
 Úprava:
@@ -210,7 +210,8 @@ I_L'(t) = \frac{U}{L} e^{\frac{R}{L} t}
 \frac{U}{L} \int e^{\frac{R}{L} t} \, dt
 \]
 
-\textbf{Substituce:} \( u = \frac{R}{L} t \quad \Rightarrow \quad du = \frac{R}{L} \, dt
+
+\textbf{Substituce:} \( u = \frac{R}{L} t \quad \Rightarrow \quad du = \frac{R}{L} \, dt \)
 
 \[
 \frac{du}{dt} = \frac{R}{L}, \quad \text{takže} \quad dt = \frac{L}{R} du
