@@ -2,15 +2,102 @@
 \documentclass{article}
 \usepackage{mathtools, amssymb, amsthm, graphicx, ulem} % imports amsmath
 \usepackage[a4paper, margin=1in]{geometry} % Set margins for better layout
+%vsechny pocty byly vypocitany pres python script -> soubor vypocty.py aby zajistena vyssi presnost
+%%% Nepovinná šablona pro projekty IEL %%%
+%%% Verze: 2019/01 %%%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{fitiel}[2022/10/06 IEL project class]
+
+\pdfminorversion=7
+
+% základní třída, odvozujeme ze třídy article
+\LoadClass[a4paper,11pt]{article}
+
+% nastavení parametrů
+\newif\ifczech \let\ifczech\iftrue
+\newif\ifslovak \let\ifslovak\iffalse
+\newif\ifenglish \let\ifenglish\iffalse
+
+\DeclareOption{english}{\let\ifenglish\iftrue\let\ifczech\iffalse}
+\DeclareOption{slovak}{\let\ifslovak\iftrue\let\ifczech\iffalse}
+\DeclareOption*{}
+\ProcessOptions\relax
+
+% odstranění čísla částí (sections) z nadpisů
+\renewcommand{\@seccntformat}[1]{}
+
+%% základní balíčky - šablona
+\RequirePackage{ifthen}
+
+%% základní balíčky - dokument
+\RequirePackage[left=2cm,text={17cm, 24cm},top=3cm]{geometry}
+\RequirePackage{graphicx}
+\RequirePackage{float}
+
+% utf-8
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{lmodern}
+
+% matematika
+\RequirePackage{amsmath}
+
+% klikatelné odkazy (sekce v obsahu)
+\RequirePackage[unicode]{hyperref}
+
+% kreslení obvodů
+\usepackage[european,straightvoltages,betterproportions,EFvoltages]{circuitikz}
+
+% jednotky
+\usepackage{siunitx}
+%%
+
+%% logo a nastavení správného jazyka pro dokument
+% čeština
+\ifczech
+    \usepackage[czech]{babel}
+    \newcommand{\logo}{
+        \includegraphics[scale=0.1,keepaspectratio]{fig/logo_cz.png}
+    }
+\else
+\fi
+
+% slovenština
+\ifslovak
+    \usepackage[slovak]{babel}
+    \newcommand{\logo}{
+        \includegraphics[scale=0.1,keepaspectratio]{fig/logo_cz.png}
+    }
+\else
+\fi
+
+% angličtina
+\ifenglish
+    \usepackage[english]{babel}
+    \newcommand{\logo}{
+        \includegraphics[scale=0.1,keepaspectratio]{fig/logo_en.png}
+    }
+\else
+\fi
+
+\AtEndOfClass{
+    % použité značky
+    \newcommand{\Vo}{\si \volt}
+    \newcommand{\Am}{\si \ampere}
+    \newcommand{\uF}{\si {\micro\farad}}
+    \newcommand{\mH}{\si {\milli\henry}}
+    \newcommand{\Hz}{\si \hertz}
+    \newcommand{\F}{\si \farad}
+    \newcommand{\s}{\si \second}
+    \newcommand{\He}{\si \henry}
+
 \begin{document}
 \sloppy
-%vsechny pocty byly vypocitany pres python script -> soubor vypocty.py aby zajistena vyssi presnost
-
 \section{První příklad zadání C}
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=0.9\textwidth, keepaspectratio]{/home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_hvezdu_1.png}
+  \includegraphics[width=0.9\textwidth, keepaspectratio]{/home/tjoslef/skola/zapisky/vut/IEL/projekt/priklad1a.png}
   \caption{Úprava pomocí hvězdy}
   \label{fig:hvezda}
 \end{figure}
@@ -21,7 +108,7 @@
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=0.9\textwidth, keepaspectratio]{/home/tjoslef/skola/zapisky/vut/IEL/projekt/dalsi uprava.png}
+  \includegraphics[width=0.9\textwidth, keepaspectratio]{/home/tjoslef/skola/zapisky/vut/IEL/projekt/priklad1b.png}
   \caption{Další úprava}
   \label{fig:dalsi_uprava}
 \end{figure}
@@ -76,7 +163,7 @@ I_{R3} = 0.0190
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=0.9\textwidth, keepaspectratio]{/home/tjoslef/skola/zapisky/vut/IEL/projekt/uprava_priklad3.png}
+  \includegraphics[width=0.9\textwidth, keepaspectratio]{/home/tjoslef/skola/zapisky/vut/IEL/projekt/priklad2.png}
   \caption{Další úprava}
   \label{fig:upravapriklad2}
 \end{figure}

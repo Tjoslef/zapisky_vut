@@ -1,0 +1,240 @@
+
+$accept: input "end of file"
+
+input: %empty
+     | input picture NL
+
+picture: prestart psline NL elementlist optnl "end of file or .PE"
+
+NL: "end of line or ;"
+  | error
+
+prestart: %empty
+
+psline: ".PS"
+      | ".PS" term
+      | ".PS" term term
+
+elementlist: %empty
+           | element
+           | elementlist NL element
+
+term: factor
+    | term "*" factor
+    | term "/" factor
+    | term "%" factor
+
+element: namedobj
+       | "label" suffix ":" position
+       | assignlist
+       | "direction: up down right left"
+       | "LaTeX"
+       | command
+       | lbrace elementlist optnl "}"
+       | ifpart
+       | elsehead elementlist optnl "}"
+       | for "}"
+       | "command" stringexpr
+       | "exec" stringexpr
+
+lbrace: "{"
+
+namedobj: object
+        | "label" suffix ":" object
+
+suffix: %empty
+      | "[" expression "]"
+      | "[" position "]"
+
+position: pair
+        | expression "between" position "and" position
+        | expression "of" "the" "way" "between" position "and" position
+        | expression "<" position "," position "logical operator" shift
+
+assignlist: assignment
+          | assignlist "," assignment
+
+command: "print" expression redirect
+       | "print" position redirect
+       | "print" stringexpr redirect
+       | "reset"
+       | "reset" resetlist
+       | systemcmd
+       | "copy" stringexpr
+       | "define" "identifier"
+       | "define" "label"
+       | "undef" "identifier"
+       | "undef" "label"
+
+optnl: %empty
+     | NL
+
+ifpart: ifhead elementlist optnl "}"
+
+elsehead: ifpart "else" "{"
+
+for: forhead elementlist optnl
+   | for forincr elementlist optnl
+
+stringexpr: string
+          | stringexpr "+" string
+
+string: "string"
+      | sprintf ")"
+
+assignment: "identifier" suffix "=" assignrhs
+          | "environment variable" "=" assignrhs
+
+assignrhs: expression
+         | assignment
+
+expression: term
+          | "+" term
+          | "-" term
+          | expression "+" term
+          | expression "-" term
+
+ifhead: setlogic logexpr "then" "{"
+
+setlogic: "if"
+
+logexpr: logprod
+       | logexpr "||" logprod
+
+forhead: "for" assignlist "to" expression do "{"
+
+forincr: "end of for {...} contents"
+
+do: "do"
+  | by expression "do"
+
+by: "by"
+  | "by" "*"
+
+redirect: %empty
+        | "logical operator" stringexpr
+        | "logical operator" "logical operator" stringexpr
+
+resetlist: "environment variable"
+         | resetlist "," "environment variable"
+
+systemcmd: "sh" stringexpr
+
+sprintf: "sprintf" "(" stringexpr
+       | "sprintf" "(" stringexpr "," exprlist
+
+exprlist: expression
+        | expression "," exprlist
+
+object: block
+      | object "ht" expression
+      | object "wid" expression
+      | object "rad" expression
+      | object "diam" expression
+      | object "thick" expression
+      | object "scaled" expression
+      | object "direction: up down right left" optexp
+      | object "line type: dotted etc" optexp
+      | object "chop" optexp
+      | object "fill" optexp
+      | object "arrowhead parameter: <- -> <->" optexp
+      | object "then"
+      | object "cw"
+      | object "ccw"
+      | object "same"
+      | object stringexpr
+      | object "by" position
+      | object "from" position
+      | object "to" position
+      | object "at" position
+      | object "text position: ljust rjust above below center"
+      | object "color spec: colored outlined shaded" stringexpr
+      | objectwith "at" position
+      | objectwith "compass corner: .n .ne .center .end etc" "at" position
+      | objectwith pair "at" position
+      | "continue"
+
+openblock: "["
+
+block: "drawn object: box circle line etc" optexp
+     | stringexpr
+     | openblock closeblock "]"
+     | "[]"
+
+optexp: %empty
+      | expression
+
+closeblock: elementlist optnl
+
+objectwith: object "with"
+          | objectwith "." "label" suffix
+          | objectwith "." nth primobj
+
+pair: expression "," expression
+    | location shift
+
+nth: ncount "ordinal: st or rd or nd or th"
+   | ncount "ordinal: st or rd or nd or th" "last"
+   | "last"
+
+primobj: "drawn object: box circle line etc"
+       | "[]"
+       | "string"
+       | "[" "]"
+
+shift: %empty
+     | shift "+" location
+     | shift "-" location
+
+location: "(" position ")"
+        | "(" position "," position ")"
+        | place
+        | location "*" factor
+        | location "/" factor
+
+place: placename
+     | placename "compass corner: .n .ne .center .end etc"
+     | "compass corner: .n .ne .center .end etc" placename
+     | "compass corner: .n .ne .center .end etc" "of" placename
+     | "Here"
+
+factor: primary
+      | "!" primary
+      | primary "^" factor
+
+placename: "label" suffix
+         | nth primobj
+         | placename "." "label" suffix
+         | placename "." nth primobj
+
+ncount: "number"
+      | "`" expression "'"
+      | "{" expression "}"
+
+logprod: logval
+       | logprod "&&" logval
+
+logval: lcompare
+      | stringexpr "<" stringexpr
+      | expression "<" expression
+
+lcompare: expression
+        | stringexpr
+        | lcompare "logical operator" expression
+        | lcompare "logical operator" stringexpr
+
+primary: "environment variable"
+       | "identifier" suffix
+       | "number"
+       | "(" logexpr ")"
+       | location ".x"
+       | location ".y"
+       | placename "attribute .ht .wid etc"
+       | "rand" "(" ")"
+       | "rand" "(" expression ")"
+       | "function (1 arg)" "(" expression ")"
+       | "function (2 args)" "(" expression "," expression ")"
+       | "(" assignlist ")"
+       | "(" systemcmd ")"
+
+

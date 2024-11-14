@@ -1,0 +1,142 @@
+.PS
+# Spiral.m4 (Uses Circuit_macros library)
+# threeD_init Version 10.5: TikZ PGF m4 macro settings.
+  
+  # gen_init Version 10.5: TikZ PGF m4 macro settings.
+  
+
+  define rpoint__ {
+    rp_wid = last line.end.x-last line.start.x
+    rp_ht = last line.end.y-last line.start.y
+    rp_len = sqrt(abs((rp_wid)^2+(rp_ht)^2)); move to last line.start
+    rp_ang = atan2(rp_ht,rp_wid) }
+
+  rtod_ = 57.295779513082323;  dtor_ = 0.017453292519943295
+  twopi_ = 6.2831853071795862;  pi_ = (twopi_/2)
+  rp_ang = 0;  right
+  define dpictools_ {0}
+  define copydpictools_ {if "$1"=="" then { copy "/cygdrive/d/Dwight/lib/dpictools.pic";} \
+    else { copy "$1/dpictools.pic"; } }
+  
+  linethick = 0.8
+  arrowwid = 0.05*scale; arrowht = 0.1*scale 
+  
+  
+  # gen_init end
+
+  
+# setview(`20',`20',`0')
+  view3D1=cos(((20)*(dtor_)))*cos(((20)*(dtor_)));  view3D2=sin(((20)*(dtor_)))*cos(((20)*(dtor_)));  view3D3=sin(((20)*(dtor_)))
+  light3D1=view3D1; light3D2=view3D2; light3D3=view3D3
+  UPx_:  sin(-((20)*(dtor_))),  (-(((sin(((20)*(dtor_))))*(cos(-((20)*(dtor_)))))))
+  UPy_:  cos(-((20)*(dtor_))),  (-(((sin(((20)*(dtor_))))*((-(sin(-((20)*(dtor_)))))))))
+  UPz_: 0,  cos(((20)*(dtor_)))
+# setview end
+
+
+# threeD_init end
+
+# This assumes that dpictools.pic is in the current working directory;
+# otherwise use a blank argument to use the Circuit_macros file.
+if !dpictools_ then { copydpictools_(.) }
+
+  azimuth = 15                     # Set view angles in degrees
+  elevation = 35
+  
+# setview(`azimuth',`elevation')
+  view3D1=cos(((azimuth)*(dtor_)))*cos(((elevation)*(dtor_)));  view3D2=sin(((azimuth)*(dtor_)))*cos(((elevation)*(dtor_)));  view3D3=sin(((elevation)*(dtor_)))
+  light3D1=view3D1; light3D2=view3D2; light3D3=view3D3
+  UPx_:  sin(-((azimuth)*(dtor_))),  (-(((sin(((elevation)*(dtor_))))*(cos(-((azimuth)*(dtor_)))))))
+  UPy_:  cos(-((azimuth)*(dtor_))),  (-(((sin(((elevation)*(dtor_))))*((-(sin(-((azimuth)*(dtor_)))))))))
+  UPz_: 0,  cos(((elevation)*(dtor_)))
+# setview end
+
+
+  crad = 0.9                       # Sphere radius
+  thetamin = -89                   # Rotation about the y axis (deg)
+  thetamax = 89
+  turns = 6
+
+  South: 0,0                       # South pole
+         # North pole
+  North: 0,  ((cos(((elevation)*(dtor_))))*(2*crad))
+           # Centre of the sphere
+  C: 0,  ((cos(((elevation)*(dtor_))))*(crad))
+                                   # Shaded sphere at C
+  g = 0.65
+  Hlight: C+(((crad*g)*(cos((135)*dtor_))),((crad*g)*(sin((135)*dtor_))))
+  rm = crad*(1+g)
+  n = int(rm/(linethick *(scale/72)))
+  lt = linethick * 2
+  for i=1 to n do {
+    r = i/n*rm
+    u = 1-(i/n)^2
+    if r < (1-g)*crad then {
+      circle thick lt outlined sprintf("{rgb,1:red,%7.5f;green,%7.5f;blue,%7.5f}",u,u,u) rad r at Hlight }\
+    else {
+      arc cw thick lt outlined sprintf("{rgb,1:red,%7.5f;green,%7.5f;blue,%7.5f}",u,u,u) \
+        from             ((((((C).x-(Hlight).x)^2+((C).y-(Hlight).y)^2)+(r)^2-(crad)^2)/2)/(((C).x-(Hlight).x)^2+((C).y-(Hlight).y)^2) between Hlight and C) +\
+   (((sqrt(abs((((C).x-(Hlight).x)^2+((C).y-(Hlight).y)^2)*(r)^2-(((((C).x-(Hlight).x)^2+((C).y-(Hlight).y)^2)+(r)^2-(crad)^2)/2)^2))/(((C).x-(Hlight).x)^2+((C).y-(Hlight).y)^2))*(-((C).y-(Hlight).y))),((sqrt(abs((((C).x-(Hlight).x)^2+((C).y-(Hlight).y)^2)*(r)^2-(((((C).x-(Hlight).x)^2+((C).y-(Hlight).y)^2)+(r)^2-(crad)^2)/2)^2))/(((C).x-(Hlight).x)^2+((C).y-(Hlight).y)^2))*(((C).x-(Hlight).x)))) \
+        to             ((((((C).x-(Hlight).x)^2+((C).y-(Hlight).y)^2)+(r)^2-(crad)^2)/2)/(((C).x-(Hlight).x)^2+((C).y-(Hlight).y)^2) between Hlight and C) -\
+   (((sqrt(abs((((C).x-(Hlight).x)^2+((C).y-(Hlight).y)^2)*(r)^2-(((((C).x-(Hlight).x)^2+((C).y-(Hlight).y)^2)+(r)^2-(crad)^2)/2)^2))/(((C).x-(Hlight).x)^2+((C).y-(Hlight).y)^2))*(-((C).y-(Hlight).y))),((sqrt(abs((((C).x-(Hlight).x)^2+((C).y-(Hlight).y)^2)*(r)^2-(((((C).x-(Hlight).x)^2+((C).y-(Hlight).y)^2)+(r)^2-(crad)^2)/2)^2))/(((C).x-(Hlight).x)^2+((C).y-(Hlight).y)^2))*(((C).x-(Hlight).x)))) with .c at Hlight }
+    }
+  circle rad crad +linethick *(scale/72)/2 at C
+
+# shadedball(crad,0.65*crad,135) at C
+
+                                   # The parametric spiral curve S(theta)
+                                   # theta is degrees rotation about y
+                                   # Rotation about z is 2*turns*theta
+
+
+                                   # The visibility function is the dot product
+                                   # of the view vector and the radius vector
+define Radiusvis { $2 = (((((((cos((-2*turns*$1*dtor_)))*(((cos((-$1*dtor_)))*(crad)))))*(view3D1))+(( ((sin((-2*turns*$1*dtor_)))*(((cos((-$1*dtor_)))*(crad)))))*(view3D2)))+(( (-(((sin((-$1*dtor_)))*(crad)))))*(view3D3)))) }
+
+  dphi = 5                         # Horiz degrees between test pts on the curve
+  dt = (dphi)/(2*turns)
+  n = 0
+  P[n]:  (((sin(-((azimuth)*(dtor_))))*(((cos((-2*turns*thetamin*dtor_)))*(((cos((-thetamin*dtor_)))*(crad))))))+((cos(-((azimuth)*(dtor_))))*( ((sin((-2*turns*thetamin*dtor_)))*(((cos((-thetamin*dtor_)))*(crad))))))),  (((cos(((elevation)*(dtor_))))*((crad+ (-(((sin((-thetamin*dtor_)))*(crad)))))))-(((sin(((elevation)*(dtor_))))*((((cos(-((azimuth)*(dtor_))))*(((cos((-2*turns*thetamin*dtor_)))*(((cos((-thetamin*dtor_)))*(crad))))))-(((sin(-((azimuth)*(dtor_))))*( ((sin((-2*turns*thetamin*dtor_)))*(((cos((-thetamin*dtor_)))*(crad))))))))))))
+  Radiusvis(thetamin,xs)           # Visibility of the initial pt
+  for theta=thetamin+dt to thetamax by dt do {
+    Radiusvis(theta,xf)            # Visibility of the next pt
+    if xs*xf < 0 then {
+      findroot( Radiusvis, theta-dt,theta,1e-8,x ) # Find the transition pt
+      n+=1; P[n]:  (((sin(-((azimuth)*(dtor_))))*(((cos((-2*turns*x*dtor_)))*(((cos((-x*dtor_)))*(crad))))))+((cos(-((azimuth)*(dtor_))))*( ((sin((-2*turns*x*dtor_)))*(((cos((-x*dtor_)))*(crad))))))),  (((cos(((elevation)*(dtor_))))*((crad+ (-(((sin((-x*dtor_)))*(crad)))))))-(((sin(((elevation)*(dtor_))))*((((cos(-((azimuth)*(dtor_))))*(((cos((-2*turns*x*dtor_)))*(((cos((-x*dtor_)))*(crad))))))-(((sin(-((azimuth)*(dtor_))))*( ((sin((-2*turns*x*dtor_)))*(((cos((-x*dtor_)))*(crad))))))))))))
+      if xs < 0 then { if !dpictools_ then { copydpictools_() }
+  dfitcurve(P,n,dashed) } else { if !dpictools_ then { copydpictools_() }
+  dfitcurve(P,n) }
+      P[0]: P[n]
+      n = 0
+      xs = -xs
+      }
+    n+=1; P[n]:  (((sin(-((azimuth)*(dtor_))))*(((cos((-2*turns*theta*dtor_)))*(((cos((-theta*dtor_)))*(crad))))))+((cos(-((azimuth)*(dtor_))))*( ((sin((-2*turns*theta*dtor_)))*(((cos((-theta*dtor_)))*(crad))))))),  (((cos(((elevation)*(dtor_))))*((crad+ (-(((sin((-theta*dtor_)))*(crad)))))))-(((sin(((elevation)*(dtor_))))*((((cos(-((azimuth)*(dtor_))))*(((cos((-2*turns*theta*dtor_)))*(((cos((-theta*dtor_)))*(crad))))))-(((sin(-((azimuth)*(dtor_))))*( ((sin((-2*turns*theta*dtor_)))*(((cos((-theta*dtor_)))*(crad))))))))))))
+    }
+  n+=1; P[n]:  (((sin(-((azimuth)*(dtor_))))*(((cos((-2*turns*thetamax*dtor_)))*(((cos((-thetamax*dtor_)))*(crad))))))+((cos(-((azimuth)*(dtor_))))*( ((sin((-2*turns*thetamax*dtor_)))*(((cos((-thetamax*dtor_)))*(crad))))))),  (((cos(((elevation)*(dtor_))))*((crad+ (-(((sin((-thetamax*dtor_)))*(crad)))))))-(((sin(((elevation)*(dtor_))))*((((cos(-((azimuth)*(dtor_))))*(((cos((-2*turns*thetamax*dtor_)))*(((cos((-thetamax*dtor_)))*(crad))))))-(((sin(-((azimuth)*(dtor_))))*( ((sin((-2*turns*thetamax*dtor_)))*(((cos((-thetamax*dtor_)))*(crad))))))))))))
+  if xs < 0 then { if !dpictools_ then { copydpictools_() }
+  dfitcurve(P,n,dashed) } else { if !dpictools_ then { copydpictools_() }
+  dfitcurve(P,n) }
+
+                                   # Axes
+  X:  ((sin(-((azimuth)*(dtor_))))*(crad)),  (-(((sin(((elevation)*(dtor_))))*(((cos(-((azimuth)*(dtor_))))*(crad))))))
+  Y:  ((cos(-((azimuth)*(dtor_))))*(crad)),  (-(((sin(((elevation)*(dtor_))))*((-(((sin(-((azimuth)*(dtor_))))*(crad))))))))
+
+define linevis { # ratio           # Visibility for lines fom South to Tmp
+  $2 = sqrt(abs(((($1 between South and Tmp)).x-(C).x)^2+((($1 between South and Tmp)).y-(C).y)^2))-crad }
+
+define invisline { # name          # Draw dashed invisible part of line in
+  Tmp: $1                          # the plane
+  dw = 3*(scale/72.27)
+  findroot( linevis, 0, 1, 1e-8, x )
+  line dashed dw from South to x between South and Tmp chop 0 chop dw/2 }
+
+linethick = 0.4
+  arrowwid = 0.04*scale; arrowht = 0.2/3*scale 
+  invisline(X)
+  arrow to X chop dw/2 chop 0; "$x$" rjust above
+  invisline(Y)
+  arrow to Y chop dw/2 chop 0; "$y$" ljust
+  line dashed from South to North chop 0 chop dashwid
+  arrow up crad*0.5 chop 0.05 chop 0 ; "$\;z$" ljust below
+
+.PE

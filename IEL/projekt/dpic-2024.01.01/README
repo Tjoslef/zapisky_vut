@@ -1,0 +1,80 @@
+
+Dpic is an implementation of the pic "little language" for creating line
+drawings and illustrations for documents, web pages, and other uses.
+
+Copying: 
+   The files in this distribution are subject to copyrights listed in
+   the file Copyright.txt.  The source files are copyright (c) 2024,
+   J. D. Aplevich, under a BSD licence, and the manual dpic-doc.pdf is
+   subject to a Creative Commons attribution licence.
+
+Complete sources are available as a git repository at
+   https://gitlab.com/aplevich/dpic
+
+Installation:
+   See the INSTALL file.
+
+Dpic usage:
+
+   dpic [options] infile > outfile
+or 
+   cat infile | dpic [options] > outfile 
+
+Options:
+   (none)    LaTeX picture output (limited font-based drawing capability)
+   -d        basic PDF output, no automatic string formatting
+   -e        pict2e output
+   -f        Postscript output, strings in psfrag format 
+   -g        TikZ-pgf output
+   -h        write this message and quit
+   -m        mfpic output (see mfpic documentation)
+   -p        PSTricks output (see PSTricks documentation)
+   -r        raw Postscript output, no automatic string formatting
+   -s        MetaPost output (for compatibility)
+   -t        eepicemu output (slightly less limited than LaTeX output)
+   -v        svg output
+   -x        xfig 3.2 output (for wysiwyg drawing)
+   -z        safe mode (sh and copy disabled)
+
+Testing:
+   Test the installation by finding quick.pic in the top directory and typing
+
+     dpic -p quick.pic > quick.tex
+     or
+     dpic -g quick.pic > quick.tex
+     (if you want to test the TikZ-pgf output)
+
+   which produces the input for the following test LaTeX file:
+
+      \documentclass{article}
+      \usepackage{pstricks} % or \usepackage{tikz}
+      \begin{document}
+
+      \begin{figure}[hbt]
+         \begin{center}
+         \input quick
+         \caption{Customized caption for the figure}
+         \end{center}
+         \label{Symbolic label}
+      \end{figure}
+      \end{document}
+
+You can also do the tests in the doc/examples directory.
+
+Bugs:
+   If you discover a bug, please check that your version is the latest.
+   Feel free to send bug reports.  Dpic has been relatively solid but,
+   by definition, it hasn't been tested for all possible illegal input,
+   and the distribution has undergone changes for portability, simplicity,
+   and to distribute the source as C code.
+
+   When inconsistencies between dpic and gpic are found, I usually check
+   to see whether dpic should be changed to conform but there are small
+   deliberate differences.  Error and warning messages are not identical.
+   Other exceptions can be found in the file dpic-doc.pdf.
+
+Version:
+   The version of dpic is the date the source was released, printed as a
+   comment in dpic output.
+
+-------------------------------------------------------------------

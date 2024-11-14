@@ -1,0 +1,144 @@
+.PS
+# arrowwide.pic
+
+######################################
+define array {
+ for i_array=2 to $+ do { exec sprintf("$1[%g] = $%g",i_array-1,i_array); }}
+define posang {atan2(($1).y,($1).x)}
+define cangle { (posang(($1-($2)))-posang(($3-($2)))) }
+#
+define pi_ {3.141592726}
+define Affang { ($1-($2))/sqrt(($1-($2)).x^2+($1-($2)).y^2) }
+#                   Affine(x,y,A,S) = A+rot(S)*(x,y) = A+dprot(a,x,y)
+define Affine { $3 + ($4.x*($1)-$4.y*($2), $4.y*($1)+$4.x*($2)) }
+define Pprop { $2: ($1*($3)+$2*($4))/($5) } 
+#
+define ahoffset {($3)/($2)*sqrt(($1)^2+($2)^2/4)}
+#
+define markn {{ for i=1 to $+ do {
+  exec sprintf("circle thick 0.8 rad 0.01*scale at $%g",i)
+  exec sprintf("\"$%g\" at last circle.n above",i)
+  } }}
+
+define distancx { sqrt(($1.x-$2.x)*($1.x-$2.x)+($1.y-$2.y)*($1.y-$2.y)) }
+
+define markahead {[ # (Name,wid,ht,thick,type)
+  Point: $1.start; Shaft: $1.end; wid_=$2; ht_=$3; ltu_=($4)/72*scale
+  C: Affang(Shaft,Point);          # Shaft direction cosines
+  po = min(ahoffset(ht_,wid_,ltu_),ht_)
+  P: Affine(po,0,Point,C);         # Point adjusted by line thickness
+  h = ht_-ltu_/2
+  x = h - po;
+  if ht_ == 0.0 then {v = 0.0} else {v = (wid_/2)*x/ht_}
+  R: Affine(h, v,Point,C);
+  L: Affine(h,-v,Point,C);
+  if x == 0.0 then {t = 1} else {t = ht_/x}
+  Rx: Point + (R-P)*t
+  Lx: Point + (L-P)*t
+  Px: (Point + Lx + Rx)/3
+  if distancx(Px,Point) < distancx(P,Point) then { Px: P }
+  if ht_ == 0.0 then {y = 0} else {y = ht_-po+ltu_*wid_/ht_/4}
+  if $5==0 then { markn(P,L,R,Lx,Rx) }
+  if $5==1 then { markn(P,L,R,Lx,Rx) }
+  if $5==3 then { markn(P,Lx,Rx,Px) }
+  ] with .Point at $1.start }
+
+define ArcCtr { #(AA,PP,CC,ccw,Rt)
+  A_ctr: $1-($2)
+  C_ctr: $3-($2)
+  rsq_ctr = C_ctr.x^2+C_ctr.y^2
+  asq_ctr = A_ctr.x^2+A_ctr.y^2
+  if (asq_ctr==0) || (rsq_ctr==0) then { Rt: ($3) } \
+  else {
+    s_ctr = (A_ctr.x*C_ctr.x+A_ctr.y*C_ctr.y)/(sqrt(asq_ctr*rsq_ctr))*($4)
+    Q: (sqrt(1-s_ctr^2),s_ctr)
+    br_ctr = sqrt(max(0,1-asq_ctr/(rsq_ctr*4)))
+    Rt: Affine(br_ctr*C_ctr.x,br_ctr*C_ctr.y,($1+$2)/2,Q)
+    }
+  $5: Rt
+  }
+
+define ArcCentre { # (A,B,ccw,rsq,R)
+  Q: $1-$2
+  v = Q.x^2+Q.y^2
+  if ((v==0) || (($4)<v/4)) then {s = 0} else { s = sqrt(($4)/v-0.25) }
+  $5: ($1+$2)/2+(-Q.y,Q.x)*s*($3) }
+
+define Cintersect_ {[ #(C1,r1,C2,r2,ccw)
+  D: $1-$3; r1 = $2; r2 = $4
+  cls = D.x^2+D.y^2
+  cq = (cls+r1^2-r2^2)/2
+  f = max(cls*r1^2-cq^2,0)
+  R: (cq/cls between $1 and $3) + (D.y,-D.x)*sqrt(f)/cls*($5)
+  ]}
+
+define markarchead {[ # (Name,wid,ht,thickp,type)
+  C: $1.c
+  Pt: $1.start
+  radius_ = $1.rad
+  angle = cangle($1.start,$1.c,$1.end)
+  if radius_*angle > 0 then {ccw_ = 1} else {ccw_ = -1}
+  radius_ = abs(radius_); rsq = radius_*radius_
+  ht_ = min(2*radius_,abs($3));
+  if $5==0 then {wid_ = min(radius_,abs($2))} else {wid_ = abs($2)};
+  lwi = abs($4)/72*scale
+  wid_ = max(wid_,lwi);
+  if radius_ == 0 then {ha = 0} else {ha = ht_/radius_}
+  Q: (cos(ha), ccw_*sin(ha))
+  Ac: Affine(Pt.x-C.x,Pt.y-C.y,C,Q);
+  Ao: Ac; Pprop(C,Ao,-wid_/2,radius_+wid_/2,radius_);  # Ao, Ai
+  Ai: Ac; Pprop(C,Ai, wid_/2,radius_-wid_/2,radius_);
+# ArcCentre(Ao,Pt,ccw_,rsq,Co)                      # Co, Ci
+# ArcCentre(Ai,Pt,ccw_,rsq,Ci)
+  ArcCtr(Ao,Pt,C,ccw_,Co)                      # Co, Ci
+  ArcCtr(Ai,Pt,C,ccw_,Ci)
+  if wid_==0 then {P:Ao} else {if radius_==0 then {P:C} else {
+    t = min(wid_,lwi)/wid_*ht_/radius_
+    Q: (cos(t),ccw_*sin(t))
+    P: Affine(Pt.x-C.x,Pt.y-C.y,C,Q)
+    }}
+  if $5==0 then {
+     CI: Cintersect_(Co,distancx(Co,Pt)-lwi,\
+                     Ci,distancx(Ci,Pt)+lwi,ccw_) at P
+     Px: CI.R-P
+     if distancx(Px,Pt) > distancx(Ac,Pt) then { Px: Ac }
+     } \
+  else {
+    if radius_ == 0 then {t = 0} else {t = min(pi_/2,ht_/radius_*2/3)}
+    Q: (cos(t),ccw_*sin(t))
+    Px: Affine(Pt.x-C.x,Pt.y-C.y,C,Q);
+    if distancx(Px,Pt) < distancx(P,Pt) then { Px: P }
+#   ArcCentre(Ao,Px,ccw_,rsq,Cox)
+#   ArcCentre(Ai,Px,ccw_,rsq,Cix)
+    ArcCtr(Px,Ao,Co,-ccw_,Cox)
+    ArcCtr(Px,Ai,Ci,-ccw_,Cix)
+    }
+  markn(C,Ac,Ao,Ai,Co,Ci,P)
+  if $5==0 then { markn(Px) }
+  if $5==3 then { markn(Cox,Cix,Px) }
+  ] with .C at $1.c }
+#######################################################
+
+Box: box invis wid 7 ht 9 
+[
+array(head,0,1,3)
+array(thk,0.1*72,0.2*72,0.3*72)
+array(hght,1,2,4,8)
+if 1 then {
+  arad = 0.5; arrowwid = 1.25; linethick = 0.1*72
+  nj = 3
+  for j = 1 to nj do { [ arrowhead = head[j]
+    nii = 4; kt = 1
+    for ii=1 to nii do { [ aht = arrowwid/hght[kt]; kt+=1
+      Arc: arc <-> color "green" \
+            ht aht \
+            from (-1,1)*arad to (1,1)*arad with .c at (0,0)
+      { markarchead(Arc,arrowwid,aht,linethick,head[j])} ]
+      if ii < nii then { move to last [].w + (0,-1.5) }
+      }
+    ];
+    if j < nj then { move right 0.5 }
+    }
+  }
+] with .w at Box.w+(1,0)
+.PE
