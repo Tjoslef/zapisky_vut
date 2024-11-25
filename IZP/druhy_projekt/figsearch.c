@@ -44,7 +44,7 @@ void printing_result(int **array){
 // Allocates a 2x2 2D array for storing the result
 // Returns a pointer to the allocated array, or NULL if allocation fails
 int **alloc_result(){
-    int **result = malloc(SIZE_OF_RESULT * sizeof(int*));
+    int **result = malloc(2 * sizeof(int*));
     if(result == NULL){
     perror("Ivalid malloc in result");
         return NULL;
@@ -77,34 +77,31 @@ void readingFile(FILE *file,obrazek *image){
 unsigned char buffer;
 int check_lenght = 0;
 int counter = 0;
-while(fscanf(file, "%hhu", &buffer) != EOF){
-        if(counter ==  0){
-        image->rows = buffer;
-        counter++;
-        }else if (counter == 1) {
-         image->cols = buffer;
-        counter++;
-        image->bitmap = malloc(image->rows * image->cols *sizeof(unsigned char));
+ if(fscanf(file, "%i %i",&image->rows,&image->cols) != 2){
+            fprintf(stderr,"Invalid");
+            image->bitmap = NULL;
+            return;
+}
+if(image->rows == 0 && image->cols == 0){
+    fprintf(stderr, "Invalid");
+    image->bitmap = NULL;
+    return;
+    }
+image->bitmap = malloc(image->rows * image->cols *sizeof(unsigned char));
             if(image->bitmap == NULL){
-                perror("Invalid");
+                perror("Invalid wrong malloc");
                 return;
             }
-        }else {
-        if(check_lenght >= image->rows * image->cols){
+
+while(fscanf(file, "%hhu", &buffer) != EOF){
+    if(check_lenght >= image->rows * image->cols){
             fprintf(stderr, "Invalid");
             image->bitmap = NULL;
             return;
             }
         image->bitmap[check_lenght++] = buffer;
         counter++;
-    }
-
 }
-if(counter <= 2){
-    fprintf(stderr, "Invalid");
-    image->bitmap = NULL;
-    return;
-    }
 if(check_lenght != image->cols * image->rows){
         fprintf(stderr, "Invalid");
         image->bitmap = NULL;
@@ -152,6 +149,7 @@ for (int i = 0; i < image->rows; i++) {
     }
 
     if(biggest_leng == 0){
+        free_result(position_big_hor,SIZE_OF_RESULT);
         position_big_hor = NULL;
         return position_big_hor;
     }
@@ -197,6 +195,7 @@ for(int i = 0;i < image->cols;i++){
         }
     }
     if(biggest_leng == 0){
+    free_result(position_big_ver,SIZE_OF_RESULT);
     position_big_ver = NULL;
     return  position_big_ver;
     }
@@ -291,6 +290,7 @@ int **position_big_square = alloc_result();
     }
         }
     if(find_one == 0){
+        free_result(position_big_square,SIZE_OF_RESULT);
         position_big_square = NULL;
         return position_big_square;
     }else {
@@ -317,7 +317,6 @@ if(image->bitmap == NULL){
 int ** result = procces_function(image);
 if(result == NULL){
     printf("Not found \n");
-    free_result(result, SIZE_OF_RESULT);
     free_image(image);
     fclose(fileopen);
     return 1;
