@@ -2,7 +2,7 @@ from sympy import symbols, Eq, solve, sin
 import numpy as np
 import matplotlib.pyplot as plt
 import math
-#prvni priklad
+# prvni priklad
 r_1 = 450
 r_2 = 810
 r_3 = 190
@@ -27,12 +27,19 @@ u_r8 = float(r_8) * i
 u_r3 = float(u) - u_r7 - u_r1 - u_r8
 I_r3 = u_r3 / r_3
 print("Prvni priklad")
+print(f"r_56 : {r_56}")
+print(f"r_A1 : {r_A1}")
+print(f"r_B56 : {r_B56}")
+print(f"r_C7 : {r_C7}")
+print(f"u_r7 : {u_r7}")
+print(f"u_r8 : {u_r8}")
+print(f"u_r1 : {u_r1}")
 print(f"celkovy odpor R: {r:.4f}")
 print(f"celkovy proud obvodu I: {i:.4f}")
 print(f"napeti na R3 (u_r3): {u_r3:.4f}")
 print(f"proud v  R3 (i_r3): {I_r3:.4f}")
 
-#druhy priklad
+# druhy priklad
 u_1 = 130
 u_2 = 180
 r_1 = 350
@@ -53,7 +60,7 @@ print("Druheho prikladu:")
 print(f"napeti v R4 (u_r3): {u_r4:.4f}")
 print(f"proud R4 (i_r3): {i_r4:.4f}")
 
-#treti priklad
+# treti priklad
 
 U_A, U_B, U_C = symbols('U_A U_B U_C')
 eq1 = Eq(((130 - U_A) / 47) + ((U_B - U_A) / 28) - ((90 - (U_B - U_A)) / 58) - U_A / 39, 0)
