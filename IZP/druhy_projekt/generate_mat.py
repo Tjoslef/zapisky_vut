@@ -12,6 +12,6 @@ def write_matrix(bitmap, filename="soubor.txt"):
             f.write(' '.join(map(str, row)) + '\n')
 
 
-rows, cols = 10000, 10000
+rows, cols = 1000, 1000
 random_bitmap = generator(rows, cols)
 write_matrix(random_bitmap)

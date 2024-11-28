@@ -20,18 +20,21 @@ const char* ActivityOpt[] = {
 };
 
 // Frees the allocated memory for the image struct, including its bitmap
-void free_image(obrazek *image){
-    free(image->bitmap);
-    free(image);
+void free_image(obrazek **image){
+    free((*image)->bitmap);
+    (*image)->bitmap = NULL;
+    free(*image);
+    *image = NULL;
     }
 // Frees a dynamically allocated 2D array and its rows
 // `array`: The pointer to the 2D array to be freed
 // `row`: The number of rows in the array
-void free_result(int **array,int row){
+void free_result(int ***array,int row){
    for (int i = 0; i < row; i++) {
-        free(array[i]);
-   }
-    free(array);
+        free((*array)[i]);
+    }
+    free(*array);
+    *array = NULL;
 }
 //Printing the result in 2D array
 void printing_result(int **array){
@@ -60,23 +63,27 @@ for(int i = 0;i < SIZE_OF_RESULT;i++){
     }
     return result;
 }
-/* This function reads data from a file pointed to by file and populates the `obrazek` structure.
-
-   *Reads the number of rows and columns from the file and stores them in `image->rows` and `image->cols`.
-   * Allocates a 1D array for the bitmap in image->bitmap based on the dimensions.
-   *  beacuse we allocates 1D array to get to columns we have to multiply always be numbers of rows
-      and add number of cols
-   * Reads bitmap data into the allocated array.
-   * Validates that the total number of bitmap elements matches the specified dimensions.
-   * If any errors occur (invalid dimensions, memory allocation failure, or mismatched data),
-   * it print an error and sets image->bitmap to NULL.
-
-   Parameters: pointer to file, pointer to obrazek struct
-*/
+/*
+ * This function reads data from a file and populates the `obrazek` structure.
+ *
+ * It first reads two integers from the file, which represent the dimensions
+ * of the image matrix (rows and columns), and assigns them to `image->rows`
+ * and `image->cols`.
+ *
+ * It then allocates a 1D array for the bitmap based on the dimensions and
+ * populates it by reading the remaining data from the file.
+ *
+ * During reading, it count number and check if it maches the expected dimensions.
+ * If any validation fails, the function prints an error and sets `image->bitmap`
+ * to NULL.
+ *
+ * Parameters:
+ * - FILE *file: Pointer to the file to read from.
+ * - obrazek *image: Pointer to the `obrazek` structure to populate.
+ */
 void readingFile(FILE *file,obrazek *image){
 unsigned char buffer;
 int check_lenght = 0;
-int counter = 0;
  if(fscanf(file, "%i %i",&image->rows,&image->cols) != 2){
             fprintf(stderr,"Invalid");
             image->bitmap = NULL;
@@ -100,7 +107,6 @@ while(fscanf(file, "%hhu", &buffer) != EOF){
             return;
             }
         image->bitmap[check_lenght++] = buffer;
-        counter++;
 }
 if(check_lenght != image->cols * image->rows){
         fprintf(stderr, "Invalid");
@@ -112,15 +118,16 @@ if(check_lenght != image->cols * image->rows){
  * Finds the longest horizontal line of 1s in the bitmap of the given `obrazek` struct.
  * Allocates a 2D array using alloc_result to store the start and end coordinates
  * of the line. Iterates through each row, counting consecutive 1s and updating the
- * result if a longer line is found. If no line is found set position_big_hor equal
- * to`NULL`.
+ * result if a longer line is found. If no line is found on position_big_hor it call
+ * function free_result and set position_big_hor equal to`NULL`.
  *
  * Parameters:
  * - image: Pointer to the obrazek struct containing the bitmap.
  *
  * Returns:
  * - A 2x2 2D array with the coordinates of the longest line, or `NULL` if none exists.
- */int **hline(obrazek *image){
+ */
+int **hline(obrazek *image){
 int biggest_leng = 0;
 int **position_big_hor = alloc_result();
 for (int i = 0; i < image->rows; i++) {
@@ -149,7 +156,7 @@ for (int i = 0; i < image->rows; i++) {
     }
 
     if(biggest_leng == 0){
-        free_result(position_big_hor,SIZE_OF_RESULT);
+        free_result(&position_big_hor,SIZE_OF_RESULT);
         position_big_hor = NULL;
         return position_big_hor;
     }
@@ -195,7 +202,7 @@ for(int i = 0;i < image->cols;i++){
         }
     }
     if(biggest_leng == 0){
-    free_result(position_big_ver,SIZE_OF_RESULT);
+    free_result(&position_big_ver,SIZE_OF_RESULT);
     position_big_ver = NULL;
     return  position_big_ver;
     }
@@ -212,14 +219,16 @@ for(int i = 0;i < image->cols;i++){
  * performing a backtracking check.
  *
  * The result is stored in a 2D array (allocated by the `alloc_result` function),
- *
  * Parameters:
  * - `image`: A pointer to the `obrazek` struct containing the bitmap (1D array).
  *
  * Returns:
  * - A 2x2 2D array containing the coordinates of the largest square found:
  *   If no square is found, the function returns `NULL`.
- */int **square(obrazek *image){
+ *   If no square is found it calls function free_result on position_big_square
+ * and set it equal to NULL
+ */
+int **square(obrazek *image){
 int biggest_leng = 0;
 int find_one = 0; //variable checking if anything was found
 int **position_big_square = alloc_result();
@@ -228,9 +237,11 @@ int **position_big_square = alloc_result();
             if(image->bitmap[i * image->cols + j] == 1){
             int side_lenght = 1;
             int can_expand = 1;
-            while (can_expand && i + side_lenght < image->rows && j + side_lenght < image->cols) {
+            while (can_expand && i + side_lenght < image->rows
+                    && j + side_lenght < image->cols) {
                     for (int k = 0; k <= side_lenght; k++) {
-                            if (image->bitmap[i * image->cols + j + k] != 1 || image->bitmap[(i + k) * image->cols+ j] != 1) {
+                            if (image->bitmap[i * image->cols + j + k] != 1 ||
+                            image->bitmap[(i + k) * image->cols+ j] != 1) {
                             can_expand = 0;
                             break;
                         }
@@ -239,7 +250,7 @@ int **position_big_square = alloc_result();
                         side_lenght++;
                     }
                 }
-            /*start of backtracking if the side equal to 1 it doesnt make sence
+            /*start of backtracking if the side is equal to 1 it doesnt make sence
             * to do backtracking so will just check with biggest_leng
             */
             if(side_lenght != 1){
@@ -254,8 +265,10 @@ int **position_big_square = alloc_result();
                         * - 'side_length' determines the maximum square size.
                         * - 'backwalk' handles the backtracking step.
                          */
-                            if (image->bitmap[(i + side_lenght - 1 -backwalk) * image->cols + j + k] != 1
-                                || image->bitmap[(i + k) * image->cols + j + side_lenght - 1- backwalk] != 1) {
+                            if (image->bitmap[(i + side_lenght - 1 -backwalk)
+                                * image->cols + j + k] != 1
+                                || image->bitmap[(i + k) * image->cols + j
+                                + side_lenght - 1- backwalk] != 1) {
                                 is_ok = 0;
                             break;
                         }
@@ -280,7 +293,9 @@ int **position_big_square = alloc_result();
                 position_big_square[1][0] = i + biggest_leng;
                 position_big_square[1][1] = j + biggest_leng;
                 }
-            }else if (biggest_leng == 0) {
+            }else if (side_lenght > biggest_leng) {
+                biggest_leng = side_lenght;
+                find_one = biggest_leng;
                 position_big_square[0][0] = i;
                 position_big_square[0][1] = j;
                 position_big_square[1][0] = i;
@@ -290,7 +305,7 @@ int **position_big_square = alloc_result();
     }
         }
     if(find_one == 0){
-        free_result(position_big_square,SIZE_OF_RESULT);
+        free_result(&position_big_square,SIZE_OF_RESULT);
         position_big_square = NULL;
         return position_big_square;
     }else {
@@ -302,6 +317,11 @@ int **position_big_square = alloc_result();
  * - Reads the image from the file.
  * - Applies the given processing function.
  * - Prints the result and frees all allocated resources (image and result array).
+ *Parameters:
+ * Pointer to open file '*fileopen'
+ * Pointer obrazek struct
+ * Pointer to function which is to be procces and return 2D array
+ *
  *
  * Returns:
  * - 0 on success.
@@ -310,20 +330,22 @@ int **position_big_square = alloc_result();
 int proccesing_image(FILE *fileopen,obrazek *image, int ** (*procces_function)(obrazek *)){
 readingFile(fileopen,image);
 if(image->bitmap == NULL){
-    free_image(image);
+    free_image(&image);
     fclose(fileopen);
     return 1;
     }
-int ** result = procces_function(image);
+int ** result = procces_function(image); //result is 2D array to which is given
+    //parametr procces_function that contains function to call and the result
+    //is store in result variable
 if(result == NULL){
     printf("Not found \n");
-    free_image(image);
+    free_image(&image);
     fclose(fileopen);
     return 1;
     }
 printing_result(result);
-free_result(result, SIZE_OF_RESULT);
-free_image(image);
+free_result(&result, SIZE_OF_RESULT);
+free_image(&image);
 fclose(fileopen);
 return 0;
 }
@@ -361,32 +383,32 @@ size_t ActivityOpt_lenght = sizeof(ActivityOpt) / sizeof(ActivityOpt[0]);
 for(size_t i = 0; i < ActivityOpt_lenght;i++){
     if(strcmp(ActivityOpt[i],argv[1]) == 0)
 switch (i) {
-        case 0:
-            printf("Use one of this option");
+        case 0: //--help case just print out the what to do
+            printf("Use one of this option \n");
             for (size_t i = 0; i < ActivityOpt_lenght; i++) {
                 printf(" %s \n",ActivityOpt[i]);
             }
-            printf("Also give me file where is your image \n");
+            printf("And give me file where is your image for the opration \n");
             break;
-        case 1:
+        case 1: // test case just read a file if is correct print Valid
          readingFile(fileopen, image);
             if(image->bitmap !=  NULL){
                 printf("Valid");
-                free_image(image);
+                free_image(&image);
                 fclose(fileopen);
                 return 0;
                     }
-            free_image(image);
+            free_image(&image);
             fclose(fileopen);
             break;
 
-        case 2:
+        case 2: // hline case call procces_function
                 return proccesing_image(fileopen, image, hline);
 
-        case 3:
+        case 3: // vline case call procces_function
                 return proccesing_image(fileopen, image, vline);
 
-        case 4:
+        case 4: // square case call procces_function
                return proccesing_image(fileopen, image, square);
         default:
             printf("Invalid \n");
