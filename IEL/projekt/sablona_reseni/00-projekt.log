@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/TeX Live for SUSE Linux) (preloaded format=pdflatex 2024.11.9)  23 NOV 2024 22:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/TeX Live for SUSE Linux) (preloaded format=pdflatex 2024.11.9)  9 DEC 2024 22:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**00-projekt
-(./00-projekt.tex
+**/home/tjoslef/skola/zapisky/vut/IEL/projekt/sablona_reseni/00-projekt.tex
+(/home/tjoslef/skola/zapisky/vut/IEL/projekt/sablona_reseni/00-projekt.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
 (./fitiel.cls
@@ -329,9 +329,9 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip53
 )
-(/usr/share/texmf/tex/latex/circuitikz/circuitikz.sty
-Package: circuitikz 2024/02/09{} The CircuiTikz circuit drawing package version
- 1.6.7
+(./packages/circuitikz/circuitikz.sty
+Package: circuitikz 2023/06/23{} The CircuiTikz circuit drawing package version
+ 1.6.3
 
 (/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
@@ -534,33 +534,22 @@ File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfnodeparttextbox=\box61
 )
-(/usr/share/texmf/tex/generic/pgf/modules/pgfmoduleplot.code.tex
-File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)
-(/usr/share/texmf/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+(/usr/share/te023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texmf/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
 Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
 \pgf@nodesepstart=\dimen257
 \pgf@nodesepend=\dimen258
-)
-(/usr/share/texmf/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+) (/usr/share/texmf/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
 Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
-))
-(/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty
-(/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty
-(/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex))
-(/usr/share/texmf/tex/latex/pgf/math/pgfmath.sty
-(/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex))
-(/usr/share/texmf/tex/generic/pgf/utilities/pgffor.code.tex
+)) (/usr/share/texmf/tex/latex/pgf/utilities/pgffor.sty (/usr/share/texmf/tex/latex/pgf/utilities/pgfkeys.sty (/usr/share/texmf/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/usr/share/texmf/tex/latex/pgf/math/pgfmath.sty (/usr/share/texmf/tex/generic/pgf/math/pgfmath.code.tex)) (/usr/share/texmf/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
 \pgffor@iter=\dimen259
 \pgffor@skip=\dimen260
 \pgffor@stack=\toks38
 \pgffor@toks=\toks39
-))
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+)) (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2023-01-15 v3.1.10 (3.1.10)
-
-(/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+ (/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@plot@mark@count=\count302
 \pgfplotmarksize=\dimen261
@@ -581,8 +570,7 @@ File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \tikznumberofchildren=\count304
 \tikznumberofcurrentchild=\count305
 \tikz@fig@count=\count306
-
-(/usr/share/texmf/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+ (/usr/share/texmf/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfmatrixcurrentrow=\count307
 \pgfmatrixcurrentcolumn=\count308
@@ -590,33 +578,24 @@ File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
 \tikz@expandcount=\count310
 
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopat
-hs.code.tex
+(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)))
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.
-code.tex
+))) (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)
-(/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
+) (/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
 File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfarrowinset=\dimen270
 \pgfarrowlength=\dimen271
 \pgfarrowwidth=\dimen272
 \pgfarrowlinewidth=\dimen273
-)
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarybendi
-ng.code.tex
+) (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarybending.code.tex
 File: tikzlibrarybending.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (/usr/share/texmf/tex/generic/pgf/modules/pgfmodulebending.code.tex
 File: pgfmodulebending.code.tex 2023-01-15 v3.1.10 (3.1.10)
-
-(/usr/share/texmf/tex/generic/pgf/modules/pgfmodulenonlineartransformations.cod
-e.tex
+ (/usr/share/texmf/tex/generic/pgf/modules/pgfmodulenonlineartransformations.code.tex
 File: pgfmodulenonlineartransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgftransformnonlinearflatness=\dimen274
-)
-(/usr/share/texmf/tex/generic/pgf/libraries/pgflibrarycurvilinear.code.tex
+) (/usr/share/texmf/tex/generic/pgf/libraries/pgflibrarycurvilinear.code.tex
 File: pgflibrarycurvilinear.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@curvilinear@time@a=\dimen275
 \pgf@curvilinear@length@a=\dimen276
@@ -625,10 +604,7 @@ File: pgflibrarycurvilinear.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgf@curvilinear@length@d=\dimen279
 )
 \pgf@arrows@the@rigidity=\dimen280
-))
-(/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfpu.c
-ode.tex (/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryfpu.code.tex))
-(/usr/share/texmf/tex/generic/circuitikz/pgfcirc.defines.tex
+)) (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfpu.code.tex (/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryfpu.code.tex)) (./packages/circuitikz/pgfcirc.defines.tex
 \pgf@circ@count@a=\count311
 \pgf@circ@count@b=\count312
 \pgf@circ@count@c=\count313
@@ -643,25 +619,21 @@ ode.tex (/usr/share/texmf/tex/generic/pgf/libraries/pgflibraryfpu.code.tex))
 \pgf@circ@Rlen=\dimen289
 \pgf@circ@scaled@Rlen=\dimen290
 \pgfstartlinewidth=\dimen291
-)
-(/usr/share/texmf/tex/generic/circuitikz/pgfcircutils.tex
+) (./packages/circuitikz/pgfcircutils.tex
 \ctikz@scratchbox=\box66
-)
-(/usr/share/texmf/tex/generic/circuitikz/pgfcircpath.tex)
-(/usr/share/texmf/tex/generic/circuitikz/pgfcircshapes.tex)
-(/usr/share/texmf/tex/generic/circuitikz/pgfcircmonopoles.tex)
-(/usr/share/texmf/tex/generic/circuitikz/pgfcircbipoles.tex)
-(/usr/share/texmf/tex/generic/circuitikz/pgfcirctripoles.tex
+) (./packages/circuitikz/pgfcircpath.tex) (./packages/circuitikz/pgfcircshapes.tex) (./packages/circuitikz/pgfcircmonopoles.tex) (./packages/circuitikz/pgfcircbipoles.tex) (./packages/circuitikz/pgfcirctripoles.tex
+\(./packages/circuitikz/pgfcircbipoles.tex)
+(./packages/circuitikz/pgfcirctripoles.tex
 \pgf@circ@res@count=\count314
 )
-(/usr/share/texmf/tex/generic/circuitikz/pgfcircquadpoles.tex)
-(/usr/share/texmf/tex/generic/circuitikz/pgfcircmultipoles.tex)
-(/usr/share/texmf/tex/generic/circuitikz/pgfcirclabel.tex)
-(/usr/share/texmf/tex/generic/circuitikz/pgfcircvoltage.tex
+(./packages/circuitikz/pgfcircquadpoles.tex)
+(./packages/circuitikz/pgfcircmultipoles.tex)
+(./packages/circuitikz/pgfcirclabel.tex)
+(./packages/circuitikz/pgfcircvoltage.tex
 \pgfcirc@labelshift=\dimen292
 )
-(/usr/share/texmf/tex/generic/circuitikz/pgfcirccurrent.tex)
-(/usr/share/texmf/tex/generic/circuitikz/pgfcircflow.tex))
+(./packages/circuitikz/pgfcirccurrent.tex)
+(./packages/circuitikz/pgfcircflow.tex))
 (/usr/share/texmf/tex/latex/siunitx/siunitx.sty
 Package: siunitx 2024-02-15 v3.3.12 A comprehensive (SI) units package
 \l__siunitx_number_uncert_offset_int=\count315
@@ -889,7 +861,7 @@ Package hyperref Info: Link coloring OFF on input line 18.
 
 Package translations Info: no dictionary file `translations-basic-dictionary-cz
 ech.trsl' found. on input line 18.
-<fig/logo_cz.png, id=23, 2713.13625pt x 602.25pt>
+<fig/logo_cz.png, id=7, 2713.13625pt x 602.25pt>
 File: fig/logo_cz.png Graphic file (type png)
 <use fig/logo_cz.png>
 Package pdftex.def Info: fig/logo_cz.png  used on input line 20.
@@ -944,13 +916,13 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 dvips/lm/lm-ec.enc} <./fig/logo_cz.png>] (./01-pr1.tex
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 3.
-<fig/Pr1.pdf, id=41, 542.025pt x 340.27126pt>
+<fig/Pr1.pdf, id=20, 542.025pt x 340.27126pt>
 File: fig/Pr1.pdf Graphic file (type pdf)
 <use fig/Pr1.pdf>
 Package pdftex.def Info: fig/Pr1.pdf  used on input line 3.
 (pdftex.def)             Requested size: 271.01183pt x 170.13521pt.
 </home/tjoslef/skola/zapisky/vut/IEL/projekt/sablona_reseni/fig/priklad1a.png, 
-id=42, 401.5pt x 260.975pt>
+id=21, 401.5pt x 260.975pt>
 File: /home/tjoslef/skola/zapisky/vut/IEL/projekt/sablona_reseni/fig/priklad1a.
 png Graphic file (type png)
 <use /home/tjoslef/skola/zapisky/vut/IEL/projekt/sablona_reseni/fig/priklad1a.p
@@ -959,13 +931,13 @@ Package pdftex.def Info: /home/tjoslef/skola/zapisky/vut/IEL/projekt/sablona_re
 seni/fig/priklad1a.png  used on input line 8.
 (pdftex.def)             Requested size: 435.32419pt x 282.97974pt.
 </home/tjoslef/skola/zapisky/vut/IEL/projekt/sablona_reseni/fig/priklad1b.png, 
-id=43, 321.2pt x 281.05pt>
+id=22, 321.2pt x 281.05pt>
 File: /home/tjoslef/skola/zapisky/vut/IEL/projekt/sablona_reseni/fig/priklad1b.
 png Graphic file (type png)
 <use /home/tjoslef/skola/zapisky/vut/IEL/projekt/sablona_reseni/fig/priklad1b.p
 ng>
 Package pdftex.def Info: /home/tjoslef/skola/zapisky/vut/IEL/projekt/sablona_re
-seni/fig/priklad1b.png  used on input line 18.
+seni/fig/priklad1b.png  used on input line 19.
 (pdftex.def)             Requested size: 338.5863pt x 296.27338pt.
  [2{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/e
 nc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc} <./fi
@@ -973,12 +945,12 @@ g/Pr1.pdf> </home/tjoslef/skola/zapisky/vut/IEL/projekt/sablona_reseni/fig/prik
 lad1a.png>]) [3{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc} </home/tjosl
 ef/skola/zapisky/vut/IEL/projekt/sablona_reseni/fig/priklad1b.png>] (./02-pr2.t
 ex
-<fig/Pr2.pdf, id=64, 551.05875pt x 151.56625pt>
+<fig/Pr2.pdf, id=46, 551.05875pt x 151.56625pt>
 File: fig/Pr2.pdf Graphic file (type pdf)
 <use fig/Pr2.pdf>
 Package pdftex.def Info: fig/Pr2.pdf  used on input line 3.
 (pdftex.def)             Requested size: 275.52869pt x 75.78293pt.
-</home/tjoslef/skola/zapisky/vut/IEL/projekt/priklad2.png, id=65, 421.575pt x 1
+</home/tjoslef/skola/zapisky/vut/IEL/projekt/priklad2.png, id=47, 421.575pt x 1
 80.675pt>
 File: /home/tjoslef/skola/zapisky/vut/IEL/projekt/priklad2.png Graphic file (ty
 pe png)
@@ -988,7 +960,7 @@ ng  used on input line 9.
 (pdftex.def)             Requested size: 290.22105pt x 124.38191pt.
 ) [4 <./fig/Pr2.pdf> </home/tjoslef/skola/zapisky/vut/IEL/projekt/priklad2.png>
 ] (./03-pr3.tex
-<fig/Pr3.pdf, id=76, 514.92375pt x 392.46625pt>
+<fig/Pr3.pdf, id=59, 514.92375pt x 392.46625pt>
 File: fig/Pr3.pdf Graphic file (type pdf)
 <use fig/Pr3.pdf>
 Package pdftex.def Info: fig/Pr3.pdf  used on input line 3.
@@ -999,57 +971,79 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 3
  (/usr/share/texmf/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-<fig/Pr4.pdf, id=86, 396.48125pt x 293.095pt>
+<fig/Pr4.pdf, id=70, 396.48125pt x 293.095pt>
 File: fig/Pr4.pdf Graphic file (type pdf)
 <use fig/Pr4.pdf>
 Package pdftex.def Info: fig/Pr4.pdf  used on input line 3.
 (pdftex.def)             Requested size: 198.24013pt x 146.54713pt.
-) [6{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc} <./fig/Pr4.pdf>] (./05-pr5
-.tex
-<fig/Pr5.pdf, id=98, 240.9pt x 240.9pt>
+</home/tjoslef/skola/zapisky/vut/IEL/projekt/sablona_reseni/fig/priklad4.png, i
+d=71, 822.07124pt x 600.74437pt>
+File: /home/tjoslef/skola/zapisky/vut/IEL/projekt/sablona_reseni/fig/priklad4.p
+ng Graphic file (type png)
+<use /home/tjoslef/skola/zapisky/vut/IEL/projekt/sablona_reseni/fig/priklad4.pn
+g>
+Package pdftex.def Info: /home/tjoslef/skola/zapisky/vut/IEL/projekt/sablona_re
+seni/fig/priklad4.png  used on input line 10.
+(pdftex.def)             Requested size: 435.32419pt x 318.118pt.
+ [6{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc} <./fig/Pr4.pdf> </home/tjos
+lef/skola/zapisky/vut/IEL/projekt/sablona_reseni/fig/priklad4.png>]) [7] (./05-
+pr5.tex
+<fig/Pr5.pdf, id=91, 240.9pt x 240.9pt>
 File: fig/Pr5.pdf Graphic file (type pdf)
 <use fig/Pr5.pdf>
 Package pdftex.def Info: fig/Pr5.pdf  used on input line 4.
 (pdftex.def)             Requested size: 120.44969pt x 120.44969pt.
- [7 <./fig/Pr5.pdf>]
-</home/tjoslef/skola/zapisky/vut/IEL/projekt/graf5priklad.png, id=114, 722.7pt 
+ [8 <./fig/Pr5.pdf>] [9]
+</home/tjoslef/skola/zapisky/vut/IEL/projekt/graf5priklad.png, id=111, 722.7pt 
 x 433.62pt>
 File: /home/tjoslef/skola/zapisky/vut/IEL/projekt/graf5priklad.png Graphic file
  (type png)
 <use /home/tjoslef/skola/zapisky/vut/IEL/projekt/graf5priklad.png>
 Package pdftex.def Info: /home/tjoslef/skola/zapisky/vut/IEL/projekt/graf5prikl
-ad.png  used on input line 99.
+ad.png  used on input line 115.
 (pdftex.def)             Requested size: 435.32419pt x 261.19295pt.
- [8] [9 </home/tjoslef/skola/zapisky/vut/IEL/projekt/graf5priklad.png>]
-(./00-projekt.aux)
+) [10 </home/tjoslef/skola/zapisky/vut/IEL/projekt/graf5priklad.png>]
+(./06-tab.tex) [11
+
+] (./00-projekt.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
-Package rerunfilecheck Info: File `00-projekt.out' has not changed.
-(rerunfilecheck)             Checksum: 6E9AACBE4A13CAEB9298FCDA7836AC3D;388.
- ) ) 
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `00-projekt.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `00-projekt.out':
+(rerunfilecheck)             Before: D41D8CD98F00B204E9800998ECF8427E;0
+(rerunfilecheck)             After:  B45AB4D0BDBDCDD24D736D53170FF07C;611.
+ ) 
 Here is how much of TeX's memory you used:
- 43741 strings out of 475153
- 1040706 string characters out of 5770014
+ 43196 strings out of 475153
+ 1023996 string characters out of 5770014
  1935187 words of memory out of 5000000
- 65409 multiletter control sequences out of 15000+600000
+ 64855 multiletter control sequences out of 15000+600000
  603597 words of font info for 72 fonts, out of 8000000 for 9000
  475 hyphenation exceptions out of 8191
- 114i,11n,121p,543b,921s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/
-type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb><
-/usr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/sh
-are/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.p
-fb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/t
-ype1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb>
-Output written on 00-projekt.pdf (9 pages, 384657 bytes).
+ 114i,11n,121p,606b,921s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/ty
+pe1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></u
+sr/share/texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/p
+ublic/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/shar
+e/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm
+/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmr6.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmsy6.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb>
+Output written on 00-projekt.pdf (11 pages, 471706 bytes).
 PDF statistics:
- 202 PDF objects out of 1000 (max. 8388607)
- 142 compressed objects within 2 object streams
- 20 named destinations out of 1000 (max. 500000)
- 95 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 200 PDF objects out of 1000 (max. 8388607)
+ 136 compressed objects within 2 object streams
+ 26 named destinations out of 1000 (max. 500000)
+ 68 words of extra memory for PDF output out of 10000 (max. 10000000)
 

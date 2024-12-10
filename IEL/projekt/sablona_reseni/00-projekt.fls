@@ -297,10 +297,10 @@ INPUT ./00-projekt.out
 INPUT ./00-projekt.out
 INPUT 00-projekt.out
 INPUT 00-projekt.out
-OUTPUT 00-projekt.pdf
 INPUT ./00-projekt.out
 INPUT ./00-projekt.out
 OUTPUT 00-projekt.out
+OUTPUT 00-projekt.pdf
 INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmr17.tfm
 INPUT ./fig/logo_cz.png
 INPUT ./fig/logo_cz.png
@@ -347,7 +347,6 @@ INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmbx12.tfm
 INPUT ./00-projekt.toc
 INPUT ./00-projekt.toc
 INPUT 00-projekt.toc
-INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmbx10.tfm
 OUTPUT 00-projekt.toc
 INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc
@@ -415,6 +414,12 @@ INPUT ./fig/Pr4.pdf
 INPUT ./fig/Pr4.pdf
 INPUT ./fig/Pr4.pdf
 INPUT ./fig/Pr4.pdf
+INPUT /usr/share/texmf/fonts/tfm/public/lm/ec-lmbx10.tfm
+INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/sablona_reseni/fig/priklad4.png
+INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/sablona_reseni/fig/priklad4.png
+INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/sablona_reseni/fig/priklad4.png
+INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/sablona_reseni/fig/priklad4.png
+INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/sablona_reseni/fig/priklad4.png
 INPUT /usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc
 INPUT ./05-pr5.tex
 INPUT ./05-pr5.tex
@@ -430,6 +435,9 @@ INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/graf5priklad.png
 INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/graf5priklad.png
 INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/graf5priklad.png
 INPUT /home/tjoslef/skola/zapisky/vut/IEL/projekt/graf5priklad.png
+INPUT ./06-tab.tex
+INPUT ./06-tab.tex
+INPUT 06-tab.tex
 INPUT 00-projekt.aux
 INPUT ./00-projekt.out
 INPUT ./00-projekt.out
