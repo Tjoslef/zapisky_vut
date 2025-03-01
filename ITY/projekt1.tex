@@ -1,0 +1,107 @@
+\documentclass[twocolumn, 10pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[czech]{babel}
+\usepackage{ulem,alltt,csquotes,xcolor,enumitem,hyperref} % imports amsmath
+\usepackage[left=1.8cm, top=1.8cm, right=1.8cm, bottom=1.8cm, textwidth=18.2cm, textheight=24.1cm]{geometry}
+\title{Typografie a publikovani -- 1.projekt}
+\author{Petr Veigend}
+\author{Petr Veigend \\ \texttt{veigend@fit.vut.cz}}
+\begin{document}
+\maketitle
+\section{Hladka Sazba}
+Hladká sazba používá jeden stupeň, druh a řez písma. Sází
+se na stránku s pevně stanovenou šířkou. Skládá se z od\-
+stavců. Odstavec končí východovou řádkou. Věty nesmějí
+začínat číslicí.
+
+Zvýraznění barvou, podtržením, ani změnou písma se
+v odstavcích nepoužívá. Hladká sazba je určena především
+pro delší texty, jako je beletrie. Porušení konzistence sazby
+působí v textu rušivě a unavuje čtenářův zrak.
+\section{Smíšená sazba}
+ Smíšená sazba má o něco volnější pravidla. Klasická hladká
+sazba se doplňuje o další řezy písma pro zvýraznění důle\-
+žitých pojmů. Existuje \enquote{pravidlo}:
+\begin{quotation}
+    Čím více \textsc{druhů}, \textit{řezů }, {\tiny velikostí}, \textcolor[rgb]{0, 1, 0.098}{barev}
+    a jiných \texttt{efektů} použijeme, \uline{tím profesionálněji}
+bude {\fontfamily{pzc}\selectfont{dokument} }vypadat. Čtenář tím bude {\Large \textbf{vždy
+    nadšen!}}
+\end{quotation}
+\textsc{Tímto pravidlem se nesmíte \textbf{\uline{nikdy} řídit}}.Pří\-
+liš časté zvýrazňování textových elementů a změny{\tiny velikostí}
+písma jsou známkou \textbf{amatérismu autora} a působí texttt{velmi
+rušivě.}Dobře navržený dokument je
+\uline{decentní, ne chaotický}.
+
+Důležitým znakem správně vysázeného dokumentu je
+konzistence--například \textbf{tučný řez} písma bude vyhrazen
+pouze pro klíčová slova, \textit{kurzíva} pouze pro doposud ne\-
+známé pojmy a nebude se to míchat. Kurzíva nepůsobí tak
+rušivě a používá se častěji. V \LaTeX u ji sázíme raději pří\-
+kazem \verb|\emph{text}| než \verb|\textit{text}|.
+
+Smíšená sazba se nejčastěji používá pro sazbu vědeckých
+článků a technických zpráv. U delších dokumentů vědec\-
+kého či technického charakteru je zvykem vysvětlit význam
+různých typů zvýraznění v úvodní kapitole.
+\section{Další rady:}
+\begin{itemize}[left=0pt, label=•]
+    \item Nadpis nesmí končit dvojtečkou a nesmí obsahovat od\-
+        kazy na obrázky, citace, poznámky pod čarou, \ldots
+    \item Nadpisy, číslování a odkazy na číslované elementy musí
+        být sázeny příkazy k tomu určenými. Číslování sekcí
+        tohoto dokumentu je zajištěno příkazem \verb|\section|.
+\pagebreak
+    \item
+        Poznámky pod čarou\footnotemark~používejte opravdu střídmě.
+        (Šetřete i s textem v závorkách.)
+    \item
+        Bezchybným pravopisem a sazbou dáváme najevo úctu
+        ke čtenáři. Odbytý text s chybami bude čtenář právem
+        považovat za nedůvěryhodný.
+    \item
+        Výčet (v \LaTeX sázíme např. pomocí itemize) ani
+        obrázek nesmí začínat hned pod nadpisem a nesmí
+        tvořit celou kapitolu.
+    \item
+        Nepoužívejte velké množství malých obrázků. Zvažte,
+        zda je nelze seskupit
+\end{itemize}
+\section{České odlišnosti}
+    Česká sazba se oproti okolnímu světu v některých aspek\-
+    tech mírně liší. Jednou z odlišností je sazba uvozovek. Uvo\-
+    zovky se v češtině používají převážně pro zobrazení přímé
+    řeči, zvýraznění přezdívek a ironie. V češtině se používají
+    uvozovky typu \enquote{9966} místo “anglických uvozovek”. Lze je
+    sázet připravenými příkazy nebo při použití UTF-8 kódo\-
+    vání i přímo.
+
+    Ve smíšené sazbě se řez uvozovek řídí řezem prvního uvo\-
+    zovaného slova. Pokud je uvozována celá věta, sází se kon\-
+    cová tečka před uvozovku, pokud se uvozuje slovo nebo část
+    věty, sází se tečka za uvozovku.
+
+    Druhou odlišností je pravidlo pro sázení konců řádků.
+    V české sazbě do bloku by řádek neměl končit osamo\-
+    cenou jednopísmennou předložkou nebo spojkou. Spojkou
+
+    \enquote{a} končit může pouze při sazbě do šířky 25 liter. Abychom
+    \LaTeX u zabránili v sázení osamocených předložek, spoju\-
+    jeme je s následujícím slovemi \textit{nezlomitelnou mezerou} Tu
+    sázíme pomocí znaku \verb|~| (vlnka, tilda). Pro systematické
+    doplnění vlnek slouží volně šiřitelný program vlna od pana
+    Olšáka\footnotemark, který je vhodné si v rámci projektu vyzkoušet.
+
+    Balíček \texttt{fontenc} slouží ke korektnímu kódovaní znaků
+    s diakritikou, aby bylo možno v textu vyhledávat a kopí\-
+    rovat z něj.
+\section{Závěr}
+Tento dokument schválně obsahuje několik typograﬁckých
+prohřešků. Sekce 2 a 3 obsahují typograﬁcké chyby. V kon\-
+textu celého textu je jistě snadno najdete. Je dobré znát
+možnosti LATEXu, ale je také nutné vědět, kdy je nepoužít.
+\footnotetext[1]{Příliš mnoho poznámek pod čarou čtenáře zbytečně rozptyluje.}
+\footnotetext[2]{\href{http://petr.olsak.net/ftp/olsak/vlna/}{Viz http://petr.olsak.net/ftp/olsak/vlna/}}
+\end{document}
