@@ -1,0 +1,93 @@
+V tomhle souboru je seznam pojmů, na které jsem v IUS narazil. Doporučuji si je třeba vytisknout a každý z pojmů zkusit vysvětlit. Někde by tu k tomu měly být k dispozici moje poznámky z evernote.
+
+Datum vytvoření: prosinec 2022
+Autor: Vít Pavlík
+
+
+SW inženýrství
+SW krize
+problémy při vývoji SW:
+    • složitost
+    • přizpůsobivost
+    • nestálost
+    • dokumentace
+    • stárnutí SW
+    • práce v týmu
+    • syndrom 90 % hotovo
+    • syndrom druhého systému
+SW produkt
+kvalita SW produktu
+vlastnosti SW produktu:
+    • správnost
+    • spolehlivost
+    • dostupnost
+    • efektivnost
+    • použitelnost
+    • přenositelnost
+    • znovupoužitelnost
+    • interoperabilita
+    • udržovatelnost
+    • pružnost (modifikovatelnost)
+    • testovatelnost
+    • dokumentovanost
+    • bezpečnost
+proces vývoje SW
+studie vhodnosti/analýza rizik
+dekompozice
+abstrakce
+prototyp
+data flow diagram
+OCL
+statické/dynamické ověřování
+metoda černé skříňky
+metoda bílé skříňky
+mutační testování
+alfa/beta testování
+strategie testování:
+    • zdola-nahoru
+    • shora-dolů
+    • sendvičové
+    • jednofázové
+    • porovnáváním
+požadavky:
+    • obchodní
+    • funkcionální
+    • nefunkcionální
+diagram aktivit
+stavový diagram
+dědičnost
+zapouzdření
+doménový model
+operace/metoda objektu
+polymorfismus
+problémy při specifikaci požadavků
+    • vyřazení
+    • deformace, zkreslení
+    • zobecnění
+diagram seskupení (package diagram)
+
+
+Modely životního cyklu SW
+    • lineární/iterativní
+    • vodopádový
+    • V model
+    • W model
+    • obecný iterativní
+    • inkrementální
+    • spirálový
+
+Metodiky vývoje SW
+    • RUP
+    • RAD
+    • UP
+    • heavy-weight/agilní
+    • extrémní programování
+
+Random věci co mi jsou nejasné:
+    • návrhové vzory abstract factory a command
+    • architektonické vzory
+        ◦ model view controller
+        ◦ vrstvená architektura
+        ◦ klient-server
+    • komplexní model systému (ius06)
+        ◦ model architektury

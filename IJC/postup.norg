@@ -1,0 +1,59 @@
+
+
+TODO error.c a error.h na zvládání chyb
+** Implementovat funkce
+
+    void warning(const char *fmt, ...)
+
+    void error_exit(const char *fmt, ...)
+    ** Parametry funkcí jako printf()
+    ** Tisk do stderr (vfprintf)
+    ** Formát výstupu
+
+    "Warning: " + chybové hlášení (warning)
+
+    "Error: " + chybové hlášení (error_exit)
+    ** error_exit ukončí program (exit(1))
+    ** Použít <stdarg.h>
+
+
+
+TODO Implementace bitmapy
+** Typ: unsigned long []
+** Kompatibilní s 32/64bit architekturou
+** V bitset.h definovat
+
+    typedef <DOPLNIT> bitset_t;
+
+    typedef unsigned long bitset_index_t;
+    ** Makra (s USE_INLINE)
+
+    bitset_create(jmeno_pole, velikost)
+
+    bitset_alloc(jmeno_pole, velikost)
+
+    bitset_free(jmeno_pole)
+
+    bitset_size(jmeno_pole)
+
+    bitset_fill(jmeno_pole, bool_výraz)
+
+    bitset_setbit(jmeno_pole, index, bool_výraz)
+
+    bitset_getbit(jmeno_pole, index)
+    ** Použít static_assert (velikost pole)
+    ** Použít assert (max. velikost pole)
+    ** Chyba alokace: "bitset_alloc: Chyba alokace paměti"
+
+TODO eratosthenes.c
+** Implementovat Eratosthenovo síto
+** Použít bitmapu
+** Index = číslo (vzestupně)
+** Index 0 = velikost
+** Od indexu 1
+
+    Bit 1 = prvočíslo
+
+    Bit 0 = není prvočíslo
+
+

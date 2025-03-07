@@ -1,0 +1,149 @@
+nejcastejsi otazky:
+Životní cyklus softwaru!!
+    Popis životního cyklu softwaru, modely (spirálový, RUP, waterfall, XP).
+    Milníky a fáze softwarového vývoje.
+ER diagramy
+    Tvorba ER diagramů pro různé systémy (vysoká škola, firmy, volby, IT služby).
+Spirálový modeli
+    Popis, vlastnosti, cykly a milníky, výhody a nevýhody.
+Metodiky-RUP, XP, scrum, crystal, rad
+ typy metodik - heavy-lightweight, prediktivni-adaptivni, process-oriented, people-oriented
+
+Prototypování
+    Účel, princip, výhody a nevýhody prototypování.
+Funkční a nefunkční požadavky
+    Vysvětlení a příklady uživatelských a obchodních požadavků.
+Testování
+    Třídy ekvivalence, black-box, white-box testování, testování porovnáváním.
+Diagramy
+    Překreslování a popis diagramů tříd, sekvenčních a komunikačních diagramů.
+Průběžná integrace (CI)
+    Vysvětlení pojmu CI, jeho účel a využití.
+RUP (Rational Unified Process)
+    Fáze, milníky a popis jednotlivých cyklů.
+Dědičnost a polymorfismus
+    Vysvětlení v kontextu objektově orientovaného programování.
+Návrhové vzory
+    Popis konkrétních návrhových vzorů (MVC, Observer, Command).
+Validace a verifikace
+    Rozdíl mezi validací a verifikací, praktické příklady.
+Refaktorizace
+    Co to je a jaký má význam.
+Scrum a agilní metodiky
+    Popis Scrumu, jeho fází a iterací
+Studie vhodnosti = odhad, zda je reálné vytvořit systém s danými vlastnostmi za daných podmínek,!!
+IUS otazky
+15.12
+-Co je to softwerove inzenyrstvi
+-Proc tvorime software
+-Softwarova krize
+-Hlavni cile SW inzenyrstvi
+-Problemy pri vyvoji softwaru
+-Metodiky vyvoje softwaru
+-Proces vyvoje softwaru
+-Dekompozice
+-Etapy zivotniho cyklu
+-Model zivotniho cyklu
+-Vodopad
+-pristup k analyze a navrhu
+-Zakladni konceptualni model
+- STD
+- DFD
+-Datove modelovani
+-Diagram trid
+-Vztahy mezi tridy
+-Dedicnost a Polymorfismus a Prepisovani!!
+-Asociace!!
+-Agregace!!
+-Kompozice!!
+-Realizace!!
+-Zavislost!!
+-Diagram seskupeni
+-Diagram Objektu
+16.12
+-Diagram Aktivivit
+-Stavovy diagram
+-Diagram interakce
+-Tvorba analitickych modelu
+-Tvorba navrhovych modelu
+-Omezeni a dotazy nad modely
+-OCL!!
+-Typy omezeni
+-UML
+-Stavebni bloky UML
+-Ornamenty
+-Objektove orientovany pristup
+-Objekt
+-Rozhrani objektu
+-Trida
+-Abstrakce
+-Zapouzdreni(Encapsulation)
+-Principi objektove orientovaneho navrhu
+-Principy navrhu balicku
+-Rozhrani vs implementace
+-Navrhove vzory!!
+ -deleni
+ -Abstract Factory!!
+ -Command!!
+ 17.12
+-Architektonicke vzory!!
+- Model-View-Controlle!!
+- Vrtvena architektura!!
+- Klient -  Server!!
+-Scenar
+ -Modelovani dat/ Modelovani funkcnich pozadavku
+ -Analyza a specifikace pozadavku
+ -Studie vhodnosti!!!
+ -Stakeholders!!
+ -Typ pozadavku
+ -Nefuncni/funkci pozadavky!!
+ -Metody ziskavani informaci
+ -Problemy pri specifikaci pozadavku/graf
+ -Postup pri ziskavani informaci
+ -Prototypovani!!!
+ -Prototyp!!
+ -Jaka ma byt specifikace
+ -Konceptualni modely
+ - Konceptualni trida
+ -CRC Cards!!
+ -implementace softwaru
+ -Valstnosti softwarového produktu
+ 20.12
+ O co se zajimave u jazyla kdyz programujeme ve velkem
+ Paradimata Programovacihc jazyku
+ Staticky vs Dynamicky typovaje Jazyky!!
+ Silne typovane vs Slabe typovane!!
+ Typy implementace
+ Validace vs Veritifikace!!
+ Typy overeni
+ Code Review
+ formalni veritifikace
+ Testovani!!!
+ Vlastnosti testovaciho kriteria
+ Techniky testovani
+ trida ekvivalence!!
+ mutacni testovani!!
+ strategie testovani!!
+ testovani porovnáváním!!
+ akceptacni testovani!!
+ Alfa vs Beta testovani
+21.12
+V-model!!
+W-model!!
+iterativni modely zivotniho cyklu!!
+spiralovy model !!
+RUR!!
+RAD!!
+heavy weight vs light  weight!!
+prediktivni!!
+adaptivni!!
+people oriented vs process oriented!!
+agilní!!
+Xp!!
+Refaktorizace!!
+Parove programování!!
+Prubezna integrace
+
+
+
+

@@ -1,0 +1,6 @@
+// startPrint
+// extern znamená, že proměnná x je někde definovaná, tak ať si pro ni udělá místo
+extern int x;
+// proměnná x je definovaná tu, jsme spokojení
+int x = 55;
+// stopPrint

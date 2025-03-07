@@ -1,0 +1,29 @@
+*First Level Header
+- Modularita = dekompozice docela velkeho slozenych problemu
+- Modul by mel tvorit jeden uceleny celek
+- Modul je dalsi file.c a casto file.h
+- Modul taky poskytuje rozhrani velice k tomu pomahaji komentare
+- vyhoda je znovupouzitelnost
+- obcast nastavaji problemy s interaci modulu
+- moduly se musi samostatne udrzovat
+- export: mnozina funkci,datovych proste vsechno co chceme  ktere modul poskytuje
+- import: dodavame z modulu z modulu do do file.c
+- hodne nam pomaha delat obektovy soubor z nekolika souboru
+- hlavickove soubory obsahuji deklarace z module propojuje file.c(modul) s dalsim
+  file.c(main) mel by obsahovat #ifndef (if not define) _prezdivka_souboru
+- pri prvni prekladu se prekladaji jenom v tech ve kterych  nastala zmena
+*Second Level Header
+ -standartni knihovna(libm)
+-dynamicke/staticke knihovny
+  -dynamicke pripona .so/.dll
+  -staticke pripona .a
+-Callback
+    -dostudovat
+-Zasuvne moduly
+    -pri spusteni progrmau jsou nacteny vsechny knihovny zavislosti
+    - musime vedet co chce spustit
+
+    - pri behu programu jsou dynamicky nactene behem behu
+@code clang
+    gcc
+
