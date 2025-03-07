@@ -1,0 +1,21 @@
+# ninja log v6
+1	14	1739997350025862542	googletest-prefix/src/googletest-stamp/googletest-mkdir	1194ad89f8744c6b
+1	14	1739997350025862542	/home/tjoslef/skola/vut/IVS/ivs_test_demo_2025/build/googletest/googletest-prefix/src/googletest-stamp/googletest-mkdir	1194ad89f8744c6b
+14	2226	1739997352236851183	googletest-prefix/src/googletest-stamp/googletest-download	526f1e08ce3cb9d
+14	2226	1739997352236851183	/home/tjoslef/skola/vut/IVS/ivs_test_demo_2025/build/googletest/googletest-prefix/src/googletest-stamp/googletest-download	526f1e08ce3cb9d
+2226	2641	1739997352237851178	googletest-prefix/src/googletest-stamp/googletest-update	f6eb49267283665f
+2226	2641	1739997352237851178	/home/tjoslef/skola/vut/IVS/ivs_test_demo_2025/build/googletest/googletest-prefix/src/googletest-stamp/googletest-update	f6eb49267283665f
+2641	2651	1739997352662848995	googletest-prefix/src/googletest-stamp/googletest-patch	df2b7bfd2c0bd49a
+2641	2651	1739997352662848995	/home/tjoslef/skola/vut/IVS/ivs_test_demo_2025/build/googletest/googletest-prefix/src/googletest-stamp/googletest-patch	df2b7bfd2c0bd49a
+2651	2663	1739997352673848938	googletest-prefix/src/googletest-stamp/googletest-configure	f02d260e1ab2b882
+2651	2663	1739997352673848938	/home/tjoslef/skola/vut/IVS/ivs_test_demo_2025/build/googletest/googletest-prefix/src/googletest-stamp/googletest-configure	f02d260e1ab2b882
+2663	2673	1739997352684848881	googletest-prefix/src/googletest-stamp/googletest-build	3487b41b1b33109a
+2663	2673	1739997352684848881	/home/tjoslef/skola/vut/IVS/ivs_test_demo_2025/build/googletest/googletest-prefix/src/googletest-stamp/googletest-build	3487b41b1b33109a
+2673	2684	1739997352694848830	googletest-prefix/src/googletest-stamp/googletest-install	5a1c1634b6ed26b2
+2673	2684	1739997352694848830	/home/tjoslef/skola/vut/IVS/ivs_test_demo_2025/build/googletest/googletest-prefix/src/googletest-stamp/googletest-install	5a1c1634b6ed26b2
+2684	2696	1739997352706848768	googletest-prefix/src/googletest-stamp/googletest-test	705bcfd63e50d49a
+2684	2696	1739997352706848768	/home/tjoslef/skola/vut/IVS/ivs_test_demo_2025/build/googletest/googletest-prefix/src/googletest-stamp/googletest-test	705bcfd63e50d49a
+2696	2712	1739997352722848686	CMakeFiles/googletest-complete	9edf6c4792b986ea
+2696	2712	1739997352722848686	googletest-prefix/src/googletest-stamp/googletest-done	9edf6c4792b986ea
+2696	2712	1739997352722848686	/home/tjoslef/skola/vut/IVS/ivs_test_demo_2025/build/googletest/CMakeFiles/googletest-complete	9edf6c4792b986ea
+2696	2712	1739997352722848686	/home/tjoslef/skola/vut/IVS/ivs_test_demo_2025/build/googletest/googletest-prefix/src/googletest-stamp/googletest-done	9edf6c4792b986ea

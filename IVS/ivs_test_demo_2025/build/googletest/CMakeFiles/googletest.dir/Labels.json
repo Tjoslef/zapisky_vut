@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/tjoslef/skola/vut/IVS/ivs_test_demo_2025/build/googletest/CMakeFiles/googletest"
+		},
+		{
+			"file" : "/home/tjoslef/skola/vut/IVS/ivs_test_demo_2025/build/googletest/CMakeFiles/googletest.rule"
+		},
+		{
+			"file" : "/home/tjoslef/skola/vut/IVS/ivs_test_demo_2025/build/googletest/CMakeFiles/googletest-complete.rule"
+		},
+		{
+			"file" : "/home/tjoslef/skola/vut/IVS/ivs_test_demo_2025/build/googletest/googletest-prefix/src/googletest-stamp/googletest-build.rule"
+		},
+		{
+			"file" : "/home/tjoslef/skola/vut/IVS/ivs_test_demo_2025/build/googletest/googletest-prefix/src/googletest-stamp/googletest-configure.rule"
+		},
+		{
+			"file" : "/home/tjoslef/skola/vut/IVS/ivs_test_demo_2025/build/googletest/googletest-prefix/src/googletest-stamp/googletest-download.rule"
+		},
+		{
+			"file" : "/home/tjoslef/skola/vut/IVS/ivs_test_demo_2025/build/googletest/googletest-prefix/src/googletest-stamp/googletest-install.rule"
+		},
+		{
+			"file" : "/home/tjoslef/skola/vut/IVS/ivs_test_demo_2025/build/googletest/googletest-prefix/src/googletest-stamp/googletest-mkdir.rule"
+		},
+		{
+			"file" : "/home/tjoslef/skola/vut/IVS/ivs_test_demo_2025/build/googletest/googletest-prefix/src/googletest-stamp/googletest-patch.rule"
+		},
+		{
+			"file" : "/home/tjoslef/skola/vut/IVS/ivs_test_demo_2025/build/googletest/googletest-prefix/src/googletest-stamp/googletest-test.rule"
+		},
+		{
+			"file" : "/home/tjoslef/skola/vut/IVS/ivs_test_demo_2025/build/googletest/googletest-prefix/src/googletest-stamp/googletest-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"googletest"
+		],
+		"name" : "googletest"
+	}
+}
