@@ -52,6 +52,7 @@ static inline int bitset_getbit(jmeno_pole, index)
         (error_exit("bitset_getbit: Index out of range"), 0) :
         ((jmeno_pole[1 + (index) / 64] & (1UL << ((index) % 64))) != 0))
 #else
+
 #define bitset_create(jmeno_pole, VELIKOST) \
     static_assert((VELIKOST) > 0, "Bitset size must be greater than 0"); \
     bitset_index_t jmeno_pole##_array[((VELIKOST - 1) / 64) + 1]; \

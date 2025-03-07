@@ -8,7 +8,7 @@ int main(){
   //  double total_t;
     //   start_t = clock();
     //I alloc a array of 000 where first index is number of them
-    bitset_create(jmeno_pole, VELIKOST);
+    bitset_alloc(jmeno_pole, VELIKOST);
     //fill them with 1
     bitset_fill(jmeno_pole, 1);
     bitset_setbit(jmeno_pole, 0,0);
@@ -28,7 +28,7 @@ int main(){
         }
     }
     size_t count = 0;
-    for (size_t i = ((VELIKOST - 1) / 64); i > 0; i--) {
+    for (size_t i = ((jmeno_pole[0] - 1) / 64); i > 0; i--) {
         for (int j = (int)(sizeof(unsigned long) * 8 - 1); j >= 0; j--){
             if((jmeno_pole[i] & (1UL << j)) != 0){
                 size_t index = (i - 1) * 64 + j;
@@ -44,7 +44,7 @@ int main(){
         }
         putchar('\n');
     }
-
+    bitset_free(jmeno_pole);
 /*
 printf("\n");
        end_t = clock();

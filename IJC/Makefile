@@ -3,28 +3,19 @@ CFLAGS = -std=c11 -O2 -Wall -Wextra -Werror -D_GNU_SOURCE -D_DEFAULT_SOURCE
 INLINE =
 32BIT =
 
-ifeq ($(findstring -i,$(MAKECMDGOALS)),-i)
+ifneq ($(findstring inline,$(MAKECMDGOALS)),)
     INLINE = -DUSE_INLINE
 endif
 
-# Find all .c files in the current directory based on arguments
-ifeq ($(MAKECMDGOALS),eratosthenes)
-    SOURCES := eratosthenes.c error.c
-    TARGET := eratosthenes
-endif
+eratosthenes_SOURCES = eratosthenes.c error.c
+steg-decode_SOURCES = ppm.c steg-decode.c error.c
 
-ifeq ($(MAKECMDGOALS),steg-decode)
-    SOURCES := ppm.c steg-decode.c error.c
-    TARGET := steg-decode
-endif
+all: eratosthenes steg-decode
 
-OBJECTS := $(SOURCES:.c=.o)
-OUTPUT_FILE = primes_factors.txt
+eratosthenes: $(eratosthenes_SOURCES:.c=.o)
+	$(CC) $(CFLAGS) $(INLINE) $(32BIT) -o $@ $^
 
-# Default target: build the program
-all: $(TARGET)
-
-$(TARGET): $(OBJECTS)
+steg-decode: $(steg-decode_SOURCES:.c=.o)
 	$(CC) $(CFLAGS) $(INLINE) $(32BIT) -o $@ $^
 
 %.o: %.c
@@ -33,12 +24,14 @@ $(TARGET): $(OBJECTS)
 32bit: 32BIT = -m32
 32bit: all
 
-test: $(TARGET)
-	./$(TARGET) | factor > $(OUTPUT_FILE)
-	@echo "Test completed. Output in $(OUTPUT_FILE)"
+test_eratosthenes: eratosthenes
+	./eratosthenes | factor > eratosthenes_factors.txt
+	@echo "Eratosthenes test completed. Output in eratosthenes_factors.txt"
 
-# Clean rule
+test_steg_decode: steg-decode
+	./steg-decode du1-obrazek.ppm | factor > steg_decode_factors.txt
+	@echo "Steg-decode test completed. Output in steg_decode_factors.txt"
 clean:
-	rm -f $(OBJECTS) $(TARGET)
+	rm -f eratosthenes steg-decode *.o
 
 .PHONY: all clean test 32bit
