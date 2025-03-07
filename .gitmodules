@@ -1,0 +1,3 @@
+[submodule "IVS/IVS/ivs_cal"]
+	path = IVS/IVS/ivs_cal
+	url = git@github.com:petakotek/ivs-project.git
