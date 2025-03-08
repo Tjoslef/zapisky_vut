@@ -33,7 +33,7 @@ struct ppm * ppm_read(const char * filename){
     if(my_struct == NULL){
         error_exit("wrong malloc \n");
     }
-    printf("with : %d  and height %d  \n",width_temp,height_temp);
+//    printf("with : %d  and height %d  \n",width_temp,height_temp);
     my_struct->xsize = width_temp;
     my_struct->ysize = height_temp;
     size_t size_bit = fread(my_struct->data,1,size,image_open);
