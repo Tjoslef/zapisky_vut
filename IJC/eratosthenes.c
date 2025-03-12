@@ -1,8 +1,5 @@
 #include "bitset.h"
-#include <time.h>
 #include "error.h"
-#include <stddef.h>
-#include <stdio.h>
 void Eratosthenes(bitset_t jmeno_pole){
    size_t size = bitset_size(jmeno_pole);
    for (size_t i = 2; i * i <= size; i++) {
@@ -32,27 +29,3 @@ void Eratosthenes(bitset_t jmeno_pole){
     }
 
 }
-#ifndef ERATOSTHENES_LIBRARY
-int main(){
-// clock_t start_t, end_t;
-  //  double total_t;
-    //   start_t = clock();
-    //I alloc a array of 000 where first index is number of them
-    bitset_create(jmeno_pole, VELIKOST);
-    //fill them with 1
-    bitset_fill(jmeno_pole, 1);
-    bitset_setbit(jmeno_pole, 0,0);
-    bitset_setbit(jmeno_pole, 1,0);
-    /* go thought the pole and for every i we check if is not 0
-    * if so we find all of number which a diveded by it and set there
-    * bit 0 because they cannt be prime numbers
-    */
-    Eratosthenes(jmeno_pole);
-/*
-printf("\n");
-       end_t = clock();
-   total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC;
-       printf("Total time taken by CPU: %f\n", total_t  );
-    */
-}
-#endif

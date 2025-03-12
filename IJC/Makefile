@@ -1,23 +1,23 @@
 CC = gcc
 CFLAGS = -std=c11 -O2 -pedantic -Wall -Wextra -Werror -g
-#LDFLAGS = -fsanitize=address
-INLINE =
+INLINE = -DUSE_INLINE
 32BIT =
-
-ifneq ($(findstring inline,$(MAKECMDGOALS)),)
-    INLINE = -DUSE_INLINE
-endif
-
-eratosthenes_SOURCES = eratosthenes.c error.c
+eratosthenes_SOURCES = prime.c eratosthenes.c error.c
 steg-decode_SOURCES = ppm.c steg-decode.c error.c
 
-all: eratosthenes steg-decode
+all: prime-i prime steg-decode
 
-eratosthenes: $(eratosthenes_SOURCES:.c=.o)
+prime-i: $(eratosthenes_SOURCES:.c=-i.o)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(INLINE) $(32BIT) -o $@ $^
 
+prime: $(eratosthenes_SOURCES:.c=.o)
+	$(CC) $(CFLAGS) $(LDFLAGS) $(32BIT) -o $@ $^
+
 steg-decode: $(steg-decode_SOURCES:.c=.o)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(INLINE) $(32BIT) -DERATOSTHENES_LIBRARY -o $@ $^
+	$(CC) $(CFLAGS) $(LDFLAGS) $(32BIT)  -o $@ $^
+
+%-i.o: %.c
+	$(CC) $(CFLAGS) $(INLINE) -c $< -o $@
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -25,8 +25,8 @@ steg-decode: $(steg-decode_SOURCES:.c=.o)
 32bit: 32BIT = -m32
 32bit: all
 
-test_eratosthenes: eratosthenes
-	./eratosthenes | factor > eratosthenes_factors.txt
+test_eratosthenes: prime
+	./prime | factor > eratosthenes_factors.txt
 	@echo "Eratosthenes test completed. Output in eratosthenes_factors.txt"
 
 .PHONY: test_steg-decode
@@ -43,6 +43,6 @@ factorize: steg_decode_factors.txt
 steg_decode_factors_results.txt: factorize
 
 clean:
-	rm -f eratosthenes steg-decode *.o steg_decode_factors.txt steg_decode_factors_results.txt
+	rm -f prime-i prime steg-decode *.o steg_decode_factors.txt steg_decode_factors_results.txt
 
 .PHONY: all clean test_steg-decode 32bit
