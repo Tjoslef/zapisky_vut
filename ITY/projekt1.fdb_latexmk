@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1740839105.27528 "/home/tjoslef/skola/vut/ITY/projekt1.tex" "projekt1.pdf" "projekt1" 1740839105.84422 0
+["pdflatex"] 1741898099.35269 "/home/tjoslef/skola/vut/ITY/projekt1.tex" "projekt1.pdf" "projekt1" 1741898099.97078 0
   "/etc/texmf/web2c/texmf.cnf" 1719994165 42612 09b3c6dec2a078bd30d80981dc2f43a3 ""
-  "/home/tjoslef/skola/vut/ITY/projekt1.tex" 1740839105.09761 5447 e840e2b9289f5505bd66a96c06dbaaea ""
+  "/home/tjoslef/skola/vut/ITY/projekt1.tex" 1741898099.16812 5446 7d5913aafe60a6bbb04b453a86d8033b ""
   "/usr/share/texmf/fonts/enc/dvips/base/8r.enc" 1719994165 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1719994165 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1719994165 2900 1537cc8184ad1792082cd229ecc269f4 ""
@@ -107,9 +107,9 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1719994165 42612 09b3c6dec2a078bd30d80981dc2f43a3 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1737579339.39909 535245 9b107176e732363f1a0002fe772e7314 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1737579318 8048301 0a8c816bd02599fde3a1467c13f211f3 ""
-  "projekt1.aux" 1740839105.73081 832 1c9988fd03d64089467820a152c6028f "pdflatex"
-  "projekt1.out" 1740839105.73181 542 857c5194f59051155e7fcd4938895a2f "pdflatex"
-  "projekt1.tex" 1740839105.09761 5447 e840e2b9289f5505bd66a96c06dbaaea ""
+  "projekt1.aux" 1741898099.86036 832 1c9988fd03d64089467820a152c6028f "pdflatex"
+  "projekt1.out" 1741898099.86136 542 857c5194f59051155e7fcd4938895a2f "pdflatex"
+  "projekt1.tex" 1741898099.16812 5446 7d5913aafe60a6bbb04b453a86d8033b ""
   (generated)
   "projekt1.aux"
   "projekt1.log"
