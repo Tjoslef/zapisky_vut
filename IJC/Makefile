@@ -3,7 +3,7 @@ CFLAGS = -std=c11 -O2 -pedantic -Wall -Wextra -Werror -g
 INLINE = -DUSE_INLINE
 32BIT =
 eratosthenes_SOURCES = prime.c eratosthenes.c error.c
-steg-decode_SOURCES = ppm.c steg-decode.c error.c
+steg-decode_SOURCES = ppm.c steg-decode.c error.c eratosthenes.c
 
 all: prime-i prime steg-decode
 
