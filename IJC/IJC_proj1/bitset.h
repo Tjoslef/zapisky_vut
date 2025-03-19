@@ -10,6 +10,8 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <stddef.h>
+#include <limits.h>
+#define VELIKOST 333000000
 typedef unsigned long bitset_index_t;
 typedef bitset_index_t*  bitset_t;
 #define bitset_create(jmeno_pole,velikost) \
@@ -30,14 +32,11 @@ typedef bitset_index_t*  bitset_t;
     jmeno_pole = NULL; \
 } while(0)
 #ifdef USE_INLINE
-static inline bitset_index_t bitset_size(bitset_t jmeno_pole){
+inline bitset_index_t bitset_size(bitset_t jmeno_pole){
 return ((jmeno_pole)[0]);
 
 }
-static inline void print_inline(){
-    printf("inline \n");
-}
-static inline bitset_t bitset_fill(bitset_t jmeno_pole,int bool_vyraz)  {
+inline bitset_t bitset_fill(bitset_t jmeno_pole,int bool_vyraz)  {
     size_t size = bitset_size(jmeno_pole);
     if (bool_vyraz) {
         for (size_t i = 0; i < size; i++) {
@@ -51,7 +50,7 @@ static inline bitset_t bitset_fill(bitset_t jmeno_pole,int bool_vyraz)  {
     }
     return jmeno_pole;
 }
-static inline bitset_t bitset_setbit(bitset_t jmeno_pole,size_t index,int bool_vyraz){
+inline bitset_t bitset_setbit(bitset_t jmeno_pole,size_t index,int bool_vyraz){
     if ((index) >= (jmeno_pole)[0]) {
         return(error_exit("bitset_setbit: Index out of range"),NULL);
     }
@@ -63,7 +62,7 @@ static inline bitset_t bitset_setbit(bitset_t jmeno_pole,size_t index,int bool_v
     }
     return jmeno_pole;
 }
-static inline int bitset_getbit(bitset_t jmeno_pole,size_t index){
+inline int bitset_getbit(bitset_t jmeno_pole,size_t index){
     if((index) >= jmeno_pole[0]) {
         (error_exit("bitset_getbit: Index out of range"));
         return 0;
@@ -73,7 +72,7 @@ static inline int bitset_getbit(bitset_t jmeno_pole,size_t index){
         }
 }
 #else
-static inline void print_inline(){ \
+inline void print_inline(){ \
     printf("macro \n"); \
 }
 #define bitset_size(jmeno_pole) ((jmeno_pole)[0])
@@ -104,3 +103,4 @@ static inline void print_inline(){ \
         ((jmeno_pole[1 + (index) / 64] & (1UL << ((index) % 64))) != 0))
 #endif
 void Eratosthenes(bitset_t jmeno_pole);
+unsigned char *utf8_check(unsigned char *s);

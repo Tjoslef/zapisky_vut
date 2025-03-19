@@ -6,6 +6,7 @@
 #include "ppm.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 FILE * func_open(const char * filename){
     FILE *image_open = fopen(filename,"rb");
     if(image_open == NULL){
@@ -16,26 +17,33 @@ FILE * func_open(const char * filename){
 }
 struct ppm * ppm_read(const char * filename){
     FILE * image_open = func_open(filename);
+    if(image_open == NULL){
+        warning("faild reading of file");
+    }
     char magic[3];
     if (fscanf(image_open, "%2s", magic) != 1 || strcmp(magic, "P6") != 0) {
         fclose(image_open);
-        error_exit("wrong file format. Only P6 is supported");
+        warning("wrong file format. Only P6 is supported \n");
+        return NULL;
     }
     int width_temp, height_temp, maxColorValue;
     if (fscanf(image_open, "%d %d %d", &width_temp, &height_temp, &maxColorValue) != 3) {
         fclose(image_open);
-        error_exit("failed to read image");
+        warning("failed to read parametrs of image \n");
+        return NULL;
     }
     if (maxColorValue < 0 || maxColorValue > 255) {
             fclose(image_open);
-            error_exit("wrong max color value");
+            warning("wrong max color value \n");
+            return NULL;
+
         }
     size_t size = width_temp * height_temp * 3;
     struct ppm *my_struct;
     my_struct = malloc(sizeof(struct ppm) + 3 * width_temp * height_temp);
     if(my_struct == NULL){
         fclose(image_open);
-        error_exit("wrong malloc \n");
+        warning("wrong malloc \n");
     }
     my_struct->xsize = width_temp;
     my_struct->ysize = height_temp;
@@ -43,7 +51,7 @@ struct ppm * ppm_read(const char * filename){
     if(size_bit != size){
         fprintf(stderr," %lu : %lu \n",size_bit,size);
         fclose(image_open);
-        error_exit("something goes wrong in reading \n");
+        warning(" read %lu : suppost to read %lu something goes wrong in reading \n",size_bit,size);
     }
     fclose(image_open);
     return my_struct;
