@@ -1,0 +1,124 @@
+\documentclass[twocolumn, 11pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{mathtools, amssymb, amsthm} % imports amsmath
+\usepackage{lmodern}
+\usepackage[czech]{babel}
+\hbadness = 10000
+\usepackage[textwidth=18.6cm, textheight=26.0cm]{geometry}
+\DisableGenericHook{cmd/deferred@thm@head}
+\newtheorem{definice}{Definice}
+\newtheorem{veta}{Veta}
+\begin{document}
+\begin{titlepage}
+	\begin{center}
+		{\Huge \textsc{Vysoké učení technické v Brně}} \\[0.5em]
+		{\huge \textsc{Fakulta informačních technologií}} \\[0.6em]
+		\vspace{\stretch{0.382}}
+		\quad\hbox{\huge{Typografie a publikování -- 2. projekt}} \\[0.6em]
+		\quad\hbox{\huge{Sazba dokumentů a matematických výrazů}}
+		\vspace{\stretch{0.618}}
+	\end{center}
+	\begin{flushright}
+		{\Large 2025} \hfill {\Large Josef Pasek (xpasekj)}
+	\end{flushright}
+\end{titlepage}
+\twocolumn
+\section*{Úvod}
+V této úloze vysázíme titulní stranu a ukázku matematického textu,
+v němž se vyskytují například rovnice ~\eqref{equation:1:1} na straně~\pageref{equation:1:2}, Věta ~\ref{veta.1} nebo Definice ~[\ref{definice.2}].
+Pro vytvoření těchto odkazů používáme kombinace příkazů
+\texttt{\textbackslash label}, \texttt{\textbackslash ref}, \texttt{\textbackslash eqref} a \texttt{\textbackslash pageref}
+Před odkazy patří nezlomitelná mezera.
+Text zvýrazníme pomocí příkazu \texttt{\textbackslash \emph}, strojopisné písmo pomocí \texttt{\textbackslash texttt}.
+Pro LaTeXové příkazy (s obráceným lomítkem) použijeme \texttt{\textbackslash verb}.
+
+Titulní strana je vysázena prostředím titlepage a nadpis je v optickém středu
+s využitím zlatého řezu, který byl probrán na přednášce.
+Na titulní straně jsou tři různé velikosti písma a mezi dvojicemi řádků textu
+je řádkování se zadanou  velikostí 0,5 em a 0,6 emi\footnote{Použijte správnou velikost mezery mezi číslem a jednotkou}.
+
+\section{Matematický text}
+Symboly číselných množin sázíme makrem \texttt{\textbackslash mathbb},
+kaligrafická písmena  makrem \texttt{\textbackslash mathcal}.
+Pozor na tvar i sklon řeckých písmen: srovnejte \texttt{\textbackslash varrho} a \texttt{\textbackslash varvarrho}.Kon\-
+strukce\hbox{ \verb|{${}$}| nebo \texttt{\textbackslash hmbox\{\}} zabrání zalomení výrazu.}
+
+Pro definice a věty slouží prostředí definovaná příkazem \texttt{\textbackslash newtheorem} z balíku amsthm.
+Tato prostředí obracejí význam \texttt{\textbackslash emph}:
+uvnitř textu sázeného kurzívou se zvýrazňuje písmem v základním řezu.
+Důkazy se někdy ukončují značkou \texttt{\textbackslash qed}.
+\subsection{Pseudometrický prostor}
+Pro zarovnání rovností a nerovnosti pod sebe použijte vhodné prostředí.
+\begin{definice}
+V pseudometrickém prostoru $\mathcal{M} = (M,\varrho)$ značí $M$ množinu bodů,
+$\varrho: M \times M \rightarrow \mathbb{R}$ je zobrazení zvané pseudometrika, které pro každé body $x,y,z \in M$
+splňuje následující podmínky:
+\setcounter{equation}{0}
+\begin{eqnarray}
+    \varrho(x,x) = 0 \label{equation:2:1} \\
+    \varrho(x,y) = \varrho(y,x)\label{equation:2:2} \\
+    \varrho(x,y) + \varrho(y,z) \geq \varrho(x,z) \label{equation:2:3}
+\end{eqnarray}
+\end{definice}
+\subsection{Metrika}
+Funkční hodnota pseudometriky $\varrho$ se nazývá \textit{vzdá\-lenost}. Vzdálenost každých dvou bodů je nezáporná.
+\begin{veta}\label{veta.1}
+    Pro každé dva body $x,y \in M$ pseudometrického prostoru $(M,\varrho)\text{ platí } \varrho(x,y) \geq 0$.
+\end{veta}
+Důkaz: Nechť $x,y \in M \text{ a označme d} = \varrho(x,y)$ \hbox{Využitím}~\eqref{equation:2:2}  mame 2d$ = \varrho(x,y) + \varrho(y,x)$
+,z nerovnosti ~\eqref{equation:2:3} 2d $\geq \varrho(x,z)$ a z rovnosti~\ref{equation:2:1} dostaneme $ \text{2d } \geq \varrho(x,y) = 0$. Odtud plyne d $\geq0$ .
+
+Speciálním případem pseudometrických prostorů jsou prostory metrické,
+v nichž dva různé body mají vždy kladnou vzdálenost.
+\begin{definice}\label{definice.2}
+    Nechť $\mathcal{M} = (M,\varrho)$ pseudometrický prostor, v němž platí $\varrho(x,y) \ge 0$, kdykoliv $x \neq y$.
+    Potom $\mathcal{M}$ se nazývá \normalfont{metrický prostor a } $\varrho$ \normalfont{ je jeho metrika.}
+\end{definice}
+\section{Rovnice}
+Velikost závorek a svislých čar je potřeba přizpůsobit jejich obsahu.
+K tomu jsou určeny modifikátory \texttt{\textbackslash left} a \texttt{\textbackslash right}.
+\begin{eqnarray}
+    \lim_{p \to \infty} \left( \frac{1}{n} \sum_{i=1}^n (x_i)^p \right)^\frac{1}{p} = \left( \prod_{i=1}^n x_i \right)^\frac{1}{n}
+\end{eqnarray}
+Zde vidíme, jak se vysází proměnná určující limitu v běžném textu: $\lim_{m \to \infty} f(m)$.
+Podobně je to i s dalšími symboly jako $\bigcup_{N \in \mathcal{M}}$ či $\sum_{i=1}^m x_{i}^2$.
+S vynucením méně úsporné sazby příkazem \texttt{\textbackslash limits} budou vzorce vysázeny v podobě $\lim\limits_{m \to \infty} f(m) \text{ a }\sum\limits_{i=1}^m x_{i}^2$.
+Složitější matematické formule sázíme mimo plynulý text pomocí prostředí \texttt{displaymath}.
+\begin{eqnarray}
+\lim_{n \to \infty} \left( 1 + \frac{x}{n} \right)^n = \sum_{n=0}^\infty \frac{x^n}{n!} \\
+\sum_{\emptyset \neq X \subset P} (-1)^{|X| -1} |\bigcap X| = |\bigcup P| \\ \label{equation:1:1} \label{equation:1:2}
+-\int_a^b f(x)dx = \int_b^a f(y)dy
+\end{eqnarray}
+Nezapomeňte rovnice, na které se odkazujete, označit vhodným jménem pomocí \texttt{\textbackslash label}.
+\section{Matice}
+Pro sázení matic se používá prostředí array a závorky s výškou nastavenou pomocí
+\texttt{\textbackslash left, \textbackslash right}.
+\[
+D = \left|
+\begin{array}{cccc}
+  a_{11} & a_{12} & \cdots & a_{1n} \\
+  a_{21} & a_{22} & \cdots & a_{2n} \\
+  \vdots & \vdots & \ddots & \vdots \\
+  a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{array}
+\right| = \left|
+\begin{array}{cc}
+  x & y \\
+  t & w
+\end{array}
+\right| = xw - yt
+\]
+Prostředí \texttt{array} lze úspěšně využít i jinde, například
+na pravé straně následující definiční rovnosti.
+\[
+B_n =
+\begin{cases}
+  1 & \text{pro } n = 0 \\
+  \sum\limits_{k=0}^{n-1} \binom{n}{k} B_k & \text{pro } n \geq 1
+\end{cases}
+\]
+Jestliže sázíme jen levou složenou závorku, pak za párovým \texttt{\textbackslash right}
+místo závorky píšeme tečku.
+\end{document}

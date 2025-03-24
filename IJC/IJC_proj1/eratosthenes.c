@@ -1,5 +1,5 @@
 // eratosthenes
-   // Řešení IJC-DU1, příklad a), 16.3.2025
+   // Řešení IJC-DU1, příklad a), 19.3.2025
    // Autor: Josef Pasek, FIT
    // Přeloženo: gcc 14.2.1
 // eratosthenesovo sito implementace

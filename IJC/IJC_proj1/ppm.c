@@ -18,23 +18,23 @@ FILE * func_open(const char * filename){
 struct ppm * ppm_read(const char * filename){
     FILE * image_open = func_open(filename);
     if(image_open == NULL){
-        warning("faild reading of file");
+        error_exit("faild reading of file");
     }
     char magic[3];
     if (fscanf(image_open, "%2s", magic) != 1 || strcmp(magic, "P6") != 0) {
         fclose(image_open);
-        warning("wrong file format. Only P6 is supported \n");
+        error_exit("wrong file format. Only P6 is supported \n");
         return NULL;
     }
     int width_temp, height_temp, maxColorValue;
     if (fscanf(image_open, "%d %d %d", &width_temp, &height_temp, &maxColorValue) != 3) {
         fclose(image_open);
-        warning("failed to read parametrs of image \n");
+        error_exit("failed to read parametrs of image \n");
         return NULL;
     }
     if (maxColorValue < 0 || maxColorValue > 255) {
             fclose(image_open);
-            warning("wrong max color value \n");
+            error_exit("wrong max color value \n");
             return NULL;
 
         }
@@ -43,13 +43,12 @@ struct ppm * ppm_read(const char * filename){
     my_struct = malloc(sizeof(struct ppm) + 3 * width_temp * height_temp);
     if(my_struct == NULL){
         fclose(image_open);
-        warning("wrong malloc \n");
+        error_exit("wrong malloc \n");
     }
     my_struct->xsize = width_temp;
     my_struct->ysize = height_temp;
     size_t size_bit = fread(my_struct->data,1,size,image_open);
     if(size_bit != size){
-        fprintf(stderr," %lu : %lu \n",size_bit,size);
         fclose(image_open);
         warning(" read %lu : suppost to read %lu something goes wrong in reading \n",size_bit,size);
     }

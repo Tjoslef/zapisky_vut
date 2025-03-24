@@ -5,8 +5,7 @@ int main(){
         double total_t;
           start_t = clock();
         //I alloc a array of 000 where first index is number of them
-        size_t velikost = 333000000;
-        bitset_alloc(jmeno_pole, velikost);
+        bitset_create(jmeno_pole, VELIKOST);
         //fill them with 1
         /* go thought the pole and for every i we check if is not 0
         * if so we find all of number which a diveded by it and set there
@@ -15,10 +14,10 @@ int main(){
         Eratosthenes(jmeno_pole);
         unsigned long list[10];
         int count = 0;
-        for (size_t i = ((jmeno_pole[0] - 1) / 64) + 2; i > 0; i--) {
-            for (int j = (int)(sizeof(unsigned long) * 8 - 1); j >= 0; j--){
+        for (size_t i = ((jmeno_pole[0] - 1) / ULONG_SIZE) + 1; i > 0; i--) {
+            for (int j = ((ULONG_SIZE) - 1); j >= 0; j--){
                 if((jmeno_pole[i] & (1UL << j)) != 0){
-                    size_t index = (i - 1) * 64 + j;
+                    size_t index = (i - 1) * ULONG_SIZE + j;
                     count++;
                     list[10 -count] = index;
                     if (count == 10) {

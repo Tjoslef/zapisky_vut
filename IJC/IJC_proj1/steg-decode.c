@@ -5,6 +5,9 @@
 // decryptovani obrazku na vyslednou spravu
 #include "ppm.h"
 #include "bitset.h"
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
 #define START_PRIME 101
 #ifdef USE_INLINE
 extern bitset_t bitset_fill(bitset_t jmeno_pole,int bool_vyraz);
@@ -33,7 +36,7 @@ int main(int argc,char *argv[]){
     char c = 0;
     int index_bit = 0;
     int end_c = 0;
-    int index_array = 0;
+    size_t index_array = 0;
 for (size_t i = START_PRIME; i < image_bit[0]; i++) {
     if (bitset_getbit(image_bit, i) == 1) {
         c |= (my_struct->data[1+i] & 1) << index_bit++;
@@ -43,7 +46,7 @@ for (size_t i = START_PRIME; i < image_bit[0]; i++) {
                 end_c = 1;
                 printf("%c",c);
                 printf("\n");
-                story_c[index_array] = '\0';
+                story_c[index_array++] = '\0';
                 break;
             }
             printf("%c",c);
@@ -56,16 +59,20 @@ for (size_t i = START_PRIME; i < image_bit[0]; i++) {
     if(end_c ==0){
         error_exit("message dont have correct end character");
     }else {
-        unsigned char *story_c1 = realloc(story_c,index_array);
+        unsigned char *story_c1 = realloc(story_c,index_array*sizeof(char));
         if(story_c1 == NULL){
             bitset_free(image_bit);
             error_exit("wrong realloc");
         }
         story_c = story_c1;
         if(utf8_check(story_c)!=0){
+            bitset_free(image_bit);
+            ppm_free(my_struct);
+            free(story_c);
             error_exit("message isnt utf 8 \n");
         }
     }
+    free(story_c);
     bitset_free(image_bit);
     ppm_free(my_struct);
 }

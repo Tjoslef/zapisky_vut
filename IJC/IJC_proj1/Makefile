@@ -1,4 +1,8 @@
-CC = gcc
+# makefile
+   # Řešení IJC-DU1, příklad a)/b), 19.3.2025
+   # Autor: Josef Pasek, FIT
+   # Přeloženo: gcc 14.2.1
+# makefile
 CFLAGS = -std=c11 -O2 -pedantic -Wall -Wextra -Werror -g
 INLINE = -DUSE_INLINE
 32BIT =
@@ -12,21 +16,21 @@ steg_decode_OBJECTS = $(addprefix $(OBJ_DIR)/, $(steg-decode_SOURCES:.c=.o))
 all: prime-i prime steg-decode
 
 prime-i: $(addprefix $(OBJ_DIR)/, $(eratosthenes_SOURCES:.c=-i.o))
-	$(CC) $(CFLAGS) $(LDFLAGS) $(INLINE) $(32BIT) $(TIME) -o $@ $^
+	$(CC) $(CFLAGS) $(INLINE) $(32BIT) $(TIME) -o $@ $^
 	ulimit -s 5000000
 
 prime: $(eratosthenes_OBJECTS)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(32BIT) $(TIME) -o $@ $^
+	$(CC) $(CFLAGS)  $(32BIT) $(TIME) -o $@ $^
 	ulimit -s 5000000
 
 steg-decode: $(steg_decode_OBJECTS)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(32BIT) -o $@ $^
+	$(CC) $(CFLAGS) $(32BIT) -o $@ $^
 
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(32BIT) -c $< -o $@
 
 $(OBJ_DIR)/%-i.o: %.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(INLINE) -c $< -o $@
+	$(CC) $(CFLAGS) $(32BIT) $(INLINE) -c $< -o $@
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
