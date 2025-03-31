@@ -1,0 +1,43 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathptmx}
+\usepackage[czech]{babel}
+\usepackage[style=ddmmyyyy]{datetime2}
+\usepackage[left=2cm, top=3cm , textwidth=17cm, textheight=24cm]{geometry}
+\begin{document}
+\makeatletter
+\begin{titlepage}
+	\begin{center}
+		{\Huge \textsc{Vysoké učení technické v Brně}} \\[0.5em]
+		{\huge \textsc{Fakulta informačních technologií}} \\[0.6em]
+		\vspace{\stretch{0.382}}
+		\quad\hbox{\LARGE{Typografie a publikování -- 3. projekt}} \\[0.6em]
+		\quad\hbox{\Huge{Tabulky a obrázky}}
+		\vspace{\stretch{0.618}}
+	\end{center}
+	\begin{flushright}
+		{\Large \today} \hfill {\Large Josef Pasek}
+	\end{flushright}
+\end{titlepage}
+\makeatother
+\section{Úvodni strana}
+Název práce umístěte do zlatého řezu a nezapomeňte uvést \textit{dnešní} (today) datum a vaše jméno a příjmení.
+\section{Tabulky}
+Pro sázení tabulek můžeme použít buď prostředí \texttt{tabbing nebo prostředí} \texttt{tabular}.
+\subsection{Prostředí tabbing}
+Při použití tabbing vypadá tabulka následovně:
+\begin{tabbing}
+	Ovoce \hspace{1.5cm} \= Množství \hspace{0.5cm} \= Jednotka \hspace{0.5cm} \= Cena za jedn. \hspace{0.5cm} \= Cena celková \kill
+	\textbf{Ovoce} \> \textbf{Množství} \> \textbf{Jednotka} \> \textbf{Cena za jedn.} \> \textbf{Cena celková} \\
+	Jablka \> 3 \> kg \> 25,90 Kč \> 77,70 Kč \\
+	Hrušky \> 2,5 \> kg \> 27,40 Kč \> 68,50 Kč \\
+	Vodní melouny \> 1 \> kus \> 35,--Kč \> 35,--Kč \\
+\end{tabbing}
+Toto prostředí se dá také použít pro sázení algoritmů, ovšem vhodnější je použít prostředí algorithm nebo
+algorithm2e (viz sekce 3).
+\subsection{Prostředí tabular}
+Další možností, jak vytvořit tabulku, je použít prostředí tabular. Tabulky pak budou vypadat takto1 :
+\begin{tabular}{sloupce}
+\end{tabular}
+\end{document}

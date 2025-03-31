@@ -44,7 +44,7 @@ EOF
   )
 
   # Actual output
-  actual=$(bash /home/tjoslef/skola/vut/IOS1/project1/bootutil.sh list -s | tr -d '\n')
+  actual=$(bash /home/tjoslef/skola/vut/zapisky_vut/IOS1/project1/bootutil list -s | tr -d '\n')
 
   # Normalize outputs for comparison
   expected_normalized=$(echo "${expected}" | tr -d '\n'  | sort -k1)
@@ -73,7 +73,7 @@ Fedora Linux 41 with debug (6.12.5-200.fc41.x86_64+debug, /vmlinuz-6.12.5-200.fc
 EOF
   )
 
-  actual=$(bash /home/tjoslef/skola/vut/IOS1/project1/bootutil.sh list -f | tr -d '\n')
+  actual=$(bash /home/tjoslef/skola/vut/zapisky_vut/IOS1/project1/bootutil list -f | tr -d '\n')
   actual_normalized=$(echo "${actual}" | tr -d '\n')
   expected_normalized=$(echo "${expected}" | tr -d '\n')
 
@@ -101,7 +101,7 @@ EOF
   )
 
   # Actual output
-  actual=$(bash /home/tjoslef/skola/vut/IOS1/project1/bootutil.sh list -s -t 'Fedora')
+  actual=$(bash /home/tjoslef/skola/vut/zapisky_vut/IOS1/project1/bootutil list -s -t 'Fedora')
   actual_normalized=$(echo "${actual}" | tr -d '\n')
   expected_normalized=$(echo "${expected}" | tr -d '\n')
 
@@ -127,7 +127,7 @@ EOF
   )
 
   # Actual output
-  actual=$(bash /home/tjoslef/skola/vut/IOS1/project1/bootutil.sh list -k 'fc41\.x86_64')
+  actual=$(bash /home/tjoslef/skola/vut/zapisky_vut/IOS1/project1/bootutil list -k 'fc41\.x86_64')
   actual_normalized=$(echo "${actual}" | tr -d '\n')
   expected_normalized=$(echo "${expected}" | tr -d '\n')
 
@@ -143,11 +143,11 @@ EOF
     diff -u <(echo "${expected}") <(echo "${actual}")
 }
 testDuplicate_k() {
-  local expected_file="/home/tjoslef/skola/vut/IOS1/project1/loader/entries/a1.conf"
+  local expected_file="/home/tjoslef/skola/vut/zapisky_vut/IOS1/project1/loader/entries/a1.conf"
 
   local expected_content=$'title Fedora Linux 41\nversion 6.12.5-200.fc41.x86_64\nlinux Scratch\ninitrd /initramfs-6.12.5-200.fc41.x86_64.img\noptions root=UUID=cf5d1643-42a9-4168-a17e-c651f367f367rhgb quiet\nvutfit_default y\nsort-key bbb'
 
-  bash /home/tjoslef/skola/vut/IOS1/project1/bootutil.sh duplicate -k 'Scratch' -d "$expected_file"
+  bash /home/tjoslef/skola/vut/zapisky_vut/IOS1/project1/bootutil duplicate -k 'Scratch' -d "$expected_file"
 
   assertTrue "File ${expected_file} should exist" "[ -f '${expected_file}' ]"
 

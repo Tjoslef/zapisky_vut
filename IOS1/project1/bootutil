@@ -1,16 +1,22 @@
 #!/bin/bash
-#default address
-BOOT_ENTRIES_DIR=${BOOT_ENTRIES_DIR:-"loader/entries"}
+
+BOOT_ENTRIES_DIR=${BOOT_ENTRIES_DIR:-"/boot/loader/entries"}
+#  parsing function for list function
+#  arguments :
+#  local file="$1"  where to look
+#  local by_kernel="$2" for what kernel
+#  local by_title="$3" for what title
+#  look for values title,version,linux,sortKey in file
+#  return file_name: title (version,linux) sortKey
+
 parsing_conf() {
     local file="$1"
     local by_kernel="$2"
     local by_title="$3"
-    local num_vit="$4"
     local title=$(grep "^title[[:space:]]*" "$file" | sed 's/^title[[:space:]]*//' | tail -n 1)
     local version=$(grep "^version[[:space:]]*" "$file" | sed 's/^version[[:space:]]*//' | tail -n 1)
     local linux=$(grep "^linux[[:space:]]*" "$file" | sed 's/^linux[[:space:]]*//' | tail -n 1)
     local sortKey=$(grep "^sort-key[[:space:]]*" "$file" | sed 's/^sort-key[[:space:]]*//' | tail -n 1)
-    local vut_default=$(grep "^vutfit_default[[:space:]]*" "$file" | sed 's/^vutfit_default[[:space:]]*//' | tail -n 1)
     if [[ -n "$by_kernel" ]] && ! [[ "$linux" =~ $by_kernel ]]; then
         return 1
     fi
@@ -18,15 +24,15 @@ parsing_conf() {
     if [[ -n "$by_title" ]] && ! [[ "$title" =~ $by_title ]]; then
         return 1
     fi
-    if [[ "$vut_default" == "y" ]]; then
-        num_vit=$((num_vit + 1))
-    fi
     if [[ -z "$title" || -z "$version" || -z "$linux" ]]; then
         echo "Error: $file does not have all required keys (title, version, linux)" >&2
         return 1
     fi
     echo "$file:$title ($version, $linux):$sortKey"
 }
+if false; then
+    check current default directory
+fi
 check_dir() {
     if [[ -z "$BOOT_ENTRIES_DIR" ]]; then
         echo "Error: BOOT_ENTRIES_DIR is not defined" >&2
@@ -37,6 +43,19 @@ check_dir() {
         echo "the directory doenst exist: $BOOT_ENTRIES_DIR"
     fi
 }
+#  arguments :
+#  f) sort by name of file
+#  s) sort by sortkey or file
+#  k) by_kernel looking for specific kernel
+#  t) by_title looking for specific title
+#  handle input parametrs with getopts
+#  call read func put the files in tmp_array
+#  if sort_name true just sort the file
+#  call parsing func give there argument by_kernel by_title
+#  if sort_key true grap sortkey and filename if we dont have sortkey
+#  it append zzz to be sortKey to put at end and sort it be sortKey and after that by file_name
+#  in the end it print without filename and sortkey
+
 list_entries() {
     local sort_name=false
     local sort_key=false
@@ -110,6 +129,8 @@ list_entries() {
         done
     return 0
 }
+#    just func that read the directory and return array with them
+#    and it call reading dir also for check_dir
 reading_dir(){
     check_dir "$BOOT_ENTRIES_DIR"
     local file_array=()
@@ -127,6 +148,9 @@ reading_dir(){
         fi
     printf '%s\n' "${file_array[@]}"
 }
+#    arguments: title
+#    call parsing func for parse the files
+#    base on result it remove the files
 remove_entry() {
     local by_title="$1"
     mapfile -t file_array < <(reading_dir)
@@ -151,16 +175,18 @@ remove_entry() {
         fi
     done
 }
+#    func for changing a kernel command to add and to Removed
+#    first and convert orig and new to add command to arrays
+#    mod 1 is adding the command so it will loop if it match it will skip
+#    mod 2 for removing if it match it will remove it
 kernel_cmd() {
     local orig_cmd="$1"
     local mod="$2"
-    local params_to_add="${4:-}"
+    local params_to_add="${3:-}"
     IFS=' ' read -ra orig_params <<< "$orig_cmd"
     IFS=' ' read -ra new_params <<< "$params_to_add"
-
     if [[ "$mod" = 1 ]]; then
         for par in "${new_params[@]}"; do
-            echo "$par"
             found=false
             for existing in "${orig_params[@]}"; do
                 if [[ "$existing" == "$par" ]]; then
@@ -187,6 +213,16 @@ kernel_cmd() {
     fi
     echo "${orig_params[*]}"
 }
+#    func that duplicate files base on some parametrs
+#    arguments:
+#    by_kernel="" what kernel we want
+#    by_title="" what title it should have
+#    by_initrd="" what initrd it should have
+#    destination="" where to add
+#    cmdline_add="" what file what command line to add
+#    cmdline_remove="" what command to remove
+#    file="" from which file to copy if it blank it find vut_defauld y
+#    use while loop with case instead of getopts to make sure the execution of flag is correct
 
 duplicate_entry() {
     local by_kernel="" by_title="" by_initrd="" destination=""
@@ -196,13 +232,13 @@ duplicate_entry() {
     echo "$last_arg"
     if [[ $# -gt 0 && "$last_arg" != -* && -f "$last_arg" ]]; then
         file="$last_arg"
-        set -- "${@:1:$#-1}"
+    set -- "${@:1:$#-1}"  #take all argument that are given us and remove the last one if it file so
+                          #it doesnt mess up while loop with case inside of it
     fi
     while [[ $# -gt 0 ]]; do
         case "$1" in
             --make-default)
                 operation+=("make_default")
-                echo "make_default"
                 shift 1
                 ;;
             -k)
@@ -265,17 +301,16 @@ duplicate_entry() {
         echo "Chyba: Soubor '$file' neexistuje nebo není regulérní soubor." >&2
         return 1
     fi
+    #maeking new copy append *1 to it
     original_file="$file"
     new_file="${file%.*}1.${file##*.}"
     cp "$original_file" "$new_file"
     : "${destination:="$new_file"}"
-    if [[ ! -f "$destination" ]]; then
-        touch "$destination"
-    fi
     local content modified_content
 
     content=$(<"$new_file")
     modified_content="$content"
+    #reading the array to execute the flags
     for op in "${operation[@]}";do
         case $op in
             kernel*)
@@ -287,32 +322,36 @@ duplicate_entry() {
                 modified_content=$(sed "s/^\(title[[:space:]]\+\).*/\1$new_title/" <<< "$modified_content")
                 ;;
             initrd*)
-                local new_initrd="${op#initrd }"
+        local new_initrd="${op#initrd }" #it remove last initrd from start to to put to file
+
                 modified_content=$(sed "s/^\(initrd[[:space:]]\+\).*/\1$new_initrd/" <<< "$modified_content")
                 ;;
+            #first we parse it origin cmd and after that get new cmd form kernel_cmd funct and put it back to modified_content
             cmdline_add*)
-                local cmdline_add="${op}"
+                local cmdline_add="${op#cmdline_add}"
                 local origin_cmd=$(awk '/^options[[:space:]]+/ {$1=""; print substr($0,2)}' <<< "$modified_content")
                 local new_cmd=$(kernel_cmd "$origin_cmd" 1 "$cmdline_add")
-                echo "$new_cmd"
-                modified_content=$(sed "s/^options.*/options $new_cmd/" <<< "$modified_content")
+                modified_content=$(awk '{if ($1 == "options") { $0 = "options " new_cmd} print}' new_cmd="$new_cmd" <<< "$modified_content")
                 ;;
+
             cmdline_remove*)
-                local cmdline_remove="${op}"
+                local cmdline_remove="${op#cmdline_remove}"
                 local origin_cmd=$(awk '/^options[[:space:]]+/ {$1=""; print substr($0,2)}' <<< "$modified_content")
                 local new_cmd=$(kernel_cmd "$origin_cmd" 2 "$cmdline_remove")
-                modified_content=$(sed "s/^options.*/options $new_cmd/" <<< "$modified_content")
+                modified_content=$(awk '{if ($1 == "options") { $0 = "options " new_cmd} print}' new_cmd="$new_cmd" <<< "$modified_content")
                 ;;
                esac
 
            done
+           #print modified_content to destination
     echo "$modified_content" > "$destination"
     if [[ " ${operation[*]} " =~ " make_default " ]]; then
         make_default "$destination"
     fi
 
 }
-
+#    we get file that has vut_defualt y
+#    and print it
 show_default() {
     local local_f_par=false
     local by_kernel=""
@@ -356,6 +395,7 @@ show_default() {
         return 1
     fi
 }
+#    we make file that is given like argument vut_defauld y and others in directory vut default n
 make_default() {
     local file="$1"
     if [[ -z "$file" ]]; then
@@ -365,10 +405,8 @@ make_default() {
     if [[ -f "$file" && -s "$file" ]]; then
         if grep -q '^vutfit_default\s' "$file"; then
             sed -i 's/^vutfit_default\s.*/vutfit_default y/' "$file"
-            echo "zapsano do toho $file"
         else
             echo "vutfit_default y" >> "$file"
-            echo "zapsano do toho $file"
         fi
     else
         echo "creating file"
@@ -385,7 +423,6 @@ make_default() {
     mapfile -t file_array < <(reading_dir)
     for i in "${file_array[@]}"; do
         if [[ "$(basename "$i")" == "$(basename "$file")" ]]; then
-                echo "Skipping matching file: $i"
                 continue
         fi
        if [[ -e "$i" ]]; then
@@ -401,8 +438,10 @@ make_default() {
          return 1
        fi
      done
-    echo "Výchozí položka byla úspěšně nastavena v souboru $file"
+    echo "vut_defualt is in $file"
 }
+#    changing a default directory
+
 default_dir() {
     local directory="$1"
     echo "$directory"
@@ -424,7 +463,7 @@ default_dir() {
     echo "new directory $BOOT_ENTRIES_DIR"
 }
 
-# Hlavní logika pro parsování argumentů
+# Main logic for parsing arguments
 case "$1" in
   list)
       shift
