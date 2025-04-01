@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BOOT_ENTRIES_DIR=${BOOT_ENTRIES_DIR:-"/boot/loader/entries"}
+BOOT_ENTRIES_DIR=${BOOT_ENTRIES_DIR:-"loader/entries"}
 #  parsing function for list function
 #  arguments :
 #  local file="$1"  where to look
@@ -254,9 +254,17 @@ duplicate_entry() {
                 shift 2
                 ;;
             -d)
-                destination="$2"
-                shift 2
-                ;;
+           if [[ $# -ge 2 && "$2" != -* ]]; then
+                    destination="$2"
+                    shift 2
+                elif [[ -n "$last_arg" ]]; then
+                    destination="$last_arg"
+                    shift 1
+                else
+                    echo "Error: No valid destination specified for -d."
+                    exit 1
+                fi
+               ;;
             -a)
                 operation+=("cmdline_add $2")
                 shift 2
@@ -271,7 +279,7 @@ duplicate_entry() {
                 ;;
         esac
     done
-    if [[ -z "$file" ]]; then
+    if [[ -z "$file" || -n "$destination" ]]; then
         mapfile -t file_array < <(reading_dir)
         if [[ ${#file_array[@]} -eq 0 ]]; then
             echo "Chyba: Žádné soubory nenalezeny." >&2
@@ -304,12 +312,24 @@ duplicate_entry() {
     #maeking new copy append *1 to it
     original_file="$file"
     new_file="${file%.*}1.${file##*.}"
+    echo "$destination"
+    if ! [[ -n "$destination" ]];then
     cp "$original_file" "$new_file"
-    : "${destination:="$new_file"}"
-    local content modified_content
+    destination="$new_file"
+    fi
 
-    content=$(<"$new_file")
-    modified_content="$content"
+    local content modified_content
+    if [[ ! -f "$new_file" ]];then
+        content=$(<"$original_file")
+    else
+        content=$(<"$new_file")
+    fi
+    set -x
+
+    modified_content=$(echo "$content" | sed 's/^vutfit_default y$/vutfit_default n/')
+    set +x
+    set +x
+
     #reading the array to execute the flags
     for op in "${operation[@]}";do
         case $op in
@@ -322,8 +342,7 @@ duplicate_entry() {
                 modified_content=$(sed "s/^\(title[[:space:]]\+\).*/\1$new_title/" <<< "$modified_content")
                 ;;
             initrd*)
-        local new_initrd="${op#initrd }" #it remove last initrd from start to to put to file
-
+                local new_initrd="${op#initrd }" #it remove last initrd from start to to put to file
                 modified_content=$(sed "s/^\(initrd[[:space:]]\+\).*/\1$new_initrd/" <<< "$modified_content")
                 ;;
             #first we parse it origin cmd and after that get new cmd form kernel_cmd funct and put it back to modified_content
@@ -444,7 +463,6 @@ make_default() {
 
 default_dir() {
     local directory="$1"
-    echo "$directory"
     local path_to_dir=$(realpath -m "$directory" 2>/dev/null)
     if [[ -z "$path_to_dir" ]]; then
         echo "Error: Directory not specified" >&2
@@ -462,7 +480,11 @@ default_dir() {
     BOOT_ENTRIES_DIR="$path_to_dir"
     echo "new directory $BOOT_ENTRIES_DIR"
 }
-
+if [ "$1" == "-b" ];then
+    shift
+    default_dir "$1"
+    shift
+fi
 # Main logic for parsing arguments
 case "$1" in
   list)
@@ -475,6 +497,7 @@ case "$1" in
       ;;
   duplicate)
       shift
+      echo "hello"
       duplicate_entry "$@"
       ;;
   show-default)
@@ -484,10 +507,6 @@ case "$1" in
   --make-default)
       shift
       make_default "$@"
-      ;;
-  -b)
-      shift
-      default_dir "$@"
       ;;
   *)
       echo "Neznámý příkaz: $1"
