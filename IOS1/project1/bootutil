@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BOOT_ENTRIES_DIR=${BOOT_ENTRIES_DIR:-"loader/entries"}
+BOOT_ENTRIES_DIR=${BOOT_ENTRIES_DIR:-"/boot/loader/entries"}
 #  parsing function for list function
 #  arguments :
 #  local file="$1"  where to look
@@ -30,9 +30,6 @@ parsing_conf() {
     fi
     echo "$file:$title ($version, $linux):$sortKey"
 }
-if false; then
-    check current default directory
-fi
 check_dir() {
     if [[ -z "$BOOT_ENTRIES_DIR" ]]; then
         echo "Error: BOOT_ENTRIES_DIR is not defined" >&2
@@ -63,11 +60,13 @@ list_entries() {
     local by_title=""
     while getopts ":sfk:t:" opt; do
         case $opt in
-            f) sort_name=true ;;
-            s) sort_key=true ;;
+            f) sort_name=true
+               sort_key=false ;;
+            s) sort_key=true
+                sort_name=false;;
             k) by_kernel="$OPTARG" ;;
             t) by_title="$OPTARG" ;;
-            :) echo "chyba: přepínač -$optarg vyžaduje argument" >&2; return 1 ;;
+            :) echo "error: flag -$optarg need arguments" >&2; return 1 ;;
             \?) echo "error : wrong input: -$optarg" >&2; return 1;;
         esac
     done
@@ -169,9 +168,7 @@ remove_entry() {
     for entry in "${data_array[@]}"; do
         if [[ -n "$entry" ]];then
             local filename=$(echo "$entry" | awk -F ':' '{print $1}')
-            echo "$filename"
             rm "$filename"
-            echo "Removed file: $filename"
         fi
     done
 }
@@ -229,7 +226,6 @@ duplicate_entry() {
     local cmdline_add="" cmdline_remove="" file=""
     local operation=()
     local last_arg="${@: -1}"
-    echo "$last_arg"
     if [[ $# -gt 0 && "$last_arg" != -* && -f "$last_arg" ]]; then
         file="$last_arg"
     set -- "${@:1:$#-1}"  #take all argument that are given us and remove the last one if it file so
@@ -279,17 +275,17 @@ duplicate_entry() {
                 ;;
         esac
     done
-    if [[ -z "$file" || -n "$destination" ]]; then
+    if [[ -z "$file" ]]; then
         mapfile -t file_array < <(reading_dir)
         if [[ ${#file_array[@]} -eq 0 ]]; then
-            echo "Chyba: Žádné soubory nenalezeny." >&2
+            echo "no files find " >&2
             return 1
         fi
 
         default_found=false
         for i in "${file_array[@]}"; do
             if [[ ! -f "$i" ]]; then
-                echo "Varování: '$i' není soubor. Přeskočeno." >&2
+                echo "error '$i' something is wrong " >&2
                 continue
             fi
             vut_default=$(awk '/^vutfit_default[[:space:]]+/ {print $2; exit}' "$i")
@@ -300,19 +296,22 @@ duplicate_entry() {
             fi
         done
         if ! $default_found; then
-            echo "Varování: Žádný výchozí soubor nebyl nalezen." >&2
+            echo "none file is vut default" >&2
             return 1
         fi
     fi
 
     if [[ ! -f "$file" ]]; then
-        echo "Chyba: Soubor '$file' neexistuje nebo není regulérní soubor." >&2
+        echo "error '$file' " >&2
         return 1
     fi
     #maeking new copy append *1 to it
+    if [[ "$default_found" = "false" && -f "$file" ]];then
+        echo "no default file and no file like add" >&2
+    return 1
+fi
     original_file="$file"
     new_file="${file%.*}1.${file##*.}"
-    echo "$destination"
     if ! [[ -n "$destination" ]];then
     cp "$original_file" "$new_file"
     destination="$new_file"
@@ -324,11 +323,7 @@ duplicate_entry() {
     else
         content=$(<"$new_file")
     fi
-    set -x
-
     modified_content=$(echo "$content" | sed 's/^vutfit_default y$/vutfit_default n/')
-    set +x
-    set +x
 
     #reading the array to execute the flags
     for op in "${operation[@]}";do
@@ -402,7 +397,7 @@ show_default() {
          return 1
        fi
      done
-     if "$default_found"; then
+     if [[ "$default_found" = "true" ]]; then
          if "$local_f_par"; then
            echo "$default_file"
          else
@@ -410,7 +405,7 @@ show_default() {
          fi
          return 0
     else
-        echo "Chyba: Žádná výchozí položka nebyla nalezena." >&2
+        echo "error default wasnt found" >&2
         return 1
     fi
 }
@@ -428,7 +423,6 @@ make_default() {
             echo "vutfit_default y" >> "$file"
         fi
     else
-        echo "creating file"
         > "$file"
         for i in {1..5}; do
             echo >> "$file"
@@ -447,17 +441,15 @@ make_default() {
        if [[ -e "$i" ]]; then
            vut_default=$(awk '/^vutfit_default[ \t]/ {print $2; exit}' "$i")
          if [[ "$vut_default" == "y" ]]; then
-             echo "hello $i"
            sed -i 's/^vutfit_default\s.*/vutfit_default n/' "$i"
            default_found=true
            break
          fi
        else
-         echo "Chyba: Soubor '$i' neexistuje." >&2
+           echo "error fiel doenst exist '$i' " >&2
          return 1
        fi
      done
-    echo "vut_defualt is in $file"
 }
 #    changing a default directory
 
@@ -474,11 +466,8 @@ default_dir() {
             echo "Error: Failed to create directory '$directory'" >&2
             return 1
         fi
-        echo "Directory created: $path_to_dir"
     fi
-    echo "$path_to_dir"
     BOOT_ENTRIES_DIR="$path_to_dir"
-    echo "new directory $BOOT_ENTRIES_DIR"
 }
 if [ "$1" == "-b" ];then
     shift
@@ -497,7 +486,6 @@ case "$1" in
       ;;
   duplicate)
       shift
-      echo "hello"
       duplicate_entry "$@"
       ;;
   show-default)
